@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Financiero - Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="animated-bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+        <div class="lake-reflection"></div>
+        <div class="mountains"></div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container" id="container">
+        
+        <!-- Formulario de Registro (Sign Up) -->
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h1>Crear Cuenta</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+                </div>
+                <span>Regístrese para acceder al sistema</span>
+                <input type="text" id="regUsername" placeholder="Usuario" required>
+                <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+                <input type="password" id="regOldPassword" placeholder="Password provisional" required>
+                <input type="password" id="regNewPassword" placeholder="Nuevo password (alfanumérico)" required>
+                <div class="password-strength" id="passwordStrength"></div>
+                <button type="submit" class="btn-register">Registrarse</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Login (Sign In) -->
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <div class="logo-login">
+                    <img src="images/imgdatalux2.png" alt="Data Financiero" class="login-logo">
+                </div>
+                <h1>Iniciar Sesión</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+                </div>
+                <span>Ingrese sus credenciales</span>
+                <input type="text" id="loginUsername" placeholder="Usuario o Correo" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <a href="#" class="forgot-link">¿Olvidó su password?</a>
+                <button type="submit" class="btn-login">Ingresar</button>
+            </form>
+        </div>
+
+        <!-- Panel Overlay (el que se mueve) -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <!-- Panel izquierdo (visible cuando estamos en Sign Up) -->
+                <div class="overlay-panel overlay-left">
+                    <img src="images/imgdatalux2.png" alt="Logo" class="overlay-logo">
+                    <h1>¡Bienvenido de vuelta!</h1>
+                    <p>Para mantenerse conectado con nosotros, por favor inicie sesión con sus credenciales</p>
+                    <button class="ghost" id="signIn">Iniciar Sesión</button>
+                </div>
+                <!-- Panel derecho (visible cuando estamos en Login) -->
+                <div class="overlay-panel overlay-right">
+                    <img src="images/imgdatalux2.png" alt="Logo" class="overlay-logo">
+                    <h1>¡Hola, Usuario!</h1>
+                    <p>Ingrese sus datos personales y comience su viaje con Data Financiero</p>
+                    <button class="ghost" id="signUp">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de mensajes -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <div class="modal-icon" id="modalIcon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 id="modalTitle">Título</h2>
+            <p id="modalMessage">Mensaje</p>
+            <button class="btn-modal" id="modalBtn">Aceptar</button>
+        </div>
+    </div>
+
+<!-- Modal de Recuperar Password -->
+<div class="modal-overlay" id="forgotModal">
+    <div class="modal forgot-modal">
+        <h2>Recuperar Credenciales</h2>
+        <p>Ingresa tu correo electrónico registrado para ver tus credenciales de acceso.</p>
+        
+        <form id="forgotForm">
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="forgotEmail" 
+                    placeholder="Correo electrónico" 
+                    required
+                    autocomplete="email"
+                >
+            </div>
+            <button type="submit" class="btn-modal btn-submit">
+                <i class="fas fa-search"></i> Buscar Credenciales
+            </button>
+            <button type="button" class="btn-modal btn-cancel" id="closeForgotModal">
+                Cancelar
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Mostrar Credenciales -->
+<div class="modal-overlay" id="credentialsModal">
+    <div class="modal credentials-modal">
+        <div class="modal-icon success">
+            <i class="fas fa-key"></i>
+        </div>
+        <h2>Tus Credenciales de Acceso</h2>
+        <p>Aquí están tus credenciales de Data Financiero:</p>
+        
+        <div class="credentials-box">
+            <div class="credential-item">
+                <span class="credential-label">👤 Usuario:</span>
+                <span class="credential-value" id="credUsername">-</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-label">🔑 Password:</span>
+                <span class="credential-value" id="credPassword">-</span>
+            </div>
+            <div class="credential-item">
+                <span class="credential-label">📧 Correo:</span>
+                <span class="credential-value" id="credEmail">-</span>
+            </div>
+        </div>
+        
+        <p class="credential-note">
+            <i class="fas fa-info-circle"></i> 
+            Te recomendamos cambiar tu password después de iniciar sesión.
+        </p>
+        
+        <button class="btn-modal btn-ok" id="closeCredentialsModal">
+            Entendido, Iniciar Sesión
+        </button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

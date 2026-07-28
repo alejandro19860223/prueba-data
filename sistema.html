@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entorno Macroeconómico - Data Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sistema.css">
+    <link rel="stylesheet" href="tablesistema.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Mostrar menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <img src="images/imgdatalux2.png" alt="Data Financiero" class="header-logo">
+            <div class="header-brand">
+                <span class="brand-name">DATA FINANCIERO</span>
+                <span class="brand-sub">Administración de Bases de Datos</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="dashboard.html" class="nav-link">Home</a>
+            <a href="macroeconomico.html" class="nav-link">Entorno Macroeconómico</a>
+            <a href="sistema.html" class="nav-link active">Sistema Financiero</a>
+            <a href="#" class="nav-link">Tasas de Interés</a>
+            <a href="#" class="nav-link">Análisis Financiero</a>
+        </nav>
+        <div class="header-user">
+            <span id="welcomeUser">Bienvenido, Usuario</span>
+            <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Salir</button>
+        </div>
+    </header>
+
+    <!-- Overlay del sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar con MENÚ COMPLETO -->
+    <aside class="sidebar-tree" id="sidebarTree">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-folder-tree"></i> Contenidos</h3>
+            <button class="btn-close-sidebar" id="btnCloseSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="tree-container">
+            <ul class="tree">
+                
+<!-- ==================== ESTADOS FINANCIEROS (MODIFICADO) ==================== -->
+<li class="tree-item has-children collapsed">
+    <div class="tree-node" onclick="toggleNode(this)">
+        <span class="toggle-icon">+</span>
+        <i class="fas fa-folder folder-icon"></i>
+        <span class="node-label">Estados Financieros</span>
+    </div>
+    <ul class="tree-children">
+        <!-- Opciones directas sin subcarpetas -->
+        <li class="tree-item leaf" onclick="loadTable('SFN01')">
+            <span class="toggle-icon leaf-icon">📊</span>
+            <span class="node-label">1.1 Estado de Situación Consolidado y Condensado</span>
+        </li>
+        <li class="tree-item leaf" onclick="loadTable('SFN02')">
+            <span class="toggle-icon leaf-icon"></span>
+            <span class="node-label">1.2 Estado de Pérdidas y Ganancias PYG</span>
+        </li>
+        <li class="tree-item leaf" onclick="loadTable('SFN03')">
+            <span class="toggle-icon leaf-icon">📊</span>
+            <span class="node-label">1.3 Estado de Pérdidas y Ganancias PYG Anualizado</span>
+        </li>
+        <li class="tree-item leaf" onclick="loadTable('SFN04')">
+            <span class="toggle-icon leaf-icon"></span>
+            <span class="node-label">1.4 Estado de Fuentes y Usos</span>
+        </li>
+        <li class="tree-item leaf" onclick="loadTable('SFN05')">
+            <span class="toggle-icon leaf-icon">📊</span>
+            <span class="node-label">1.5 Patrimonio Técnico</span>
+        </li>
+        <li class="tree-item leaf" onclick="loadBalancesTable('SFN06')">
+            <span class="toggle-icon leaf-icon">📊</span>
+            <span class="node-label">1.6 Estados Financieros Detallados</span>
+        </li>
+        
+    </ul>
+</li>
+                
+                <!-- ==================== INFORMACIÓN MENSUAL ==================== -->
+                <li class="tree-item has-children collapsed">
+                    <div class="tree-node" onclick="toggleNode(this)">
+                        <span class="toggle-icon">+</span>
+                        <i class="fas fa-folder folder-icon"></i>
+                        <span class="node-label">Estadísticas Mensuales</span>
+                    </div>
+                    <ul class="tree-children">
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">Sector Monetario y Financiero</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Principales Indicadores Monetarios y Financieros</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM111')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.1.1	Oferta Monetaria (M1) y Liquidez Total (M2)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM112')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.1.2	Captaciones y Crédito del Panorama Financiero por Sectores</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Banco Central del Ecuador</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM121')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.2.1	Reservas Internacionales</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM122')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.2.2	Panorama: Banco Central del Ecuador</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM123')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.2.3	Balance Sectorial: Banco Central del Ecuador</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM124')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.2.4	Sistema de Balances</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Otras Sociedades de Depósito (OSD)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM131')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.3.1	Panorama: Otras Sociedades de Depósito (OSD)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM132')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.3.2	Balance Sectorial: Otras Sociedades de Depósito (OSD)</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Panoramas</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM14')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.4	Panorama monetario (PM)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM15')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.5	Panorama: Otros Sociedades Financieras (OSF)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM16')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.6	Panorama Financiero (PF)</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Bancos Privados</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM171')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.7.1	Panorama: Bancos Privados</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM172')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.7.2	Balance Sectorial: Bancos Privados</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Captaciones y Colocaciones del Sistema Financiero</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM18')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.8	Captaciones del Sistema Financiero</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM19')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.9	Crédito al Sector Privado para Particulares</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Tasas de Interés</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM1101')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.1	Tasas de Interés Referenciales Vigentes</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM1102')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.2	Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Agosto 2015 - Abril 2021)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM1102A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.2a	Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li>                                        
+                                        <li class="tree-item leaf" onclick="loadTable('IEM1103')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.3	Monto de Operaciones Activas por la Segmentación de la Cartera (Septiembre 2015 - Abril 2021)</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('IEM1103A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.3a	Monto de Operaciones Activas por la Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li>                                                                                  
+                                    </ul>
+                                </li>
+                                
+                                
+                            </ul>
+                        </li>
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">Sector Externo</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Comercio Exterior de Bienes y Balanza de Pagos</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM311')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.1	Exportaciones FOB por Producto Principal</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM312')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.2	Exportaciones FOB por Grupos de Productos</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM313')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.3	Exportaciones FOB según Intensidad Tecnológica Incorporada</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM314')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.4	Exportaciones FOB Mensuales por Continente y País Destino</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM315')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.5	Exportaciones e Importaciones por Regímenes Aduaneros</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM316')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.6	Importaciones FOB por Uso o Destino Económico</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM317')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.7	Importaciones CIF por Uso o Destino Económico</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('IEM318')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.8	Importaciones FOB Mensuales por Continente y País de Origen</span>
+                                        </li> 
+                                        <li class="tree-item leaf" onclick="loadTable('IEM319')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.9	Importaciones CIF Mensuales por Continente y País de Origen</span>
+                                        </li> 
+                                        <li class="tree-item leaf" onclick="loadTable('IEM3110')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.10	Importaciones FOB según Intensidad Tecnológica Incorporada</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM323')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.3	Balanza Comercial - Cifras Mensuales</span>
+                                        </li>                                          
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Cotizaciones de las Principales Monedas</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM341')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.1	Ecuador: Índices de Tipo de Cambio Real</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM342')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.2	Cotizaciones del Dólar de Estados Unidos de América en el Mercado Internacional</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM343')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.3	Tasa de Inflación en Estados Unidos de América, Tasas de Interés Internacionales y Riesgo País</span>
+                                        </li>                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">Sector Real</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Estadísticas Petroleras</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM411')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.1	Producción Nacional de Petróleo Crudo y sus Derivados</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM412')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.2	Exportaciones de Petróleo Crudo, por Cuenta</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM412A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.2a	Exportaciones de Petróleo de EP Petroecuador (Por tipo de Crudo)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM412B')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.2b	Precios Promedio del Crudo Ecuatoriano y del Mercado Internacional</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM413')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.3	Exportaciones de Derivados de Petróleo, por Producto</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM414')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.4	Ingresos y Egresos por Comercialización Interna de Derivados Importados</span>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Precios, Salarios y Mercado Laboral</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM421')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.1	Índice de Precios al Consumidor (Año base : Enero - Diciembre de 2014 = 100)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM424A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.4a	Índice Nacional De Precios Productor con Petróleo y sin Petróleo</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM424B')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.4b	Índice Nacional de Precios Productor - Sistema De Índices</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('IEM425')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.5	Indicadores del Mercado Laboral Nacional, Urbano y Rural.</span>
+                                        </li>   
+
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Cifras de Coyuntura</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM451')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.1	Índice de Confianza del Consumidor Nacional, Urbano y Rural</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM453')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.3	Producción, inventarios y despacho de cemento por segmento de mercado</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM454')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.4	Índice de Expectativas de la Economía</span>
+                                        </li>  
+
+
+                                    </ul>
+                                </li>                                
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                
+                <!-- ==================== INFORMACIÓN TRIMESTRAL ==================== -->
+                <li class="tree-item has-children collapsed">
+                    <div class="tree-node" onclick="toggleNode(this)">
+                        <span class="toggle-icon">+</span>
+                        <i class="fas fa-folder folder-icon"></i>
+                        <span class="node-label">Estadísticas Trimestrales</span>
+                    </div>
+                    <ul class="tree-children">
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">Balanza de Pagos y Precios</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Balanza de Pagos</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM321')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.1	Balanza de Pagos Normalizada (Millones de Dólares)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM322')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.2	Posición de Inversión Internacional (Millones de Dólares)</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Precios, Salarios y Mercado Laboral</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM425A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.5a	Indicadores del Mercado Laboral Ecuatoriano Nacional, Urbano y Rural (Trimestral)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM426')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.2.6	Indicadores del Mercado Laboral Ecuatoriano: Cuenca, Guayaquil Quito, Machala y Ambato (Trimestral)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM451A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.1a	Índice de Confianza del Consumidor Nacional, Urbano y Rural (Acumulado Trimestral)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM452')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.2	Índice de Confianza del Consumidor 5 ciudades (Acumulado Trimestral)</span>
+                                        </li>                                                                                
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">Sector Real</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Tabla Oferta y Utilización de Bienes y Servicios</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('TOU01')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU01. Miles de USD, Datos Brutos</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('TOU02')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU02. Miles de USD, Datos Ajustados de Estacionalidad</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('TOU03')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU03. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Brutos </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('TOU04')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">Miles de USD, Niveles Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('TOU05')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU05. Índices de Volumen Encadenados, 2018 = 100 Datos Brutos</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('TOU06')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('TOU07')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU07. Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('TOU08')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU08. Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad Variación Intertrimestral</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('TOU09')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU09. Índices de Precios, 2018 = 100 Datos Ajustados de Estacionalidad</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('TOU10')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU10. Índices de Precios, 2018 = 100 Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('TOU11')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU11. Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('TOU12')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">TOU12. Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Intertrimestral</span>
+                                        </li>                                         
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Valor Agregado Bruto por Industrias</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('VAB01')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB01. Miles de USD, Datos Brutos </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAB02')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB02. Miles de USD, Datos Ajustados de Estacionalidad</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAB03')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB03. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Brutos  </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAB04')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB04. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAB05')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB05. Índices de Volumen Encadenados, 2018 = 100, Datos Brutos</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAB06')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB06. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAB07')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB07. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAB08')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB08. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Intertrimestral</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAB09')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB09. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAB10')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB10. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAB11')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB11. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAB12')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAB12. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Intertrimestral</span>
+                                        </li>                                         
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Valor Agregado Bruto Agrupado por sector</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('VAA01')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA01. Miles de USD, Datos Brutos </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAA02')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA02. Miles de USD, Datos Ajustados de Estacionalidad</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAA03')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA03. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Brutos  </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAA04')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA04. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAA05')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA05. Índices de Volumen Encadenados, 2018 = 100, Datos Brutos</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAA06')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA06. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAA07')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA07. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAA08')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA08. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Intertrimestral</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAA09')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA09. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAA10')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA10. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAA11')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA11. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAA12')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAA12. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Intertrimestral</span>
+                                        </li>                                         
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                             <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Valor Agregado Bruto Petrolero y No Petrolero</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('VAP01')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP01. Miles de USD, Datos Brutos </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAP02')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP02. Miles de USD, Datos Ajustados de Estacionalidad</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAP03')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP03. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Brutos  </span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('VAP04')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP04. Miles de USD, Niveles Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAP05')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP05. Índices de Volumen Encadenados, 2018 = 100, Datos Brutos</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAP06')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP06. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>   
+                                        <li class="tree-item leaf" onclick="loadTable('VAP07')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP07. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAP08')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP08. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Variación Intertrimestral</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAP09')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP09. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAP10')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP10. Índices de Precios, 2018 = 100, Datos Ajustados de Estacionalidad Variación Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAP11')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP11. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Interanual</span>
+                                        </li>  
+                                        <li class="tree-item leaf" onclick="loadTable('VAP12')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">VAP12. Índices de Volumen Encadenados, 2018 = 100, Datos Ajustados de Estacionalidad Contribuciones al Crecimiento Intertrimestral</span>
+                                        </li>                                         
+                                    </ul>
+                                </li>
+                            </ul>                           
+
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Layout Principal -->
+    <div class="macro-layout">
+        
+        <!-- COLUMNA 1: Área de Contenido con Tabla -->
+        <main class="content-area">
+            <div class="content-header">
+                <h2 id="contentTitle">ESTADO DE SITUACIÓN CONSOLIDADO Y CONDENSADO</h2>
+                <p class="content-subtitle" id="contentSubtitle"></p>
+                        <div class="content-toolbar">
+                            <!-- Primera fila: Período y Descargar -->
+                            <div class="filter-row filter-row-top">
+                                <div class="period-selector">
+                                    <label>Período: Desde</label>
+                                    <select id="periodFrom">
+                                        <option value="2007" selected>2007</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                    <label>Hasta</label>
+                                    <select id="periodTo">
+                                        <option value="2020">2020</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>>
+                                        <option value="2025">2025</option>
+                                        <option value="2026"selected>2024</option>
+                                    </select>
+                                </div>
+                                <div class="toolbar-actions">
+                                    <button class="btn-tool" id="btnDownloadTable" title="Descargar tabla completa">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Separador -->
+                            <hr class="filter-separator">
+
+                            <!-- Segunda fila: Sector y Análisis -->
+                            <div class="filter-row filter-row-bottom">
+                                <div class="sector-selector">
+                                    <label for="sectorFilter">Seleccione Sector Financiero:</label>
+                                    <select id="sectorFilter">
+                                        <option value="nacional" selected>Sistema Financiero Nacional (privado y eps)</option>
+                                        <option value="privado">Sector Financiero Privado</option>
+                                        <option value="popular">Sector Financiero Popular y Solidario</option>
+                                        <option value="grande">Bancos Privados Grandes</option>
+                                        <option value="medianos">Bancos Privados Medianos</option>
+                                        <option value="peque">Bancos Privados Pequeños</option>
+                                        <option value="seg1">Coop. Segmento 1</option>
+                                        <option value="seg2">Coop. Segmento 2</option>
+                                        <option value="seg3">Coop. Segmento 3</option>
+                                        <option value="mut">Asociación Mutualistas de Ahorro y Crédito para la Vivienda</option>
+                                    </select>
+                                </div>
+                                <div class="sector-selector" id="analisisFilterContainer">
+                                    <label>Seleccione Análisis:</label>
+                                    <select id="analisisFilter">
+                                        <option value="saldo">Saldo Millones USD</option>
+                                        <option value="horizontal">Análisis Horizontal (%)</option>
+                                        <option value="vertical">Análisis Vertical (%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            
+            <div class="table-container" id="tableContainer">
+                <div class="loading-table">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando datos...</p>
+                </div>
+            </div>
+            <div id="tableContainer"></div>
+            <div id="notasContainer" class="notas-panel" style="display: none;"></div>
+        </main>
+
+        <!-- COLUMNA 2: Mi Colección -->
+        <aside class="collection-panel">
+            <div class="collection-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                <h3><i class="fas fa-star"></i> Mi Colección</h3>
+                
+                <!-- Botón del carrito movido aquí -->
+        <button class="btn-carrito-header" onclick="abrirModalCarrito()" title="Ver carrito">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="carrito-contador-header" id="carritoContadorHeader" style="display: none;">0</span>
+        </button>
+                    </div>
+
+                <span class="collection-count" id="collectionCount">0 series</span>
+                <button class="btn-ampliar" id="btnAmpliar" title="Ampliar gráfico">
+                    <i class="fas fa-expand"></i> AMPLIAR
+                </button>
+
+                    <!-- NUEVO: Toggle para mostrar/ocultar etiquetas -->
+            <div class="labels-toggle">
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleLabels" onchange="toggleLabelsVisibility()">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">📊 Mostrar valores en gráficos</span>
+                </label>
+                <p class="toggle-hint">Active/desactive etiquetas.</p>
+            </div>
+
+            </div>
+            
+            <div class="collection-body">
+                <!-- Recuadro 1: Gráficos (arriba) -->
+                <div class="collection-charts" id="collectionCharts">
+                    <div class="empty-charts">
+                        <i class="fas fa-chart-line charts-icon"></i>
+                        <p>Selecciona una serie para ver su gráfico</p>
+                    </div>
+                    <div id="mainChart" style="width: 100%; height: 100%; display: none;"></div>
+                </div>
+                
+                <!-- Recuadro 2: Series seleccionadas (abajo) -->
+                <div class="collection-series" id="collectionSeries">
+                    <div class="empty-collection">
+                        <p>Activa hasta 10 series que quieras analizar.</p>
+                        <p class="small-text">Selecciona tus series del cuadro y agrégalas aquí.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de gráfico ampliado -->
+    <div class="modal-overlay" id="chartModal">
+        <div class="modal-chart">
+            <div class="modal-chart-header">
+                <h3 id="modalChartTitle">Gráfico Ampliado</h3>
+                <div class="modal-chart-controls">
+                    <button class="btn-close-modal" id="btnCloseModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-chart-body">
+                <div id="expandedChart" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Gráfico Individual -->
+<div id="singleChartModal" class="modal-overlay">
+    <div class="modal-chart">
+        <div class="modal-chart-header">
+            <h3 id="singleChartTitle">Título del Gráfico</h3>
+            <div class="modal-chart-controls">
+                <!-- Toggle para mostrar/ocultar etiquetas -->
+                <div class="labels-toggle-inline">
+                    <label class="toggle-label-small">
+                        <input type="checkbox" id="toggleLabelsSingle" onchange="toggleLabelsSingleVisibility()">
+                        <span class="toggle-slider-small"></span>
+                        <span class="toggle-text-small">📊 Mostrar valores</span>
+                    </label>
+                </div>
+                <button class="btn-close-modal" id="btnCloseSingleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-chart-body">
+            <div id="singleChart" style="width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo-column">
+                <img src="images/IDCE.png" alt="IDCE Consulting" class="footer-idce-logo">
+                <p class="footer-copyright">© 2025 DataFinanciero by IDCE Consulting.</p>
+                <p class="footer-rights">Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-contact-column">
+                <h4 class="footer-contact-title">Contacto:</h4>
+                <div class="footer-contact-info">
+                    <p class="footer-address"><strong>Dirección:</strong> Av. Orellana E11-75 y Av. La Coruña<br>Edificio Albra - Piso 4 - Of. 405<br>Quito - Ecuador</p>
+                    <p class="footer-phone"><strong>Teléfono:</strong> (+593) 2 382 6201</p>
+                    <p class="footer-mobile"><strong>Móvil:</strong> (+593) 993 165 074</p>
+                    <p class="footer-email"><strong>E-mail:</strong> <a href="mailto:info@idceconsulting.com">info@idceconsulting.com</a></p>
+                    <p class="footer-web"><strong>Web:</strong> <a href="https://www.idceconsulting.com" target="_blank">www.idceconsulting.com</a></p>
+                </div>
+            </div>
+            <div class="footer-social-column">
+                <h4 class="footer-social-title">Síguenos:</h4>
+                <div class="footer-social-icons">
+                    <a href="#" class="social-icon"><img src="images/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="#" class="social-icon"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+<!-- Modal del Carrito (SOLO UNA VEZ) -->
+<div id="modalCarrito" class="modal-overlay">
+    <div class="modal-carrito">
+        <div class="modal-carrito-header">
+            <h3><i class="fas fa-shopping-cart"></i> Mi Carrito de Series</h3>
+            <button class="btn-cerrar-modal" onclick="cerrarModalCarrito()" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-carrito-body" id="modalCarritoBody">
+            <!-- Se llena dinámicamente con JS -->
+        </div>
+        
+        <div class="modal-carrito-footer">
+            <button class="btn-vaciar-carrito" onclick="vaciarCarrito()" title="Vaciar todo el carrito">
+                <i class="fas fa-trash"></i> Vaciar Carrito
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="sistema.js"></script>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="loading-text">CARGANDO...</div>
+    </div>
+</div>
+
+</body>
+</html>

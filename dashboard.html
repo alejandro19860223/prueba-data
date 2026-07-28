@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Financiero - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <img src="images/imgdatalux2.png" alt="Data Financiero" class="header-logo">
+            <div class="header-brand">
+                <span class="brand-name">DATA FINANCIERO</span>
+                <span class="brand-sub">Administración de Bases de Datos</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="macroeconomico.html" class="nav-link">Entorno Macroeconómico</a>
+            <a href="sistema.html" class="nav-link">Sistema Financiero</a>
+            <a href="#" class="nav-link">Tasas de Interés</a>
+            <a href="#" class="nav-link">Análisis Financiero</a>
+        </nav>
+        <div class="header-user">
+            <span id="welcomeUser">Bienvenido, Usuario</span>
+            <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Salir</button>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="dashboard-main">
+        <h1 class="dashboard-title">BIENVENIDO A DATA FINANCIERO</h1>
+        
+        <div class="sectors-grid">
+
+            <a href="macroeconomico.html" class="sector-card" style="text-decoration: none; color: inherit;">
+                <div class="sector-icon">
+                    <img src="images/ecuador.png" alt="Entorno Macroeconómico">
+                </div>
+                <h3>Entorno Macroeconómico</h3>
+            </a>
+
+    
+            <a href="sistema.html" class="sector-card" style="text-decoration: none; color: inherit;">
+                <div class="sector-icon">
+                    <img src="images/sistema.png" alt="Sistema Financiero">
+                </div>
+                <h3>Sistema Financiero Nacional</h3>
+            </a>
+            
+            <div class="sector-card" onclick="openSector('tasas')">
+                <div class="sector-icon">
+                    <img src="images/tasas.png" alt="Tasas de Interés">
+                </div>
+                <h3>Sistema de Tasas de Interés</h3>
+            </div>
+            
+            <div class="sector-card" onclick="openSector('analisis')">
+                <div class="sector-icon">
+                    <img src="images/evaluacion.png" alt="Análisis Financiero">
+                </div>
+                <h3>Análisis Financiero</h3>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>DATA FINANCIERO</h2>
+            <p>Es una aplicación web que integra y maneja datos del sistema financiero y del entorno macroeconómico para la toma de decisiones oportuna y basada en evidencia. Esta herramienta permite acceder de forma centralizada a información clave sobre indicadores económicos, tasas de interés, balanza comercial, inflación, crecimiento del PIB y desempeño financiero, facilitando su análisis en tiempo real.</p>
+        </div>
+    </main>
+
+    <!-- Modal de bienvenida -->
+    <div class="modal-overlay" id="welcomeModal">
+        <div class="modal welcome-modal">
+            <div class="modal-icon info-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <h2>DATA FINANCIERO</h2>
+            <p class="modal-subtitle">Seleccione el sector que desea analizar</p>
+            <p class="modal-description">Cada panel presenta datos abiertos y visualizaciones comprensibles.</p>
+            <button class="btn-modal btn-ok" id="closeWelcomeModal">OK</button>
+        </div>
+    </div>
+
+  <!-- Footer -->
+<footer class="dashboard-footer">
+    <div class="footer-container">
+        <!-- Columna 1: Logo y Copyright -->
+        <div class="footer-column footer-logo-column">
+            <img src="images/IDCE.png" alt="IDCE Consulting" class="footer-idce-logo">
+            <p class="footer-copyright">
+                © 2025 DataFinanciero by IDCE Consulting.
+            </p>
+            <p class="footer-rights">
+                Todos los derechos reservados.
+            </p>
+        </div>
+
+        <!-- Columna 2: Contacto -->
+        <div class="footer-column footer-contact-column">
+            <h4 class="footer-contact-title">Contacto:</h4>
+            <div class="footer-contact-info">
+                <p class="footer-address">
+                    <strong>Dirección:</strong> Av. Orellana E11-75 y Av. La Coruña<br>
+                    Edificio Albra - Piso 4 - Of. 405<br>
+                    Quito - Ecuador
+                </p>
+                <p class="footer-phone">
+                    <strong>Teléfono:</strong> (+593) 2 382 6201
+                </p>
+                <p class="footer-mobile">
+                    <strong>Móvil:</strong> (+593) 993 165 074
+                </p>
+                <p class="footer-email">
+                    <strong>E-mail:</strong> <a href="mailto:info@idceconsulting.com">info@idceconsulting.com</a>
+                </p>
+                <p class="footer-web">
+                    <strong>Web:</strong> <a href="https://www.idceconsulting.com" target="_blank">www.idceconsulting.com</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Columna 3: Redes Sociales -->
+        <div class="footer-column footer-social-column">
+            <h4 class="footer-social-title">Síguenos:</h4>
+            <div class="footer-social-icons">
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <img src="images/face.png" alt="Facebook">
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <img src="images/twitter.png" alt="Twitter">
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <img src="images/linkedin.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>  
+    <script src="script.js"></script>
+</body>
+</html>
