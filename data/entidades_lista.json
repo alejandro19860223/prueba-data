@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "BP. AMAZONAS",
+    "nombre": "BP. AMAZONAS",
+    "archivo": "BP__AMAZONAS",
+    "_row": "BP. AMAZONAS"
+  },
+  {
+    "id": "BP. AUSTRO",
+    "nombre": "BP. AUSTRO",
+    "archivo": "BP__AUSTRO",
+    "_row": "BP. AUSTRO"
+  },
+  {
+    "id": "BP. BANCODESARROLLO",
+    "nombre": "BP. BANCODESARROLLO",
+    "archivo": "BP__BANCODESARROLLO",
+    "_row": "BP. BANCODESARROLLO"
+  },
+  {
+    "id": "BP. BOLIVARIANO",
+    "nombre": "BP. BOLIVARIANO",
+    "archivo": "BP__BOLIVARIANO",
+    "_row": "BP. BOLIVARIANO"
+  },
+  {
+    "id": "BP. CITIBANK",
+    "nombre": "BP. CITIBANK",
+    "archivo": "BP__CITIBANK",
+    "_row": "BP. CITIBANK"
+  },
+  {
+    "id": "BP. COMERCIAL DE MANABI",
+    "nombre": "BP. COMERCIAL DE MANABI",
+    "archivo": "BP__COMERCIAL_DE_MANABI",
+    "_row": "BP. COMERCIAL DE MANABI"
+  },
+  {
+    "id": "BP. COOPNACIONAL",
+    "nombre": "BP. COOPNACIONAL",
+    "archivo": "BP__COOPNACIONAL",
+    "_row": "BP. COOPNACIONAL"
+  },
+  {
+    "id": "BP. DELBANK",
+    "nombre": "BP. DELBANK",
+    "archivo": "BP__DELBANK",
+    "_row": "BP. DELBANK"
+  },
+  {
+    "id": "BP. DINERS CLUB",
+    "nombre": "BP. DINERS CLUB",
+    "archivo": "BP__DINERS_CLUB",
+    "_row": "BP. DINERS CLUB"
+  },
+  {
+    "id": "BP. GUAYAQUIL",
+    "nombre": "BP. GUAYAQUIL",
+    "archivo": "BP__GUAYAQUIL",
+    "_row": "BP. GUAYAQUIL"
+  },
+  {
+    "id": "BP. INTERNACIONAL",
+    "nombre": "BP. INTERNACIONAL",
+    "archivo": "BP__INTERNACIONAL",
+    "_row": "BP. INTERNACIONAL"
+  },
+  {
+    "id": "BP. LITORAL",
+    "nombre": "BP. LITORAL",
+    "archivo": "BP__LITORAL",
+    "_row": "BP. LITORAL"
+  },
+  {
+    "id": "BP. LOJA",
+    "nombre": "BP. LOJA",
+    "archivo": "BP__LOJA",
+    "_row": "BP. LOJA"
+  },
+  {
+    "id": "BP. MACHALA",
+    "nombre": "BP. MACHALA",
+    "archivo": "BP__MACHALA",
+    "_row": "BP. MACHALA"
+  },
+  {
+    "id": "BP. PACIFICO",
+    "nombre": "BP. PACIFICO",
+    "archivo": "BP__PACIFICO",
+    "_row": "BP. PACIFICO"
+  },
+  {
+    "id": "BP. PICHINCHA",
+    "nombre": "BP. PICHINCHA",
+    "archivo": "BP__PICHINCHA",
+    "_row": "BP. PICHINCHA"
+  },
+  {
+    "id": "BP. PROCREDIT",
+    "nombre": "BP. PROCREDIT",
+    "archivo": "BP__PROCREDIT",
+    "_row": "BP. PROCREDIT"
+  },
+  {
+    "id": "BP. PRODUBANCO",
+    "nombre": "BP. PRODUBANCO",
+    "archivo": "BP__PRODUBANCO",
+    "_row": "BP. PRODUBANCO"
+  },
+  {
+    "id": "BP. RUMINAHUI",
+    "nombre": "BP. RUMINAHUI",
+    "archivo": "BP__RUMINAHUI",
+    "_row": "BP. RUMINAHUI"
+  },
+  {
+    "id": "BP. SOLIDARIO",
+    "nombre": "BP. SOLIDARIO",
+    "archivo": "BP__SOLIDARIO",
+    "_row": "BP. SOLIDARIO"
+  },
+  {
+    "id": "MUT.  AZUAY",
+    "nombre": "MUT.  AZUAY",
+    "archivo": "MUT___AZUAY",
+    "_row": "MUT.  AZUAY"
+  },
+  {
+    "id": "COAC.  JUVENTUD ECUATORIANA PROGRESISTA LIMITADA",
+    "nombre": "COAC.  JUVENTUD ECUATORIANA PROGRESISTA LIMITADA",
+    "archivo": "COAC___JUVENTUD_ECUATORIANA_PROGRESISTA_LIMITADA",
+    "_row": "COAC.  JUVENTUD ECUATORIANA PROGRESISTA LIMITADA"
+  },
+  {
+    "id": "COAC.  GUARANDA LTDA",
+    "nombre": "COAC.  GUARANDA LTDA",
+    "archivo": "COAC___GUARANDA_LTDA",
+    "_row": "COAC.  GUARANDA LTDA"
+  },
+  {
+    "id": "COAC.  SAN JOSE LIMITADA",
+    "nombre": "COAC.  SAN JOSE LIMITADA",
+    "archivo": "COAC___SAN_JOSE_LIMITADA",
+    "_row": "COAC.  SAN JOSE LIMITADA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA BIBLIAN LIMITADA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA BIBLIAN LIMITADA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_BIBLIAN_LIMITADA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA BIBLIAN LIMITADA"
+  },
+  {
+    "id": "COAC.  PABLO MUNOZ VEGA LIMITADA",
+    "nombre": "COAC.  PABLO MUNOZ VEGA LIMITADA",
+    "archivo": "COAC___PABLO_MUNOZ_VEGA_LIMITADA",
+    "_row": "COAC.  PABLO MUNOZ VEGA LIMITADA"
+  },
+  {
+    "id": "COAC.  TULCAN LIMITADA",
+    "nombre": "COAC.  TULCAN LIMITADA",
+    "archivo": "COAC___TULCAN_LIMITADA",
+    "_row": "COAC.  TULCAN LIMITADA"
+  },
+  {
+    "id": "COAC.  9 DE OCTUBRE LTDA",
+    "nombre": "COAC.  9 DE OCTUBRE LTDA",
+    "archivo": "COAC___9_DE_OCTUBRE_LTDA",
+    "_row": "COAC.  9 DE OCTUBRE LTDA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA DE COTOPAXI LIMITADA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA DE COTOPAXI LIMITADA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_DE_COTOPAXI_LIMITADA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA DE COTOPAXI LIMITADA"
+  },
+  {
+    "id": "COAC.  RIOBAMBA LTDA",
+    "nombre": "COAC.  RIOBAMBA LTDA",
+    "archivo": "COAC___RIOBAMBA_LTDA",
+    "_row": "COAC.  RIOBAMBA LTDA"
+  },
+  {
+    "id": "COAC.  ONCE DE JUNIO LTDA",
+    "nombre": "COAC.  ONCE DE JUNIO LTDA",
+    "archivo": "COAC___ONCE_DE_JUNIO_LTDA",
+    "_row": "COAC.  ONCE DE JUNIO LTDA"
+  },
+  {
+    "id": "COAC.  SANTA ROSA LIMITADA",
+    "nombre": "COAC.  SANTA ROSA LIMITADA",
+    "archivo": "COAC___SANTA_ROSA_LIMITADA",
+    "_row": "COAC.  SANTA ROSA LIMITADA"
+  },
+  {
+    "id": "COAC.  LA DOLOROSA LTDA",
+    "nombre": "COAC.  LA DOLOROSA LTDA",
+    "archivo": "COAC___LA_DOLOROSA_LTDA",
+    "_row": "COAC.  LA DOLOROSA LTDA"
+  },
+  {
+    "id": "COAC.  ATUNTAQUI LIMITADA",
+    "nombre": "COAC.  ATUNTAQUI LIMITADA",
+    "archivo": "COAC___ATUNTAQUI_LIMITADA",
+    "_row": "COAC.  ATUNTAQUI LIMITADA"
+  },
+  {
+    "id": "MUT.  IMBABURA",
+    "nombre": "MUT.  IMBABURA",
+    "archivo": "MUT___IMBABURA",
+    "_row": "MUT.  IMBABURA"
+  },
+  {
+    "id": "COAC.  PADRE JULIAN LORENTE LTDA",
+    "nombre": "COAC.  PADRE JULIAN LORENTE LTDA",
+    "archivo": "COAC___PADRE_JULIAN_LORENTE_LTDA",
+    "_row": "COAC.  PADRE JULIAN LORENTE LTDA"
+  },
+  {
+    "id": "COAC.  VICENTINA MANUEL ESTEBAN GODOY ORTEGA LIMITADA",
+    "nombre": "COAC.  VICENTINA MANUEL ESTEBAN GODOY ORTEGA LIMITADA",
+    "archivo": "COAC___VICENTINA_MANUEL_ESTEBAN_GODOY_ORTEGA_LIMITADA",
+    "_row": "COAC.  VICENTINA MANUEL ESTEBAN GODOY ORTEGA LIMITADA"
+  },
+  {
+    "id": "COAC.  CALCETA LTDA",
+    "nombre": "COAC.  CALCETA LTDA",
+    "archivo": "COAC___CALCETA_LTDA",
+    "_row": "COAC.  CALCETA LTDA"
+  },
+  {
+    "id": "COAC.  CHONE LTDA",
+    "nombre": "COAC.  CHONE LTDA",
+    "archivo": "COAC___CHONE_LTDA",
+    "_row": "COAC.  CHONE LTDA"
+  },
+  {
+    "id": "COAC.  15 DE ABRIL LTDA",
+    "nombre": "COAC.  15 DE ABRIL LTDA",
+    "archivo": "COAC___15_DE_ABRIL_LTDA",
+    "_row": "COAC.  15 DE ABRIL LTDA"
+  },
+  {
+    "id": "COAC.  COMERCIO LTDA",
+    "nombre": "COAC.  COMERCIO LTDA",
+    "archivo": "COAC___COMERCIO_LTDA",
+    "_row": "COAC.  COMERCIO LTDA"
+  },
+  {
+    "id": "COAC.  SANTA ANA LTDA",
+    "nombre": "COAC.  SANTA ANA LTDA",
+    "archivo": "COAC___SANTA_ANA_LTDA",
+    "_row": "COAC.  SANTA ANA LTDA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA DE PASTAZA LIMITADA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA DE PASTAZA LIMITADA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_DE_PASTAZA_LIMITADA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA DE PASTAZA LIMITADA"
+  },
+  {
+    "id": "COAC.  COTOCOLLAO LTDA",
+    "nombre": "COAC.  COTOCOLLAO LTDA",
+    "archivo": "COAC___COTOCOLLAO_LTDA",
+    "_row": "COAC.  COTOCOLLAO LTDA"
+  },
+  {
+    "id": "COAC.  SAN FRANCISCO DE ASIS LTDA",
+    "nombre": "COAC.  SAN FRANCISCO DE ASIS LTDA",
+    "archivo": "COAC___SAN_FRANCISCO_DE_ASIS_LTDA",
+    "_row": "COAC.  SAN FRANCISCO DE ASIS LTDA"
+  },
+  {
+    "id": "MUT.  PICHINCHA",
+    "nombre": "MUT.  PICHINCHA",
+    "archivo": "MUT___PICHINCHA",
+    "_row": "MUT.  PICHINCHA"
+  },
+  {
+    "id": "COAC.  23 DE JULIO LIMITADA",
+    "nombre": "COAC.  23 DE JULIO LIMITADA",
+    "archivo": "COAC___23_DE_JULIO_LIMITADA",
+    "_row": "COAC.  23 DE JULIO LIMITADA"
+  },
+  {
+    "id": "COAC.  ANDALUCIA LIMITADA",
+    "nombre": "COAC.  ANDALUCIA LIMITADA",
+    "archivo": "COAC___ANDALUCIA_LIMITADA",
+    "_row": "COAC.  ANDALUCIA LIMITADA"
+  },
+  {
+    "id": "COAC.  COOPROGRESO LIMITADA",
+    "nombre": "COAC.  COOPROGRESO LIMITADA",
+    "archivo": "COAC___COOPROGRESO_LIMITADA",
+    "_row": "COAC.  COOPROGRESO LIMITADA"
+  },
+  {
+    "id": "COAC.  ALIANZA DEL VALLE LIMITADA",
+    "nombre": "COAC.  ALIANZA DEL VALLE LIMITADA",
+    "archivo": "COAC___ALIANZA_DEL_VALLE_LIMITADA",
+    "_row": "COAC.  ALIANZA DEL VALLE LIMITADA"
+  },
+  {
+    "id": "COAC.  29 DE OCTUBRE LTDA",
+    "nombre": "COAC.  29 DE OCTUBRE LTDA",
+    "archivo": "COAC___29_DE_OCTUBRE_LTDA",
+    "_row": "COAC.  29 DE OCTUBRE LTDA"
+  },
+  {
+    "id": "COAC.  PREVISION AHORRO Y DESAROLLO LTDA",
+    "nombre": "COAC.  PREVISION AHORRO Y DESAROLLO LTDA",
+    "archivo": "COAC___PREVISION_AHORRO_Y_DESAROLLO_LTDA",
+    "_row": "COAC.  PREVISION AHORRO Y DESAROLLO LTDA"
+  },
+  {
+    "id": "COAC.  OSCUS LIMITADA",
+    "nombre": "COAC.  OSCUS LIMITADA",
+    "archivo": "COAC___OSCUS_LIMITADA",
+    "_row": "COAC.  OSCUS LIMITADA"
+  },
+  {
+    "id": "COAC.  SAN FRANCISCO LTDA",
+    "nombre": "COAC.  SAN FRANCISCO LTDA",
+    "archivo": "COAC___SAN_FRANCISCO_LTDA",
+    "_row": "COAC.  SAN FRANCISCO LTDA"
+  },
+  {
+    "id": "MUT.  AMBATO",
+    "nombre": "MUT.  AMBATO",
+    "archivo": "MUT___AMBATO",
+    "_row": "MUT.  AMBATO"
+  },
+  {
+    "id": "COAC.  EL SAGRARIO LTDA",
+    "nombre": "COAC.  EL SAGRARIO LTDA",
+    "archivo": "COAC___EL_SAGRARIO_LTDA",
+    "_row": "COAC.  EL SAGRARIO LTDA"
+  },
+  {
+    "id": "BP. CAPITAL",
+    "nombre": "BP. CAPITAL",
+    "archivo": "BP__CAPITAL",
+    "_row": "BP. CAPITAL"
+  },
+  {
+    "id": "COAC.  JARDIN AZUAYO LIMITADA",
+    "nombre": "COAC.  JARDIN AZUAYO LIMITADA",
+    "archivo": "COAC___JARDIN_AZUAYO_LIMITADA",
+    "_row": "COAC.  JARDIN AZUAYO LIMITADA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA CACPE LOJA LTDA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA CACPE LOJA LTDA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_CACPE_LOJA_LTDA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA CACPE LOJA LTDA"
+  },
+  {
+    "id": "COAC.  MUSHUC RUNA LTDA",
+    "nombre": "COAC.  MUSHUC RUNA LTDA",
+    "archivo": "COAC___MUSHUC_RUNA_LTDA",
+    "_row": "COAC.  MUSHUC RUNA LTDA"
+  },
+  {
+    "id": "BP. ATLANTIDA",
+    "nombre": "BP. ATLANTIDA",
+    "archivo": "BP__ATLANTIDA",
+    "_row": "BP. ATLANTIDA"
+  },
+  {
+    "id": "BP. VISIONFUND",
+    "nombre": "BP. VISIONFUND",
+    "archivo": "BP__VISIONFUND",
+    "_row": "BP. VISIONFUND"
+  },
+  {
+    "id": "COAC.  EDUCADORES DEL AZUAY LTDA",
+    "nombre": "COAC.  EDUCADORES DEL AZUAY LTDA",
+    "archivo": "COAC___EDUCADORES_DEL_AZUAY_LTDA",
+    "_row": "COAC.  EDUCADORES DEL AZUAY LTDA"
+  },
+  {
+    "id": "COAC.  DE LOS SERVIDORES PUBLICOS DEL MINISTERIO DE EDUCACION Y CULTURA",
+    "nombre": "COAC.  DE LOS SERVIDORES PUBLICOS DEL MINISTERIO DE EDUCACION Y CULTURA",
+    "archivo": "COAC___DE_LOS_SERVIDORES_PUBLICOS_DEL_MINISTERIO_DE_EDUCACION_Y_CULTURA",
+    "_row": "COAC.  DE LOS SERVIDORES PUBLICOS DEL MINISTERIO DE EDUCACION Y CULTURA"
+  },
+  {
+    "id": "COAC.  PILAHUIN TIO LIMITADA",
+    "nombre": "COAC.  PILAHUIN TIO LIMITADA",
+    "archivo": "COAC___PILAHUIN_TIO_LIMITADA",
+    "_row": "COAC.  PILAHUIN TIO LIMITADA"
+  },
+  {
+    "id": "COAC.  POLICIA NACIONAL LIMITADA",
+    "nombre": "COAC.  POLICIA NACIONAL LIMITADA",
+    "archivo": "COAC___POLICIA_NACIONAL_LIMITADA",
+    "_row": "COAC.  POLICIA NACIONAL LIMITADA"
+  },
+  {
+    "id": "COAC.  LA MERCED LIMITADA",
+    "nombre": "COAC.  LA MERCED LIMITADA",
+    "archivo": "COAC___LA_MERCED_LIMITADA",
+    "_row": "COAC.  LA MERCED LIMITADA"
+  },
+  {
+    "id": "COAC.  ERCO LIMITADA",
+    "nombre": "COAC.  ERCO LIMITADA",
+    "archivo": "COAC___ERCO_LIMITADA",
+    "_row": "COAC.  ERCO LIMITADA"
+  },
+  {
+    "id": "COAC.  ALFONSO JARAMILLO LEON CAJA",
+    "nombre": "COAC.  ALFONSO JARAMILLO LEON CAJA",
+    "archivo": "COAC___ALFONSO_JARAMILLO_LEON_CAJA",
+    "_row": "COAC.  ALFONSO JARAMILLO LEON CAJA"
+  },
+  {
+    "id": "COAC.  COOPAC AUSTRO LTDA",
+    "nombre": "COAC.  COOPAC AUSTRO LTDA",
+    "archivo": "COAC___COOPAC_AUSTRO_LTDA",
+    "_row": "COAC.  COOPAC AUSTRO LTDA"
+  },
+  {
+    "id": "COAC.  SANTA ISABEL LTDA",
+    "nombre": "COAC.  SANTA ISABEL LTDA",
+    "archivo": "COAC___SANTA_ISABEL_LTDA",
+    "_row": "COAC.  SANTA ISABEL LTDA"
+  },
+  {
+    "id": "COAC.  MULTIEMPRESARIAL",
+    "nombre": "COAC.  MULTIEMPRESARIAL",
+    "archivo": "COAC___MULTIEMPRESARIAL",
+    "_row": "COAC.  MULTIEMPRESARIAL"
+  },
+  {
+    "id": "COAC.  FASAYNAN LTDA",
+    "nombre": "COAC.  FASAYNAN LTDA",
+    "archivo": "COAC___FASAYNAN_LTDA",
+    "_row": "COAC.  FASAYNAN LTDA"
+  },
+  {
+    "id": "COAC.  SENOR DE GIRON",
+    "nombre": "COAC.  SENOR DE GIRON",
+    "archivo": "COAC___SENOR_DE_GIRON",
+    "_row": "COAC.  SENOR DE GIRON"
+  },
+  {
+    "id": "COAC.  PROVIDA LTDA",
+    "nombre": "COAC.  PROVIDA LTDA",
+    "archivo": "COAC___PROVIDA_LTDA",
+    "_row": "COAC.  PROVIDA LTDA"
+  },
+  {
+    "id": "COAC.  JUAN PIO DE MORA LTDA",
+    "nombre": "COAC.  JUAN PIO DE MORA LTDA",
+    "archivo": "COAC___JUAN_PIO_DE_MORA_LTDA",
+    "_row": "COAC.  JUAN PIO DE MORA LTDA"
+  },
+  {
+    "id": "COAC.  SALINAS LIMITADA",
+    "nombre": "COAC.  SALINAS LIMITADA",
+    "archivo": "COAC___SALINAS_LIMITADA",
+    "_row": "COAC.  SALINAS LIMITADA"
+  },
+  {
+    "id": "COAC.  CANAR LTDA",
+    "nombre": "COAC.  CANAR LTDA",
+    "archivo": "COAC___CANAR_LTDA",
+    "_row": "COAC.  CANAR LTDA"
+  },
+  {
+    "id": "COAC.  YUYAY LTDA",
+    "nombre": "COAC.  YUYAY LTDA",
+    "archivo": "COAC___YUYAY_LTDA",
+    "_row": "COAC.  YUYAY LTDA"
+  },
+  {
+    "id": "COAC.  EDUCADORES TULCAN LTDA",
+    "nombre": "COAC.  EDUCADORES TULCAN LTDA",
+    "archivo": "COAC___EDUCADORES_TULCAN_LTDA",
+    "_row": "COAC.  EDUCADORES TULCAN LTDA"
+  },
+  {
+    "id": "COAC.  SAN GABRIEL LTDA",
+    "nombre": "COAC.  SAN GABRIEL LTDA",
+    "archivo": "COAC___SAN_GABRIEL_LTDA",
+    "_row": "COAC.  SAN GABRIEL LTDA"
+  },
+  {
+    "id": "COAC.  FINANZAS CORPORATIVAS LTDA",
+    "nombre": "COAC.  FINANZAS CORPORATIVAS LTDA",
+    "archivo": "COAC___FINANZAS_CORPORATIVAS_LTDA",
+    "_row": "COAC.  FINANZAS CORPORATIVAS LTDA"
+  },
+  {
+    "id": "COAC.  FUTURO LAMANENSE",
+    "nombre": "COAC.  FUTURO LAMANENSE",
+    "archivo": "COAC___FUTURO_LAMANENSE",
+    "_row": "COAC.  FUTURO LAMANENSE"
+  },
+  {
+    "id": "COAC.  VIRGEN DEL CISNE",
+    "nombre": "COAC.  VIRGEN DEL CISNE",
+    "archivo": "COAC___VIRGEN_DEL_CISNE",
+    "_row": "COAC.  VIRGEN DEL CISNE"
+  },
+  {
+    "id": "COAC.  SUMAK KAWSAY LTDA",
+    "nombre": "COAC.  SUMAK KAWSAY LTDA",
+    "archivo": "COAC___SUMAK_KAWSAY_LTDA",
+    "_row": "COAC.  SUMAK KAWSAY LTDA"
+  },
+  {
+    "id": "COAC.  ANDINA LTDA",
+    "nombre": "COAC.  ANDINA LTDA",
+    "archivo": "COAC___ANDINA_LTDA",
+    "_row": "COAC.  ANDINA LTDA"
+  },
+  {
+    "id": "COAC.  SIERRA CENTRO LTDA",
+    "nombre": "COAC.  SIERRA CENTRO LTDA",
+    "archivo": "COAC___SIERRA_CENTRO_LTDA",
+    "_row": "COAC.  SIERRA CENTRO LTDA"
+  },
+  {
+    "id": "COAC.  EDUCADORES DE CHIMBORAZO LTDA",
+    "nombre": "COAC.  EDUCADORES DE CHIMBORAZO LTDA",
+    "archivo": "COAC___EDUCADORES_DE_CHIMBORAZO_LTDA",
+    "_row": "COAC.  EDUCADORES DE CHIMBORAZO LTDA"
+  },
+  {
+    "id": "COAC.  SAN JORGE LTDA",
+    "nombre": "COAC.  SAN JORGE LTDA",
+    "archivo": "COAC___SAN_JORGE_LTDA",
+    "_row": "COAC.  SAN JORGE LTDA"
+  },
+  {
+    "id": "COAC.  SAN MIGUEL DE PALLATANGA",
+    "nombre": "COAC.  SAN MIGUEL DE PALLATANGA",
+    "archivo": "COAC___SAN_MIGUEL_DE_PALLATANGA",
+    "_row": "COAC.  SAN MIGUEL DE PALLATANGA"
+  },
+  {
+    "id": "COAC.  MINGA LTDA",
+    "nombre": "COAC.  MINGA LTDA",
+    "archivo": "COAC___MINGA_LTDA",
+    "_row": "COAC.  MINGA LTDA"
+  },
+  {
+    "id": "COAC.  LUCHA CAMPESINA",
+    "nombre": "COAC.  LUCHA CAMPESINA",
+    "archivo": "COAC___LUCHA_CAMPESINA",
+    "_row": "COAC.  LUCHA CAMPESINA"
+  },
+  {
+    "id": "COAC.  4 DE OCTUBRE",
+    "nombre": "COAC.  4 DE OCTUBRE",
+    "archivo": "COAC___4_DE_OCTUBRE",
+    "_row": "COAC.  4 DE OCTUBRE"
+  },
+  {
+    "id": "COAC.  FERNANDO DAQUILEMA LIMITADA",
+    "nombre": "COAC.  FERNANDO DAQUILEMA LIMITADA",
+    "archivo": "COAC___FERNANDO_DAQUILEMA_LIMITADA",
+    "_row": "COAC.  FERNANDO DAQUILEMA LIMITADA"
+  },
+  {
+    "id": "COAC.  SALITRE LTDA",
+    "nombre": "COAC.  SALITRE LTDA",
+    "archivo": "COAC___SALITRE_LTDA",
+    "_row": "COAC.  SALITRE LTDA"
+  },
+  {
+    "id": "COAC.  METROPOLITANA LTDA",
+    "nombre": "COAC.  METROPOLITANA LTDA",
+    "archivo": "COAC___METROPOLITANA_LTDA",
+    "_row": "COAC.  METROPOLITANA LTDA"
+  },
+  {
+    "id": "COAC.  BASE DE TAURA",
+    "nombre": "COAC.  BASE DE TAURA",
+    "archivo": "COAC___BASE_DE_TAURA",
+    "_row": "COAC.  BASE DE TAURA"
+  },
+  {
+    "id": "COAC.  SAN ANTONIO LTDA - IMBABURA",
+    "nombre": "COAC.  SAN ANTONIO LTDA - IMBABURA",
+    "archivo": "COAC___SAN_ANTONIO_LTDA___IMBABURA",
+    "_row": "COAC.  SAN ANTONIO LTDA - IMBABURA"
+  },
+  {
+    "id": "COAC.  UNION EL EJIDO",
+    "nombre": "COAC.  UNION EL EJIDO",
+    "archivo": "COAC___UNION_EL_EJIDO",
+    "_row": "COAC.  UNION EL EJIDO"
+  },
+  {
+    "id": "COAC.  DE INDIGENAS CHUCHUQUI LTDA",
+    "nombre": "COAC.  DE INDIGENAS CHUCHUQUI LTDA",
+    "archivo": "COAC___DE_INDIGENAS_CHUCHUQUI_LTDA",
+    "_row": "COAC.  DE INDIGENAS CHUCHUQUI LTDA"
+  },
+  {
+    "id": "COAC.  ARTESANOS LTDA",
+    "nombre": "COAC.  ARTESANOS LTDA",
+    "archivo": "COAC___ARTESANOS_LTDA",
+    "_row": "COAC.  ARTESANOS LTDA"
+  },
+  {
+    "id": "COAC.  SANTA ANITA LTDA",
+    "nombre": "COAC.  SANTA ANITA LTDA",
+    "archivo": "COAC___SANTA_ANITA_LTDA",
+    "_row": "COAC.  SANTA ANITA LTDA"
+  },
+  {
+    "id": "COAC.  MUJERES UNIDAS TANTANAKUSHKA WARMIKUNAPAC",
+    "nombre": "COAC.  MUJERES UNIDAS TANTANAKUSHKA WARMIKUNAPAC",
+    "archivo": "COAC___MUJERES_UNIDAS_TANTANAKUSHKA_WARMIKUNAPAC",
+    "_row": "COAC.  MUJERES UNIDAS TANTANAKUSHKA WARMIKUNAPAC"
+  },
+  {
+    "id": "COAC.  ACCION IMBABURAPAK LTDA",
+    "nombre": "COAC.  ACCION IMBABURAPAK LTDA",
+    "archivo": "COAC___ACCION_IMBABURAPAK_LTDA",
+    "_row": "COAC.  ACCION IMBABURAPAK LTDA"
+  },
+  {
+    "id": "COAC.  EDUCADORES DE LOJA - CACEL LTDA.",
+    "nombre": "COAC.  EDUCADORES DE LOJA - CACEL LTDA.",
+    "archivo": "COAC___EDUCADORES_DE_LOJA___CACEL_LTDA_",
+    "_row": "COAC.  EDUCADORES DE LOJA - CACEL LTDA."
+  },
+  {
+    "id": "COAC.  CRISTO REY",
+    "nombre": "COAC.  CRISTO REY",
+    "archivo": "COAC___CRISTO_REY",
+    "_row": "COAC.  CRISTO REY"
+  },
+  {
+    "id": "COAC.  DE LA MICROEMPRESA FORTUNA",
+    "nombre": "COAC.  DE LA MICROEMPRESA FORTUNA",
+    "archivo": "COAC___DE_LA_MICROEMPRESA_FORTUNA",
+    "_row": "COAC.  DE LA MICROEMPRESA FORTUNA"
+  },
+  {
+    "id": "COAC.  SAN ANTONIO LTDA LOS RIOS",
+    "nombre": "COAC.  SAN ANTONIO LTDA LOS RIOS",
+    "archivo": "COAC___SAN_ANTONIO_LTDA_LOS_RIOS",
+    "_row": "COAC.  SAN ANTONIO LTDA LOS RIOS"
+  },
+  {
+    "id": "COAC.  MAGISTERIO MANABITA LIMITADA",
+    "nombre": "COAC.  MAGISTERIO MANABITA LIMITADA",
+    "archivo": "COAC___MAGISTERIO_MANABITA_LIMITADA",
+    "_row": "COAC.  MAGISTERIO MANABITA LIMITADA"
+  },
+  {
+    "id": "COAC.  LA BENEFICA LTDA",
+    "nombre": "COAC.  LA BENEFICA LTDA",
+    "archivo": "COAC___LA_BENEFICA_LTDA",
+    "_row": "COAC.  LA BENEFICA LTDA"
+  },
+  {
+    "id": "COAC.  MICROEMPRESARIAL SUCRE",
+    "nombre": "COAC.  MICROEMPRESARIAL SUCRE",
+    "archivo": "COAC___MICROEMPRESARIAL_SUCRE",
+    "_row": "COAC.  MICROEMPRESARIAL SUCRE"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA GUALAQUIZA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA GUALAQUIZA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_GUALAQUIZA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA GUALAQUIZA"
+  },
+  {
+    "id": "COAC.  TENA LTDA",
+    "nombre": "COAC.  TENA LTDA",
+    "archivo": "COAC___TENA_LTDA",
+    "_row": "COAC.  TENA LTDA"
+  },
+  {
+    "id": "COAC.  COCA LTDA",
+    "nombre": "COAC.  COCA LTDA",
+    "archivo": "COAC___COCA_LTDA",
+    "_row": "COAC.  COCA LTDA"
+  },
+  {
+    "id": "COAC.  EDUCADORES DE PASTAZA LTDA",
+    "nombre": "COAC.  EDUCADORES DE PASTAZA LTDA",
+    "archivo": "COAC___EDUCADORES_DE_PASTAZA_LTDA",
+    "_row": "COAC.  EDUCADORES DE PASTAZA LTDA"
+  },
+  {
+    "id": "COAC.  SAN CRISTOBAL LTDA",
+    "nombre": "COAC.  SAN CRISTOBAL LTDA",
+    "archivo": "COAC___SAN_CRISTOBAL_LTDA",
+    "_row": "COAC.  SAN CRISTOBAL LTDA"
+  },
+  {
+    "id": "COAC.  CIUDAD DE QUITO",
+    "nombre": "COAC.  CIUDAD DE QUITO",
+    "archivo": "COAC___CIUDAD_DE_QUITO",
+    "_row": "COAC.  CIUDAD DE QUITO"
+  },
+  {
+    "id": "COAC.  DEL MAGISTERIO DE PICHINCHA",
+    "nombre": "COAC.  DEL MAGISTERIO DE PICHINCHA",
+    "archivo": "COAC___DEL_MAGISTERIO_DE_PICHINCHA",
+    "_row": "COAC.  DEL MAGISTERIO DE PICHINCHA"
+  },
+  {
+    "id": "COAC.  16 DE JULIO LTDA",
+    "nombre": "COAC.  16 DE JULIO LTDA",
+    "archivo": "COAC___16_DE_JULIO_LTDA",
+    "_row": "COAC.  16 DE JULIO LTDA"
+  },
+  {
+    "id": "COAC.  ALIANZA MINAS LTDA",
+    "nombre": "COAC.  ALIANZA MINAS LTDA",
+    "archivo": "COAC___ALIANZA_MINAS_LTDA",
+    "_row": "COAC.  ALIANZA MINAS LTDA"
+  },
+  {
+    "id": "COAC.  POLITECNICA LTDA",
+    "nombre": "COAC.  POLITECNICA LTDA",
+    "archivo": "COAC___POLITECNICA_LTDA",
+    "_row": "COAC.  POLITECNICA LTDA"
+  },
+  {
+    "id": "COAC.  PUELLARO LTDA",
+    "nombre": "COAC.  PUELLARO LTDA",
+    "archivo": "COAC___PUELLARO_LTDA",
+    "_row": "COAC.  PUELLARO LTDA"
+  },
+  {
+    "id": "COAC.  PEDRO MONCAYO LTDA",
+    "nombre": "COAC.  PEDRO MONCAYO LTDA",
+    "archivo": "COAC___PEDRO_MONCAYO_LTDA",
+    "_row": "COAC.  PEDRO MONCAYO LTDA"
+  },
+  {
+    "id": "COAC.  SAN JUAN DE COTOGCHOA",
+    "nombre": "COAC.  SAN JUAN DE COTOGCHOA",
+    "archivo": "COAC___SAN_JUAN_DE_COTOGCHOA",
+    "_row": "COAC.  SAN JUAN DE COTOGCHOA"
+  },
+  {
+    "id": "COAC.  TEXTIL 14 DE MARZO",
+    "nombre": "COAC.  TEXTIL 14 DE MARZO",
+    "archivo": "COAC___TEXTIL_14_DE_MARZO",
+    "_row": "COAC.  TEXTIL 14 DE MARZO"
+  },
+  {
+    "id": "COAC.  CORPORACION CENTRO LTDA",
+    "nombre": "COAC.  CORPORACION CENTRO LTDA",
+    "archivo": "COAC___CORPORACION_CENTRO_LTDA",
+    "_row": "COAC.  CORPORACION CENTRO LTDA"
+  },
+  {
+    "id": "COAC.  SAN MIGUEL DE LOS BANCOS LTDA",
+    "nombre": "COAC.  SAN MIGUEL DE LOS BANCOS LTDA",
+    "archivo": "COAC___SAN_MIGUEL_DE_LOS_BANCOS_LTDA",
+    "_row": "COAC.  SAN MIGUEL DE LOS BANCOS LTDA"
+  },
+  {
+    "id": "COAC.  DE LOS EMPLEADOS JUBILADOS Y EX-EMPLEADOS DEL BANCO CENTRAL DEL ECUADOR",
+    "nombre": "COAC.  DE LOS EMPLEADOS JUBILADOS Y EX-EMPLEADOS DEL BANCO CENTRAL DEL ECUADOR",
+    "archivo": "COAC___DE_LOS_EMPLEADOS_JUBILADOS_Y_EX_EMPLEADOS_DEL_BANCO_CENTRAL_DEL_ECUADOR",
+    "_row": "COAC.  DE LOS EMPLEADOS JUBILADOS Y EX-EMPLEADOS DEL BANCO CENTRAL DEL ECUADOR"
+  },
+  {
+    "id": "COAC.  MAQUITA CUSHUNCHIC LTDA",
+    "nombre": "COAC.  MAQUITA CUSHUNCHIC LTDA",
+    "archivo": "COAC___MAQUITA_CUSHUNCHIC_LTDA",
+    "_row": "COAC.  MAQUITA CUSHUNCHIC LTDA"
+  },
+  {
+    "id": "COAC.  FONDO PARA EL DESARROLLO Y LA VIDA",
+    "nombre": "COAC.  FONDO PARA EL DESARROLLO Y LA VIDA",
+    "archivo": "COAC___FONDO_PARA_EL_DESARROLLO_Y_LA_VIDA",
+    "_row": "COAC.  FONDO PARA EL DESARROLLO Y LA VIDA"
+  },
+  {
+    "id": "COAC.  LUZ DEL VALLE",
+    "nombre": "COAC.  LUZ DEL VALLE",
+    "archivo": "COAC___LUZ_DEL_VALLE",
+    "_row": "COAC.  LUZ DEL VALLE"
+  },
+  {
+    "id": "COAC.  HUAICANA LTDA",
+    "nombre": "COAC.  HUAICANA LTDA",
+    "archivo": "COAC___HUAICANA_LTDA",
+    "_row": "COAC.  HUAICANA LTDA"
+  },
+  {
+    "id": "COAC.  EDUCADORES DE TUNGURAHUA LTDA",
+    "nombre": "COAC.  EDUCADORES DE TUNGURAHUA LTDA",
+    "archivo": "COAC___EDUCADORES_DE_TUNGURAHUA_LTDA",
+    "_row": "COAC.  EDUCADORES DE TUNGURAHUA LTDA"
+  },
+  {
+    "id": "COAC.  INDIGENA SAC LTDA",
+    "nombre": "COAC.  INDIGENA SAC LTDA",
+    "archivo": "COAC___INDIGENA_SAC_LTDA",
+    "_row": "COAC.  INDIGENA SAC LTDA"
+  },
+  {
+    "id": "COAC.  MAQUITA CUSHUN LTDA",
+    "nombre": "COAC.  MAQUITA CUSHUN LTDA",
+    "archivo": "COAC___MAQUITA_CUSHUN_LTDA",
+    "_row": "COAC.  MAQUITA CUSHUN LTDA"
+  },
+  {
+    "id": "COAC.  AMBATO LTDA",
+    "nombre": "COAC.  AMBATO LTDA",
+    "archivo": "COAC___AMBATO_LTDA",
+    "_row": "COAC.  AMBATO LTDA"
+  },
+  {
+    "id": "COAC.  KULLKI WASI LTDA",
+    "nombre": "COAC.  KULLKI WASI LTDA",
+    "archivo": "COAC___KULLKI_WASI_LTDA",
+    "_row": "COAC.  KULLKI WASI LTDA"
+  },
+  {
+    "id": "COAC.  CHIBULEO LIMITADA",
+    "nombre": "COAC.  CHIBULEO LIMITADA",
+    "archivo": "COAC___CHIBULEO_LIMITADA",
+    "_row": "COAC.  CHIBULEO LIMITADA"
+  },
+  {
+    "id": "COAC.  CREDIAMBATO LTDA",
+    "nombre": "COAC.  CREDIAMBATO LTDA",
+    "archivo": "COAC___CREDIAMBATO_LTDA",
+    "_row": "COAC.  CREDIAMBATO LTDA"
+  },
+  {
+    "id": "COAC.  CAMPESINA COOPAC",
+    "nombre": "COAC.  CAMPESINA COOPAC",
+    "archivo": "COAC___CAMPESINA_COOPAC",
+    "_row": "COAC.  CAMPESINA COOPAC"
+  },
+  {
+    "id": "COAC.  CRECER WINARI LTDA",
+    "nombre": "COAC.  CRECER WINARI LTDA",
+    "archivo": "COAC___CRECER_WINARI_LTDA",
+    "_row": "COAC.  CRECER WINARI LTDA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA CACPE YANTZAZA LTDA",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA CACPE YANTZAZA LTDA",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_CACPE_YANTZAZA_LTDA",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA CACPE YANTZAZA LTDA"
+  },
+  {
+    "id": "COAC.  DE LA PEQUENA EMPRESA CACPE ZAMORA CHINCHIPE LTDA.",
+    "nombre": "COAC.  DE LA PEQUENA EMPRESA CACPE ZAMORA CHINCHIPE LTDA.",
+    "archivo": "COAC___DE_LA_PEQUENA_EMPRESA_CACPE_ZAMORA_CHINCHIPE_LTDA_",
+    "_row": "COAC.  DE LA PEQUENA EMPRESA CACPE ZAMORA CHINCHIPE LTDA."
+  },
+  {
+    "id": "COAC.  EDUCADORES Y ASOCIADOS ZAMORA CHINCHIPE",
+    "nombre": "COAC.  EDUCADORES Y ASOCIADOS ZAMORA CHINCHIPE",
+    "archivo": "COAC___EDUCADORES_Y_ASOCIADOS_ZAMORA_CHINCHIPE",
+    "_row": "COAC.  EDUCADORES Y ASOCIADOS ZAMORA CHINCHIPE"
+  },
+  {
+    "id": "COAC.  SAN PEDRO LTDA",
+    "nombre": "COAC.  SAN PEDRO LTDA",
+    "archivo": "COAC___SAN_PEDRO_LTDA",
+    "_row": "COAC.  SAN PEDRO LTDA"
+  },
+  {
+    "id": "COAC.  MANANTIAL DE ORO LTDA",
+    "nombre": "COAC.  MANANTIAL DE ORO LTDA",
+    "archivo": "COAC___MANANTIAL_DE_ORO_LTDA",
+    "_row": "COAC.  MANANTIAL DE ORO LTDA"
+  },
+  {
+    "id": "COAC.  GANANSOL LTDA",
+    "nombre": "COAC.  GANANSOL LTDA",
+    "archivo": "COAC___GANANSOL_LTDA",
+    "_row": "COAC.  GANANSOL LTDA"
+  },
+  {
+    "id": "COAC.  VISION DE LOS ANDES VIS ANDES",
+    "nombre": "COAC.  VISION DE LOS ANDES VIS ANDES",
+    "archivo": "COAC___VISION_DE_LOS_ANDES_VIS_ANDES",
+    "_row": "COAC.  VISION DE LOS ANDES VIS ANDES"
+  },
+  {
+    "id": "COAC.  13 DE ABRIL",
+    "nombre": "COAC.  13 DE ABRIL",
+    "archivo": "COAC___13_DE_ABRIL",
+    "_row": "COAC.  13 DE ABRIL"
+  },
+  {
+    "id": "COAC.  HUANCAVILCA LTDA",
+    "nombre": "COAC.  HUANCAVILCA LTDA",
+    "archivo": "COAC___HUANCAVILCA_LTDA",
+    "_row": "COAC.  HUANCAVILCA LTDA"
+  },
+  {
+    "id": "COAC.  ECUACREDITOS LTDA",
+    "nombre": "COAC.  ECUACREDITOS LTDA",
+    "archivo": "COAC___ECUACREDITOS_LTDA",
+    "_row": "COAC.  ECUACREDITOS LTDA"
+  },
+  {
+    "id": "COAC.  CREDIAMIGO LTDA",
+    "nombre": "COAC.  CREDIAMIGO LTDA",
+    "archivo": "COAC___CREDIAMIGO_LTDA",
+    "_row": "COAC.  CREDIAMIGO LTDA"
+  },
+  {
+    "id": "COAC.  UNIDAD Y PROGRESO",
+    "nombre": "COAC.  UNIDAD Y PROGRESO",
+    "archivo": "COAC___UNIDAD_Y_PROGRESO",
+    "_row": "COAC.  UNIDAD Y PROGRESO"
+  },
+  {
+    "id": "COAC.  HERMES GAIBOR VERDESOTO",
+    "nombre": "COAC.  HERMES GAIBOR VERDESOTO",
+    "archivo": "COAC___HERMES_GAIBOR_VERDESOTO",
+    "_row": "COAC.  HERMES GAIBOR VERDESOTO"
+  },
+  {
+    "id": "COAC.  UNIVERSIDAD CATOLICA DEL ECUADOR",
+    "nombre": "COAC.  UNIVERSIDAD CATOLICA DEL ECUADOR",
+    "archivo": "COAC___UNIVERSIDAD_CATOLICA_DEL_ECUADOR",
+    "_row": "COAC.  UNIVERSIDAD CATOLICA DEL ECUADOR"
+  },
+  {
+    "id": "COAC.  ANTORCHA LTDA",
+    "nombre": "COAC.  ANTORCHA LTDA",
+    "archivo": "COAC___ANTORCHA_LTDA",
+    "_row": "COAC.  ANTORCHA LTDA"
+  },
+  {
+    "id": "COAC.  VENCEDORES LTDA",
+    "nombre": "COAC.  VENCEDORES LTDA",
+    "archivo": "COAC___VENCEDORES_LTDA",
+    "_row": "COAC.  VENCEDORES LTDA"
+  },
+  {
+    "id": "COAC.  PUSHAK RUNA LTDA",
+    "nombre": "COAC.  PUSHAK RUNA LTDA",
+    "archivo": "COAC___PUSHAK_RUNA_LTDA",
+    "_row": "COAC.  PUSHAK RUNA LTDA"
+  },
+  {
+    "id": "COAC.  CACPE CELICA",
+    "nombre": "COAC.  CACPE CELICA",
+    "archivo": "COAC___CACPE_CELICA",
+    "_row": "COAC.  CACPE CELICA"
+  },
+  {
+    "id": "COAC.  PICHINCHA LTDA",
+    "nombre": "COAC.  PICHINCHA LTDA",
+    "archivo": "COAC___PICHINCHA_LTDA",
+    "_row": "COAC.  PICHINCHA LTDA"
+  },
+  {
+    "id": "COAC.  SAN MIGUEL LTDA",
+    "nombre": "COAC.  SAN MIGUEL LTDA",
+    "archivo": "COAC___SAN_MIGUEL_LTDA",
+    "_row": "COAC.  SAN MIGUEL LTDA"
+  },
+  {
+    "id": "COAC.  NUEVA ESPERANZA LTDA",
+    "nombre": "COAC.  NUEVA ESPERANZA LTDA",
+    "archivo": "COAC___NUEVA_ESPERANZA_LTDA",
+    "_row": "COAC.  NUEVA ESPERANZA LTDA"
+  },
+  {
+    "id": "COAC.  UNIBLOCK Y SERVICIOS LTDA",
+    "nombre": "COAC.  UNIBLOCK Y SERVICIOS LTDA",
+    "archivo": "COAC___UNIBLOCK_Y_SERVICIOS_LTDA",
+    "_row": "COAC.  UNIBLOCK Y SERVICIOS LTDA"
+  },
+  {
+    "id": "COAC.  MARCABELI LTDA",
+    "nombre": "COAC.  MARCABELI LTDA",
+    "archivo": "COAC___MARCABELI_LTDA",
+    "_row": "COAC.  MARCABELI LTDA"
+  },
+  {
+    "id": "COAC.  ORDEN Y SEGURIDAD \"OYS\"",
+    "nombre": "COAC.  ORDEN Y SEGURIDAD \"OYS\"",
+    "archivo": "COAC___ORDEN_Y_SEGURIDAD__OYS_",
+    "_row": "COAC.  ORDEN Y SEGURIDAD \"OYS\""
+  },
+  {
+    "id": "COAC.  LA FLORESTA LTDA",
+    "nombre": "COAC.  LA FLORESTA LTDA",
+    "archivo": "COAC___LA_FLORESTA_LTDA",
+    "_row": "COAC.  LA FLORESTA LTDA"
+  },
+  {
+    "id": "COAC.  SISA",
+    "nombre": "COAC.  SISA",
+    "archivo": "COAC___SISA",
+    "_row": "COAC.  SISA"
+  },
+  {
+    "id": "COAC.  ACCION TUNGURAHUA LTDA",
+    "nombre": "COAC.  ACCION TUNGURAHUA LTDA",
+    "archivo": "COAC___ACCION_TUNGURAHUA_LTDA",
+    "_row": "COAC.  ACCION TUNGURAHUA LTDA"
+  },
+  {
+    "id": "COAC.  CREDIL LTDA",
+    "nombre": "COAC.  CREDIL LTDA",
+    "archivo": "COAC___CREDIL_LTDA",
+    "_row": "COAC.  CREDIL LTDA"
+  },
+  {
+    "id": "COAC.  INTERANDINA",
+    "nombre": "COAC.  INTERANDINA",
+    "archivo": "COAC___INTERANDINA",
+    "_row": "COAC.  INTERANDINA"
+  },
+  {
+    "id": "COAC.  FOCLA",
+    "nombre": "COAC.  FOCLA",
+    "archivo": "COAC___FOCLA",
+    "_row": "COAC.  FOCLA"
+  },
+  {
+    "id": "COAC.  SOLIDARIDAD, EMPRENDIMIENTO Y COOPERACION",
+    "nombre": "COAC.  SOLIDARIDAD, EMPRENDIMIENTO Y COOPERACION",
+    "archivo": "COAC___SOLIDARIDAD__EMPRENDIMIENTO_Y_COOPERACION",
+    "_row": "COAC.  SOLIDARIDAD, EMPRENDIMIENTO Y COOPERACION"
+  },
+  {
+    "id": "COAC.  ETAPA",
+    "nombre": "COAC.  ETAPA",
+    "archivo": "COAC___ETAPA",
+    "_row": "COAC.  ETAPA"
+  },
+  {
+    "id": "COAC.  GRUPO DIFARE",
+    "nombre": "COAC.  GRUPO DIFARE",
+    "archivo": "COAC___GRUPO_DIFARE",
+    "_row": "COAC.  GRUPO DIFARE"
+  },
+  {
+    "id": "COAC.  IMBABURA IMBACOOP LTDA",
+    "nombre": "COAC.  IMBABURA IMBACOOP LTDA",
+    "archivo": "COAC___IMBABURA_IMBACOOP_LTDA",
+    "_row": "COAC.  IMBABURA IMBACOOP LTDA"
+  },
+  {
+    "id": "COAC.  UNIOTAVALO LTDA",
+    "nombre": "COAC.  UNIOTAVALO LTDA",
+    "archivo": "COAC___UNIOTAVALO_LTDA",
+    "_row": "COAC.  UNIOTAVALO LTDA"
+  },
+  {
+    "id": "COAC.  ABDON CALDERON LTDA",
+    "nombre": "COAC.  ABDON CALDERON LTDA",
+    "archivo": "COAC___ABDON_CALDERON_LTDA",
+    "_row": "COAC.  ABDON CALDERON LTDA"
+  },
+  {
+    "id": "COAC.  COORAMBATO LTDA",
+    "nombre": "COAC.  COORAMBATO LTDA",
+    "archivo": "COAC___COORAMBATO_LTDA",
+    "_row": "COAC.  COORAMBATO LTDA"
+  },
+  {
+    "id": "COAC.  SUMAK SAMY LTDA",
+    "nombre": "COAC.  SUMAK SAMY LTDA",
+    "archivo": "COAC___SUMAK_SAMY_LTDA",
+    "_row": "COAC.  SUMAK SAMY LTDA"
+  },
+  {
+    "id": "COAC.  CREDI YA LTDA",
+    "nombre": "COAC.  CREDI YA LTDA",
+    "archivo": "COAC___CREDI_YA_LTDA",
+    "_row": "COAC.  CREDI YA LTDA"
+  },
+  {
+    "id": "COAC.  LAS NAVES LTDA",
+    "nombre": "COAC.  LAS NAVES LTDA",
+    "archivo": "COAC___LAS_NAVES_LTDA",
+    "_row": "COAC.  LAS NAVES LTDA"
+  },
+  {
+    "id": "COAC.  SOL DE LOS ANDES LTDA CHIMBORAZO",
+    "nombre": "COAC.  SOL DE LOS ANDES LTDA CHIMBORAZO",
+    "archivo": "COAC___SOL_DE_LOS_ANDES_LTDA_CHIMBORAZO",
+    "_row": "COAC.  SOL DE LOS ANDES LTDA CHIMBORAZO"
+  },
+  {
+    "id": "COAC.  DR CORNELIO SAENZ VERA LTDA",
+    "nombre": "COAC.  DR CORNELIO SAENZ VERA LTDA",
+    "archivo": "COAC___DR_CORNELIO_SAENZ_VERA_LTDA",
+    "_row": "COAC.  DR CORNELIO SAENZ VERA LTDA"
+  },
+  {
+    "id": "COAC.  LOS ANDES LATINOS LTDA",
+    "nombre": "COAC.  LOS ANDES LATINOS LTDA",
+    "archivo": "COAC___LOS_ANDES_LATINOS_LTDA",
+    "_row": "COAC.  LOS ANDES LATINOS LTDA"
+  },
+  {
+    "id": "COAC.  GONZANAMA",
+    "nombre": "COAC.  GONZANAMA",
+    "archivo": "COAC___GONZANAMA",
+    "_row": "COAC.  GONZANAMA"
+  },
+  {
+    "id": "COAC.  SAN MARTIN DE TISALEO LTDA",
+    "nombre": "COAC.  SAN MARTIN DE TISALEO LTDA",
+    "archivo": "COAC___SAN_MARTIN_DE_TISALEO_LTDA",
+    "_row": "COAC.  SAN MARTIN DE TISALEO LTDA"
+  },
+  {
+    "id": "COAC.  CREDIMAS",
+    "nombre": "COAC.  CREDIMAS",
+    "archivo": "COAC___CREDIMAS",
+    "_row": "COAC.  CREDIMAS"
+  },
+  {
+    "id": "COAC.  INDIGENAS GALAPAGOS LTDA",
+    "nombre": "COAC.  INDIGENAS GALAPAGOS LTDA",
+    "archivo": "COAC___INDIGENAS_GALAPAGOS_LTDA",
+    "_row": "COAC.  INDIGENAS GALAPAGOS LTDA"
+  },
+  {
+    "id": "COAC.  KISAPINCHA LTDA",
+    "nombre": "COAC.  KISAPINCHA LTDA",
+    "archivo": "COAC___KISAPINCHA_LTDA",
+    "_row": "COAC.  KISAPINCHA LTDA"
+  },
+  {
+    "id": "COAC.  COORCOTOPAXI LTDA",
+    "nombre": "COAC.  COORCOTOPAXI LTDA",
+    "archivo": "COAC___COORCOTOPAXI_LTDA",
+    "_row": "COAC.  COORCOTOPAXI LTDA"
+  },
+  {
+    "id": "COAC.  RHUMY WARA",
+    "nombre": "COAC.  RHUMY WARA",
+    "archivo": "COAC___RHUMY_WARA",
+    "_row": "COAC.  RHUMY WARA"
+  },
+  {
+    "id": "COAC.  CIUDAD DE ZAMORA",
+    "nombre": "COAC.  CIUDAD DE ZAMORA",
+    "archivo": "COAC___CIUDAD_DE_ZAMORA",
+    "_row": "COAC.  CIUDAD DE ZAMORA"
+  },
+  {
+    "id": "COAC.  JADAN",
+    "nombre": "COAC.  JADAN",
+    "archivo": "COAC___JADAN",
+    "_row": "COAC.  JADAN"
+  },
+  {
+    "id": "COAC.  ILINIZA LTDA",
+    "nombre": "COAC.  ILINIZA LTDA",
+    "archivo": "COAC___ILINIZA_LTDA",
+    "_row": "COAC.  ILINIZA LTDA"
+  },
+  {
+    "id": "COAC.  OCCIDENTAL",
+    "nombre": "COAC.  OCCIDENTAL",
+    "archivo": "COAC___OCCIDENTAL",
+    "_row": "COAC.  OCCIDENTAL"
+  },
+  {
+    "id": "COAC.  ECUAFUTURO LTDA",
+    "nombre": "COAC.  ECUAFUTURO LTDA",
+    "archivo": "COAC___ECUAFUTURO_LTDA",
+    "_row": "COAC.  ECUAFUTURO LTDA"
+  },
+  {
+    "id": "COAC.  CAMARA DE COMERCIO JOYA DE LOS SACHAS LTDA",
+    "nombre": "COAC.  CAMARA DE COMERCIO JOYA DE LOS SACHAS LTDA",
+    "archivo": "COAC___CAMARA_DE_COMERCIO_JOYA_DE_LOS_SACHAS_LTDA",
+    "_row": "COAC.  CAMARA DE COMERCIO JOYA DE LOS SACHAS LTDA"
+  },
+  {
+    "id": "COAC.  4 RIOS",
+    "nombre": "COAC.  4 RIOS",
+    "archivo": "COAC___4_RIOS",
+    "_row": "COAC.  4 RIOS"
+  },
+  {
+    "id": "COAC.  DEL AZUAY",
+    "nombre": "COAC.  DEL AZUAY",
+    "archivo": "COAC___DEL_AZUAY",
+    "_row": "COAC.  DEL AZUAY"
+  },
+  {
+    "id": "COAC.  CORPUCOOP LTDA",
+    "nombre": "COAC.  CORPUCOOP LTDA",
+    "archivo": "COAC___CORPUCOOP_LTDA",
+    "_row": "COAC.  CORPUCOOP LTDA"
+  },
+  {
+    "id": "COAC.  DE LA CAMARA DE COMERCIO DE GONZANAMA",
+    "nombre": "COAC.  DE LA CAMARA DE COMERCIO DE GONZANAMA",
+    "archivo": "COAC___DE_LA_CAMARA_DE_COMERCIO_DE_GONZANAMA",
+    "_row": "COAC.  DE LA CAMARA DE COMERCIO DE GONZANAMA"
+  },
+  {
+    "id": "COAC.  ESPERANZA DEL FUTURO LTDA",
+    "nombre": "COAC.  ESPERANZA DEL FUTURO LTDA",
+    "archivo": "COAC___ESPERANZA_DEL_FUTURO_LTDA",
+    "_row": "COAC.  ESPERANZA DEL FUTURO LTDA"
+  },
+  {
+    "id": "COAC.  CREDI FACIL LTDA",
+    "nombre": "COAC.  CREDI FACIL LTDA",
+    "archivo": "COAC___CREDI_FACIL_LTDA",
+    "_row": "COAC.  CREDI FACIL LTDA"
+  },
+  {
+    "id": "COAC.  ANGAHUANA",
+    "nombre": "COAC.  ANGAHUANA",
+    "archivo": "COAC___ANGAHUANA",
+    "_row": "COAC.  ANGAHUANA"
+  },
+  {
+    "id": "COAC.  SAN MARCOS",
+    "nombre": "COAC.  SAN MARCOS",
+    "archivo": "COAC___SAN_MARCOS",
+    "_row": "COAC.  SAN MARCOS"
+  },
+  {
+    "id": "COAC.  15 DE AGOSTO DE PILACOTO",
+    "nombre": "COAC.  15 DE AGOSTO DE PILACOTO",
+    "archivo": "COAC___15_DE_AGOSTO_DE_PILACOTO",
+    "_row": "COAC.  15 DE AGOSTO DE PILACOTO"
+  },
+  {
+    "id": "COAC.  PUCARA LTDA",
+    "nombre": "COAC.  PUCARA LTDA",
+    "archivo": "COAC___PUCARA_LTDA",
+    "_row": "COAC.  PUCARA LTDA"
+  },
+  {
+    "id": "COAC.  CHUNCHI LTDA",
+    "nombre": "COAC.  CHUNCHI LTDA",
+    "archivo": "COAC___CHUNCHI_LTDA",
+    "_row": "COAC.  CHUNCHI LTDA"
+  },
+  {
+    "id": "COAC.  17 DE MARZO LIMITADA",
+    "nombre": "COAC.  17 DE MARZO LIMITADA",
+    "archivo": "COAC___17_DE_MARZO_LIMITADA",
+    "_row": "COAC.  17 DE MARZO LIMITADA"
+  },
+  {
+    "id": "COAC.  NEGOCIOS ANDINOS LTDA",
+    "nombre": "COAC.  NEGOCIOS ANDINOS LTDA",
+    "archivo": "COAC___NEGOCIOS_ANDINOS_LTDA",
+    "_row": "COAC.  NEGOCIOS ANDINOS LTDA"
+  },
+  {
+    "id": "COAC.  AGRICOLA JUNIN",
+    "nombre": "COAC.  AGRICOLA JUNIN",
+    "archivo": "COAC___AGRICOLA_JUNIN",
+    "_row": "COAC.  AGRICOLA JUNIN"
+  },
+  {
+    "id": "COAC.  SIDETAMC",
+    "nombre": "COAC.  SIDETAMC",
+    "archivo": "COAC___SIDETAMC",
+    "_row": "COAC.  SIDETAMC"
+  },
+  {
+    "id": "COAC.  METROPOLIS LTDA",
+    "nombre": "COAC.  METROPOLIS LTDA",
+    "archivo": "COAC___METROPOLIS_LTDA",
+    "_row": "COAC.  METROPOLIS LTDA"
+  },
+  {
+    "id": "COAC.  SARAGUROS",
+    "nombre": "COAC.  SARAGUROS",
+    "archivo": "COAC___SARAGUROS",
+    "_row": "COAC.  SARAGUROS"
+  },
+  {
+    "id": "COAC.  VILCABAMBA CACVIL",
+    "nombre": "COAC.  VILCABAMBA CACVIL",
+    "archivo": "COAC___VILCABAMBA_CACVIL",
+    "_row": "COAC.  VILCABAMBA CACVIL"
+  },
+  {
+    "id": "COAC.  EL MOLINO LIMITADA",
+    "nombre": "COAC.  EL MOLINO LIMITADA",
+    "archivo": "COAC___EL_MOLINO_LIMITADA",
+    "_row": "COAC.  EL MOLINO LIMITADA"
+  },
+  {
+    "id": "COAC.  MIGRANTES DEL ECUADOR LTDA",
+    "nombre": "COAC.  MIGRANTES DEL ECUADOR LTDA",
+    "archivo": "COAC___MIGRANTES_DEL_ECUADOR_LTDA",
+    "_row": "COAC.  MIGRANTES DEL ECUADOR LTDA"
+  },
+  {
+    "id": "COAC.  FINANCREDIT LTDA",
+    "nombre": "COAC.  FINANCREDIT LTDA",
+    "archivo": "COAC___FINANCREDIT_LTDA",
+    "_row": "COAC.  FINANCREDIT LTDA"
+  },
+  {
+    "id": "COAC.  PRODUCCION AHORRO INVERSION SERVICIO PAIS LTDA",
+    "nombre": "COAC.  PRODUCCION AHORRO INVERSION SERVICIO PAIS LTDA",
+    "archivo": "COAC___PRODUCCION_AHORRO_INVERSION_SERVICIO_PAIS_LTDA",
+    "_row": "COAC.  PRODUCCION AHORRO INVERSION SERVICIO PAIS LTDA"
+  },
+  {
+    "id": "COAC.  SIMIATUG LIMITADA",
+    "nombre": "COAC.  SIMIATUG LIMITADA",
+    "archivo": "COAC___SIMIATUG_LIMITADA",
+    "_row": "COAC.  SIMIATUG LIMITADA"
+  },
+  {
+    "id": "COAC.  SAN MIGUEL DE SIGCHOS",
+    "nombre": "COAC.  SAN MIGUEL DE SIGCHOS",
+    "archivo": "COAC___SAN_MIGUEL_DE_SIGCHOS",
+    "_row": "COAC.  SAN MIGUEL DE SIGCHOS"
+  },
+  {
+    "id": "COAC.  PUJILI LTDA",
+    "nombre": "COAC.  PUJILI LTDA",
+    "archivo": "COAC___PUJILI_LTDA",
+    "_row": "COAC.  PUJILI LTDA"
+  },
+  {
+    "id": "COAC.  SUMAC LLACTA LTDA",
+    "nombre": "COAC.  SUMAC LLACTA LTDA",
+    "archivo": "COAC___SUMAC_LLACTA_LTDA",
+    "_row": "COAC.  SUMAC LLACTA LTDA"
+  },
+  {
+    "id": "COAC.  16 DE JUNIO",
+    "nombre": "COAC.  16 DE JUNIO",
+    "archivo": "COAC___16_DE_JUNIO",
+    "_row": "COAC.  16 DE JUNIO"
+  },
+  {
+    "id": "COAC.  RURAL SIERRA NORTE",
+    "nombre": "COAC.  RURAL SIERRA NORTE",
+    "archivo": "COAC___RURAL_SIERRA_NORTE",
+    "_row": "COAC.  RURAL SIERRA NORTE"
+  },
+  {
+    "id": "COAC.  LA NUESTRA LTDA",
+    "nombre": "COAC.  LA NUESTRA LTDA",
+    "archivo": "COAC___LA_NUESTRA_LTDA",
+    "_row": "COAC.  LA NUESTRA LTDA"
+  },
+  {
+    "id": "COAC.  EMPRENDEDORES COOPEMPRENDER LIMITADA",
+    "nombre": "COAC.  EMPRENDEDORES COOPEMPRENDER LIMITADA",
+    "archivo": "COAC___EMPRENDEDORES_COOPEMPRENDER_LIMITADA",
+    "_row": "COAC.  EMPRENDEDORES COOPEMPRENDER LIMITADA"
+  },
+  {
+    "id": "COAC.  INDIGENA SAC PILLARO LTDA",
+    "nombre": "COAC.  INDIGENA SAC PILLARO LTDA",
+    "archivo": "COAC___INDIGENA_SAC_PILLARO_LTDA",
+    "_row": "COAC.  INDIGENA SAC PILLARO LTDA"
+  },
+  {
+    "id": "COAC.  JUVENTUD UNIDA LTDA",
+    "nombre": "COAC.  JUVENTUD UNIDA LTDA",
+    "archivo": "COAC___JUVENTUD_UNIDA_LTDA",
+    "_row": "COAC.  JUVENTUD UNIDA LTDA"
+  }
+]

@@ -37,7 +37,7 @@ ESTILOS DE TABLA
     width: 100%;
     border-collapse: collapse;
     font-family: 'Calibri', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 .data-table thead {
@@ -52,8 +52,8 @@ ESTILOS DE TABLA
     padding: 12px 15px;
     text-align: left;
     font-weight: 600;
-    font-size: 0.85rem;  /* ← AGREGA ESTA LÍNEA para cambiar tamaño */
-    font-family: 'Montserrat', sans-serif;  /* ← AGREGA para cambiar tipo */
+    border: 1px solid #1e3a8a;
+    white-space: nowrap;
 }
 
 /* ===================================

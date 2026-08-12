@@ -1,0 +1,918 @@
+[
+  {
+    "id": "1790221806001",
+    "nombre": "BP. AMAZONAS"
+  },
+  {
+    "id": "0992701374001",
+    "nombre": "BP. ATLÁNTIDA"
+  },
+  {
+    "id": "0190055965001",
+    "nombre": "BP. AUSTRO"
+  },
+  {
+    "id": "0990247536001",
+    "nombre": "BP. BANCODESARROLLO"
+  },
+  {
+    "id": "0990379017001",
+    "nombre": "BP. BOLIVARIANO"
+  },
+  {
+    "id": "1090105244001",
+    "nombre": "BP. CAPITAL"
+  },
+  {
+    "id": "1790033295001",
+    "nombre": "BP. CITIBANK"
+  },
+  {
+    "id": "1390067506001",
+    "nombre": "BP. COMERCIAL DE MANABÍ"
+  },
+  {
+    "id": "0990459444001",
+    "nombre": "BP. COOPNACIONAL"
+  },
+  {
+    "id": "0990048673001",
+    "nombre": "BP. DELBANK"
+  },
+  {
+    "id": "1790283380001",
+    "nombre": "BP. DINERS CLUB"
+  },
+  {
+    "id": "0990049459001",
+    "nombre": "BP. GUAYAQUIL"
+  },
+  {
+    "id": "1790098354001",
+    "nombre": "BP. INTERNACIONAL"
+  },
+  {
+    "id": "0990981930001",
+    "nombre": "BP. LITORAL"
+  },
+  {
+    "id": "1190002213001",
+    "nombre": "BP. LOJA"
+  },
+  {
+    "id": "0790002350001",
+    "nombre": "BP. MACHALA"
+  },
+  {
+    "id": "0990005737001",
+    "nombre": "BP. PACÍFICO"
+  },
+  {
+    "id": "1790010937001",
+    "nombre": "BP. PICHINCHA"
+  },
+  {
+    "id": "1791269225001",
+    "nombre": "BP. PROCREDIT"
+  },
+  {
+    "id": "1790368718001",
+    "nombre": "BP. PRODUBANCO"
+  },
+  {
+    "id": "1790864316001",
+    "nombre": "BP. RUMIÑAHUI"
+  },
+  {
+    "id": "1791109384001",
+    "nombre": "BP. SOLIDARIO"
+  },
+  {
+    "id": "1091748041001",
+    "nombre": "BP. VISIONFUND"
+  },
+  {
+    "id": "1290029224001",
+    "nombre": "COAC.  13 DE ABRIL"
+  },
+  {
+    "id": "1390013678001",
+    "nombre": "COAC.  15 DE ABRIL LTDA"
+  },
+  {
+    "id": "0591713124001",
+    "nombre": "COAC.  15 DE AGOSTO DE PILACOTO"
+  },
+  {
+    "id": "1790499871001",
+    "nombre": "COAC.  16 DE JULIO LTDA"
+  },
+  {
+    "id": "0790088611001",
+    "nombre": "COAC.  16 DE JUNIO"
+  },
+  {
+    "id": "1792116449001",
+    "nombre": "COAC.  17 DE MARZO LIMITADA"
+  },
+  {
+    "id": "1790093204001",
+    "nombre": "COAC.  23 DE JULIO LIMITADA"
+  },
+  {
+    "id": "1790567699001",
+    "nombre": "COAC.  29 DE OCTUBRE LTDA"
+  },
+  {
+    "id": "0691702324001",
+    "nombre": "COAC.  4 DE OCTUBRE"
+  },
+  {
+    "id": "1291713013001",
+    "nombre": "COAC.  4 RIOS"
+  },
+  {
+    "id": "0590041920001",
+    "nombre": "COAC.  9 DE OCTUBRE LTDA"
+  },
+  {
+    "id": "1390141463001",
+    "nombre": "COAC.  ABDON CALDERON LTDA"
+  },
+  {
+    "id": "1091732935001",
+    "nombre": "COAC.  ACCION IMBABURAPAK LTDA"
+  },
+  {
+    "id": "1891721796001",
+    "nombre": "COAC.  ACCION TUNGURAHUA LTDA"
+  },
+  {
+    "id": "1391714246001",
+    "nombre": "COAC.  AGRICOLA JUNIN"
+  },
+  {
+    "id": "0190087603001",
+    "nombre": "COAC.  ALFONSO JARAMILLO LEON CAJA"
+  },
+  {
+    "id": "1790501469001",
+    "nombre": "COAC.  ALIANZA DEL VALLE LIMITADA"
+  },
+  {
+    "id": "1790586863001",
+    "nombre": "COAC.  ALIANZA MINAS LTDA"
+  },
+  {
+    "id": "1891709591001",
+    "nombre": "COAC.  AMBATO LTDA"
+  },
+  {
+    "id": "1790325083001",
+    "nombre": "COAC.  ANDALUCIA LIMITADA"
+  },
+  {
+    "id": "0591713094001",
+    "nombre": "COAC.  ANDINA LTDA"
+  },
+  {
+    "id": "1891742904001",
+    "nombre": "COAC.  ANGAHUANA"
+  },
+  {
+    "id": "0890011802001",
+    "nombre": "COAC.  ANTORCHA LTDA"
+  },
+  {
+    "id": "1090107174001",
+    "nombre": "COAC.  ARTESANOS LTDA"
+  },
+  {
+    "id": "1090033456001",
+    "nombre": "COAC.  ATUNTAQUI LIMITADA"
+  },
+  {
+    "id": "0991501258001",
+    "nombre": "COAC.  BASE DE TAURA"
+  },
+  {
+    "id": "1190078937001",
+    "nombre": "COAC.  CACPE CELICA"
+  },
+  {
+    "id": "1390001920001",
+    "nombre": "COAC.  CALCETA LTDA"
+  },
+  {
+    "id": "2290316947001",
+    "nombre": "COAC.  CAMARA DE COMERCIO JOYA DE LOS SACHAS LTDA"
+  },
+  {
+    "id": "1891720978001",
+    "nombre": "COAC.  CAMPESINA COOPAC"
+  },
+  {
+    "id": "0390000804001",
+    "nombre": "COAC.  CAÑAR LTDA"
+  },
+  {
+    "id": "1891710328001",
+    "nombre": "COAC.  CHIBULEO LIMITADA"
+  },
+  {
+    "id": "1390007791001",
+    "nombre": "COAC.  CHONE LTDA"
+  },
+  {
+    "id": "0691729281001",
+    "nombre": "COAC.  CHUNCHI LTDA"
+  },
+  {
+    "id": "1790170047001",
+    "nombre": "COAC.  CIUDAD DE QUITO"
+  },
+  {
+    "id": "1990007124001",
+    "nombre": "COAC.  CIUDAD DE ZAMORA"
+  },
+  {
+    "id": "1590017589001",
+    "nombre": "COAC.  COCA LTDA"
+  },
+  {
+    "id": "1390089410001",
+    "nombre": "COAC.  COMERCIO LTDA"
+  },
+  {
+    "id": "0190093581001",
+    "nombre": "COAC.  COOPAC AUSTRO LTDA"
+  },
+  {
+    "id": "1790451801001",
+    "nombre": "COAC.  COOPROGRESO LIMITADA"
+  },
+  {
+    "id": "1891720587001",
+    "nombre": "COAC.  COORAMBATO LTDA"
+  },
+  {
+    "id": "0591714333001",
+    "nombre": "COAC.  COORCOTOPAXI LTDA"
+  },
+  {
+    "id": "1791306589001",
+    "nombre": "COAC.  CORPORACION CENTRO LTDA"
+  },
+  {
+    "id": "0190375811001",
+    "nombre": "COAC.  CORPUCOOP LTDA"
+  },
+  {
+    "id": "1790023508001",
+    "nombre": "COAC.  COTOCOLLAO LTDA"
+  },
+  {
+    "id": "1891726712001",
+    "nombre": "COAC.  CRECER WIÑARI LTDA"
+  },
+  {
+    "id": "1891724787001",
+    "nombre": "COAC.  CREDI FACIL LTDA"
+  },
+  {
+    "id": "1891743005001",
+    "nombre": "COAC.  CREDI YA LTDA"
+  },
+  {
+    "id": "1891713750001",
+    "nombre": "COAC.  CREDIAMBATO LTDA"
+  },
+  {
+    "id": "1191725669001",
+    "nombre": "COAC.  CREDIAMIGO LTDA"
+  },
+  {
+    "id": "1891735002001",
+    "nombre": "COAC.  CREDIL LTDA"
+  },
+  {
+    "id": "1891745687001",
+    "nombre": "COAC.  CREDIMAS"
+  },
+  {
+    "id": "1190082462001",
+    "nombre": "COAC.  CRISTO REY"
+  },
+  {
+    "id": "1090078263001",
+    "nombre": "COAC.  DE INDIGENAS CHUCHUQUI LTDA"
+  },
+  {
+    "id": "1191720624001",
+    "nombre": "COAC.  DE LA CAMARA DE COMERCIO DE GONZANAMA"
+  },
+  {
+    "id": "1191712249001",
+    "nombre": "COAC.  DE LA MICROEMPRESA FORTUNA"
+  },
+  {
+    "id": "0390027923001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA BIBLIAN LIMITADA"
+  },
+  {
+    "id": "1190075539001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA CACPE LOJA LTDA"
+  },
+  {
+    "id": "1990007019001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA CACPE YANTZAZA LTDA"
+  },
+  {
+    "id": "1990007027001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA CACPE ZAMORA CHINCHIPE LTDA."
+  },
+  {
+    "id": "0590052000001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA DE COTOPAXI LIMITADA"
+  },
+  {
+    "id": "1690012606001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA DE PASTAZA LIMITADA"
+  },
+  {
+    "id": "1490005710001",
+    "nombre": "COAC.  DE LA PEQUEÑA EMPRESA GUALAQUIZA"
+  },
+  {
+    "id": "1791375874001",
+    "nombre": "COAC.  DE LOS EMPLEADOS JUBILADOS Y EX-EMPLEADOS DEL BANCO CENTRAL DEL ECUADOR"
+  },
+  {
+    "id": "1790979016001",
+    "nombre": "COAC.  DE LOS SERVIDORES PUBLICOS DEL MINISTERIO DE EDUCACION Y CULTURA"
+  },
+  {
+    "id": "0190344169001",
+    "nombre": "COAC.  DEL AZUAY"
+  },
+  {
+    "id": "1790495507001",
+    "nombre": "COAC.  DEL MAGISTERIO DE PICHINCHA"
+  },
+  {
+    "id": "0990320160001",
+    "nombre": "COAC.  DR CORNELIO SAENZ VERA LTDA"
+  },
+  {
+    "id": "1091733559001",
+    "nombre": "COAC.  ECUACREDITOS LTDA"
+  },
+  {
+    "id": "1891736882001",
+    "nombre": "COAC.  ECUAFUTURO LTDA"
+  },
+  {
+    "id": "0690002744001",
+    "nombre": "COAC.  EDUCADORES DE CHIMBORAZO LTDA"
+  },
+  {
+    "id": "1190036967001",
+    "nombre": "COAC.  EDUCADORES DE LOJA - CACEL LTDA."
+  },
+  {
+    "id": "1690000632001",
+    "nombre": "COAC.  EDUCADORES DE PASTAZA LTDA"
+  },
+  {
+    "id": "1890049369001",
+    "nombre": "COAC.  EDUCADORES DE TUNGURAHUA LTDA"
+  },
+  {
+    "id": "0190021513001",
+    "nombre": "COAC.  EDUCADORES DEL AZUAY LTDA"
+  },
+  {
+    "id": "0490007458001",
+    "nombre": "COAC.  EDUCADORES TULCAN LTDA"
+  },
+  {
+    "id": "1990010028001",
+    "nombre": "COAC.  EDUCADORES Y ASOCIADOS ZAMORA CHINCHIPE"
+  },
+  {
+    "id": "1792060559001",
+    "nombre": "COAC.  EL MOLINO LIMITADA"
+  },
+  {
+    "id": "1890037646001",
+    "nombre": "COAC.  EL SAGRARIO LTDA"
+  },
+  {
+    "id": "1792300657001",
+    "nombre": "COAC.  EMPRENDEDORES COOPEMPRENDER LIMITADA"
+  },
+  {
+    "id": "0190024733001",
+    "nombre": "COAC.  ERCO LIMITADA"
+  },
+  {
+    "id": "1792042518001",
+    "nombre": "COAC.  ESPERANZA DEL FUTURO LTDA"
+  },
+  {
+    "id": "0190150739001",
+    "nombre": "COAC.  ETAPA"
+  },
+  {
+    "id": "0190316319001",
+    "nombre": "COAC.  FASAYÑAN LTDA"
+  },
+  {
+    "id": "0691706710001",
+    "nombre": "COAC.  FERNANDO DAQUILEMA LIMITADA"
+  },
+  {
+    "id": "1891737552001",
+    "nombre": "COAC.  FINANCREDIT LTDA"
+  },
+  {
+    "id": "0590024937001",
+    "nombre": "COAC.  FINANZAS CORPORATIVAS LTDA"
+  },
+  {
+    "id": "2191701227001",
+    "nombre": "COAC.  FOCLA"
+  },
+  {
+    "id": "1791784979001",
+    "nombre": "COAC.  FONDO PARA EL DESARROLLO Y LA VIDA"
+  },
+  {
+    "id": "0590061123001",
+    "nombre": "COAC.  FUTURO LAMANENSE"
+  },
+  {
+    "id": "0190319296001",
+    "nombre": "COAC.  GAÑANSOL LTDA"
+  },
+  {
+    "id": "1191723062001",
+    "nombre": "COAC.  GONZANAMA"
+  },
+  {
+    "id": "0992198990001",
+    "nombre": "COAC.  GRUPO DIFARE"
+  },
+  {
+    "id": "0290001269001",
+    "nombre": "COAC.  GUARANDA LTDA"
+  },
+  {
+    "id": "1791430956001",
+    "nombre": "COAC.  HERMES GAIBOR VERDESOTO"
+  },
+  {
+    "id": "1791928083001",
+    "nombre": "COAC.  HUAICANA LTDA"
+  },
+  {
+    "id": "0992280700001",
+    "nombre": "COAC.  HUANCAVILCA LTDA"
+  },
+  {
+    "id": "0591714031001",
+    "nombre": "COAC.  ILINIZA LTDA"
+  },
+  {
+    "id": "1091716697001",
+    "nombre": "COAC.  IMBABURA IMBACOOP LTDA"
+  },
+  {
+    "id": "1890142679001",
+    "nombre": "COAC.  INDIGENA SAC LTDA"
+  },
+  {
+    "id": "1891726763001",
+    "nombre": "COAC.  INDIGENA SAC PILLARO LTDA"
+  },
+  {
+    "id": "2091756679001",
+    "nombre": "COAC.  INDIGENAS GALAPAGOS LTDA"
+  },
+  {
+    "id": "1891745571001",
+    "nombre": "COAC.  INTERANDINA"
+  },
+  {
+    "id": "0190338509001",
+    "nombre": "COAC.  JADAN"
+  },
+  {
+    "id": "0190155722001",
+    "nombre": "COAC.  JARDIN AZUAYO LIMITADA"
+  },
+  {
+    "id": "0290004454001",
+    "nombre": "COAC.  JUAN PIO DE MORA LTDA"
+  },
+  {
+    "id": "0190115798001",
+    "nombre": "COAC.  JUVENTUD ECUATORIANA PROGRESISTA LIMITADA"
+  },
+  {
+    "id": "1891725104001",
+    "nombre": "COAC.  JUVENTUD UNIDA LTDA"
+  },
+  {
+    "id": "1891721591001",
+    "nombre": "COAC.  KISAPINCHA LTDA"
+  },
+  {
+    "id": "1891710255001",
+    "nombre": "COAC.  KULLKI WASI LTDA"
+  },
+  {
+    "id": "1390143156001",
+    "nombre": "COAC.  LA BENEFICA LTDA"
+  },
+  {
+    "id": "0990138850001",
+    "nombre": "COAC.  LA DOLOROSA LTDA"
+  },
+  {
+    "id": "1891714633001",
+    "nombre": "COAC.  LA FLORESTA LTDA"
+  },
+  {
+    "id": "0190021769001",
+    "nombre": "COAC.  LA MERCED LIMITADA"
+  },
+  {
+    "id": "1291731518001",
+    "nombre": "COAC.  LA NUESTRA LTDA"
+  },
+  {
+    "id": "0290035260001",
+    "nombre": "COAC.  LAS NAVES LTDA"
+  },
+  {
+    "id": "0992381760001",
+    "nombre": "COAC.  LOS ANDES LATINOS LTDA"
+  },
+  {
+    "id": "0690075113001",
+    "nombre": "COAC.  LUCHA CAMPESINA"
+  },
+  {
+    "id": "1791847644001",
+    "nombre": "COAC.  LUZ DEL VALLE"
+  },
+  {
+    "id": "1390017177001",
+    "nombre": "COAC.  MAGISTERIO MANABITA LIMITADA"
+  },
+  {
+    "id": "1792076773001",
+    "nombre": "COAC.  MANANTIAL DE ORO LTDA"
+  },
+  {
+    "id": "1891708358001",
+    "nombre": "COAC.  MAQUITA CUSHUN LTDA"
+  },
+  {
+    "id": "1791379470001",
+    "nombre": "COAC.  MAQUITA CUSHUNCHIC LTDA"
+  },
+  {
+    "id": "0791704499001",
+    "nombre": "COAC.  MARCABELI LTDA"
+  },
+  {
+    "id": "0992470550001",
+    "nombre": "COAC.  METROPOLIS LTDA"
+  },
+  {
+    "id": "0990872562001",
+    "nombre": "COAC.  METROPOLITANA LTDA"
+  },
+  {
+    "id": "1391707363001",
+    "nombre": "COAC.  MICROEMPRESARIAL SUCRE"
+  },
+  {
+    "id": "1891734650001",
+    "nombre": "COAC.  MIGRANTES DEL ECUADOR LTDA"
+  },
+  {
+    "id": "0690074761001",
+    "nombre": "COAC.  MINGA LTDA"
+  },
+  {
+    "id": "1091712284001",
+    "nombre": "COAC.  MUJERES UNIDAS TANTANAKUSHKA WARMIKUNAPAC"
+  },
+  {
+    "id": "0190160459001",
+    "nombre": "COAC.  MULTIEMPRESARIAL"
+  },
+  {
+    "id": "1890141877001",
+    "nombre": "COAC.  MUSHUC RUNA LTDA"
+  },
+  {
+    "id": "1792311667001",
+    "nombre": "COAC.  NEGOCIOS ANDINOS LTDA"
+  },
+  {
+    "id": "0691720721001",
+    "nombre": "COAC.  NUEVA ESPERANZA LTDA"
+  },
+  {
+    "id": "0591724444001",
+    "nombre": "COAC.  OCCIDENTAL"
+  },
+  {
+    "id": "0790015002001",
+    "nombre": "COAC.  ONCE DE JUNIO LTDA"
+  },
+  {
+    "id": "1792253411001",
+    "nombre": "COAC.  ORDEN Y SEGURIDAD \"OYS\""
+  },
+  {
+    "id": "1890001323001",
+    "nombre": "COAC.  OSCUS LIMITADA"
+  },
+  {
+    "id": "0490001883001",
+    "nombre": "COAC.  PABLO MUÑOZ VEGA LIMITADA"
+  },
+  {
+    "id": "1190015110001",
+    "nombre": "COAC.  PADRE JULIAN LORENTE LTDA"
+  },
+  {
+    "id": "1790892670001",
+    "nombre": "COAC.  PEDRO MONCAYO LTDA"
+  },
+  {
+    "id": "1792057043001",
+    "nombre": "COAC.  PICHINCHA LTDA"
+  },
+  {
+    "id": "1091720902001",
+    "nombre": "COAC.  PILAHUIN TIO LIMITADA"
+  },
+  {
+    "id": "1790866084001",
+    "nombre": "COAC.  POLICIA NACIONAL LIMITADA"
+  },
+  {
+    "id": "1790641392001",
+    "nombre": "COAC.  POLITECNICA LTDA"
+  },
+  {
+    "id": "1791280156001",
+    "nombre": "COAC.  PREVISION AHORRO Y DESAROLLO LTDA"
+  },
+  {
+    "id": "1891739113001",
+    "nombre": "COAC.  PRODUCCION AHORRO INVERSION SERVICIO PAIS LTDA"
+  },
+  {
+    "id": "0190327949001",
+    "nombre": "COAC.  PROVIDA LTDA"
+  },
+  {
+    "id": "0591714821001",
+    "nombre": "COAC.  PUCARA LTDA"
+  },
+  {
+    "id": "1790890864001",
+    "nombre": "COAC.  PUELLARO LTDA"
+  },
+  {
+    "id": "0591713760001",
+    "nombre": "COAC.  PUJILI LTDA"
+  },
+  {
+    "id": "1891737439001",
+    "nombre": "COAC.  PUSHAK RUNA LTDA"
+  },
+  {
+    "id": "1891742319001",
+    "nombre": "COAC.  RHUMY WARA"
+  },
+  {
+    "id": "0690045389001",
+    "nombre": "COAC.  RIOBAMBA LTDA"
+  },
+  {
+    "id": "1091761439001",
+    "nombre": "COAC.  RURAL SIERRA NORTE"
+  },
+  {
+    "id": "0290034337001",
+    "nombre": "COAC.  SALINAS LIMITADA"
+  },
+  {
+    "id": "0990858527001",
+    "nombre": "COAC.  SALITRE LTDA"
+  },
+  {
+    "id": "1090046892001",
+    "nombre": "COAC.  SAN ANTONIO LTDA - IMBABURA"
+  },
+  {
+    "id": "1290068068001",
+    "nombre": "COAC.  SAN ANTONIO LTDA LOS RÍOS"
+  },
+  {
+    "id": "1790100294001",
+    "nombre": "COAC.  SAN CRISTOBAL LTDA"
+  },
+  {
+    "id": "1790045668001",
+    "nombre": "COAC.  SAN FRANCISCO DE ASIS LTDA"
+  },
+  {
+    "id": "1890003628001",
+    "nombre": "COAC.  SAN FRANCISCO LTDA"
+  },
+  {
+    "id": "0490009124001",
+    "nombre": "COAC.  SAN GABRIEL LTDA"
+  },
+  {
+    "id": "0690069334001",
+    "nombre": "COAC.  SAN JORGE LTDA"
+  },
+  {
+    "id": "0290003288001",
+    "nombre": "COAC.  SAN JOSE LIMITADA"
+  },
+  {
+    "id": "1790894053001",
+    "nombre": "COAC.  SAN JUAN DE COTOGCHOA"
+  },
+  {
+    "id": "0391008558001",
+    "nombre": "COAC.  SAN MARCOS"
+  },
+  {
+    "id": "1891716385001",
+    "nombre": "COAC.  SAN MARTIN DE TISALEO LTDA"
+  },
+  {
+    "id": "1791367359001",
+    "nombre": "COAC.  SAN MIGUEL DE LOS BANCOS LTDA"
+  },
+  {
+    "id": "0690074397001",
+    "nombre": "COAC.  SAN MIGUEL DE PALLATANGA"
+  },
+  {
+    "id": "0590060437001",
+    "nombre": "COAC.  SAN MIGUEL DE SIGCHOS"
+  },
+  {
+    "id": "0290003180001",
+    "nombre": "COAC.  SAN MIGUEL LTDA"
+  },
+  {
+    "id": "0290030099001",
+    "nombre": "COAC.  SAN PEDRO LTDA"
+  },
+  {
+    "id": "1390091474001",
+    "nombre": "COAC.  SANTA ANA LTDA"
+  },
+  {
+    "id": "1091708139001",
+    "nombre": "COAC.  SANTA ANITA LTDA"
+  },
+  {
+    "id": "0190160378001",
+    "nombre": "COAC.  SANTA ISABEL LTDA"
+  },
+  {
+    "id": "0790024656001",
+    "nombre": "COAC.  SANTA ROSA LIMITADA"
+  },
+  {
+    "id": "1191736423001",
+    "nombre": "COAC.  SARAGUROS"
+  },
+  {
+    "id": "0190317625001",
+    "nombre": "COAC.  SEÑOR DE GIRON"
+  },
+  {
+    "id": "0190096076001",
+    "nombre": "COAC.  SIDETAMC"
+  },
+  {
+    "id": "0591719009001",
+    "nombre": "COAC.  SIERRA CENTRO LTDA"
+  },
+  {
+    "id": "0291500994001",
+    "nombre": "COAC.  SIMIATUG LIMITADA"
+  },
+  {
+    "id": "1891744214001",
+    "nombre": "COAC.  SISA"
+  },
+  {
+    "id": "0691732584001",
+    "nombre": "COAC.  SOL DE LOS ANDES LTDA CHIMBORAZO"
+  },
+  {
+    "id": "0190147665001",
+    "nombre": "COAC.  SOLIDARIDAD, EMPRENDIMIENTO Y COOPERACIÓN"
+  },
+  {
+    "id": "0690042495001",
+    "nombre": "COAC.  SUMAC LLACTA LTDA"
+  },
+  {
+    "id": "0591711563001",
+    "nombre": "COAC.  SUMAK KAWSAY LTDA"
+  },
+  {
+    "id": "1891725910001",
+    "nombre": "COAC.  SUMAK SAMY LTDA"
+  },
+  {
+    "id": "1590001585001",
+    "nombre": "COAC.  TENA LTDA"
+  },
+  {
+    "id": "1791268628001",
+    "nombre": "COAC.  TEXTIL 14 DE MARZO"
+  },
+  {
+    "id": "0490002669001",
+    "nombre": "COAC.  TULCAN LIMITADA"
+  },
+  {
+    "id": "0591714236001",
+    "nombre": "COAC.  UNIBLOCK Y SERVICIOS LTDA"
+  },
+  {
+    "id": "1791422708001",
+    "nombre": "COAC.  UNIDAD Y PROGRESO"
+  },
+  {
+    "id": "1090058521001",
+    "nombre": "COAC.  UNION EL EJIDO"
+  },
+  {
+    "id": "1091728148001",
+    "nombre": "COAC.  UNIOTAVALO LTDA"
+  },
+  {
+    "id": "1791708288001",
+    "nombre": "COAC.  UNIVERSIDAD CATOLICA DEL ECUADOR"
+  },
+  {
+    "id": "1891710581001",
+    "nombre": "COAC.  VENCEDORES LTDA"
+  },
+  {
+    "id": "1190068389001",
+    "nombre": "COAC.  VICENTINA MANUEL ESTEBAN GODOY ORTEGA LIMITADA"
+  },
+  {
+    "id": "1191736954001",
+    "nombre": "COAC.  VILCABAMBA CACVIL"
+  },
+  {
+    "id": "0591711164001",
+    "nombre": "COAC.  VIRGEN DEL CISNE"
+  },
+  {
+    "id": "0591719718001",
+    "nombre": "COAC.  VISION DE LOS ANDES VIS ANDES"
+  },
+  {
+    "id": "0391005664001",
+    "nombre": "COAC.  YUYAY LTDA"
+  },
+  {
+    "id": "1890012015001",
+    "nombre": "MUT.  AMBATO"
+  },
+  {
+    "id": "0190006247001",
+    "nombre": "MUT.  AZUAY"
+  },
+  {
+    "id": "1090056286001",
+    "nombre": "MUT.  IMBABURA"
+  },
+  {
+    "id": "1790075494001",
+    "nombre": "MUT.  PICHINCHA"
+  }
+]

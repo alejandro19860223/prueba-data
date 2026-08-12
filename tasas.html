@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entorno Macroeconómico - Data Financiero</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tasas.css">
+    <link rel="stylesheet" href="tabletasas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <!-- Select2 JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>   
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Mostrar menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <img src="images/imgdatalux2.png" alt="Data Financiero" class="header-logo">
+            <div class="header-brand">
+                <span class="brand-name">DATA FINANCIERO</span>
+                <span class="brand-sub">Administración de Bases de Datos</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="dashboard.html" class="nav-link">Home</a>
+            <a href="macroeconomico.html" class="nav-link">Entorno Macroeconómico</a>
+            <a href="sistema.html" class="nav-link">Sistema Financiero</a>
+            <a href="tasas.html" class="nav-link active">Tasas de Interés</a>
+            <a href="analisis.html" class="nav-link">Análisis Financiero</a>
+        </nav>
+        <div class="header-user">
+            <span id="welcomeUser">Bienvenido, Usuario</span>
+            <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Salir</button>
+        </div>
+    </header>
+
+    <!-- Overlay del sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar con MENÚ COMPLETO -->
+    <aside class="sidebar-tree" id="sidebarTree">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-folder-tree"></i> Contenidos</h3>
+            <button class="btn-close-sidebar" id="btnCloseSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="tree-container">
+            <ul class="tree">
+                
+<!-- ==================== SISTEMA FINANCIERO NACIONAL ==================== -->
+<li class="tree-item has-children collapsed">
+    <div class="tree-node" onclick="toggleNode(this)">
+        <span class="toggle-icon">+</span>
+        <i class="fas fa-folder folder-icon"></i>
+        <span class="node-label">Tasas de Interés Activas y Pasivas</span>
+    </div>
+    <ul class="tree-children">
+        
+        <!-- ==================== ESTADOS FINANCIEROS (SUBCARPETA) ==================== -->
+        <li class="tree-item has-children collapsed">
+            <div class="tree-node" onclick="toggleNode(this)">
+                <span class="toggle-icon">+</span>
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="node-label">Composición de la Tasa de Interés Activas</span>
+            </div>
+            <ul class="tree-children">
+                <li class="tree-item leaf" onclick="loadCarteraTable('TEA01')">
+                    <span class="toggle-icon leaf-icon">📊</span>
+                    <span class="node-label">1.1 Sistema Financiero Nacional</span>
+                </li>
+                <li class="tree-item leaf" onclick="loadCarteraTableEfi('TEA02')">
+                    <span class="toggle-icon leaf-icon">📊</span>
+                    <span class="node-label">1.2 Por Entidad Financiera</span>
+                </li>
+            </ul>
+        </li>
+ 
+        <!-- ==================== ESTADOS FINANCIEROS (SUBCARPETA) ==================== -->
+        <li class="tree-item has-children collapsed">
+            <div class="tree-node" onclick="toggleNode(this)">
+                <span class="toggle-icon">+</span>
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="node-label">Tasa de Interés Pasivas</span>
+            </div>
+            <ul class="tree-children">
+                <li class="tree-item leaf" onclick="loadTable('TPE01')">
+                    <span class="toggle-icon leaf-icon">📊</span>
+                    <span class="node-label">1.1 Sistema Financiero Nacional</span>
+                </li>
+                <li class="tree-item leaf" onclick="loadTableEfi('TPE02')">
+                    <span class="toggle-icon leaf-icon">📊</span>
+                    <span class="node-label">1.2 Por Entidad Financiera</span>
+                </li>
+            </ul>
+        </li>        
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Layout Principal -->
+    <div class="macro-layout">
+        
+        <!-- COLUMNA 1: Área de Contenido con Tabla -->
+        <main class="content-area">
+            <div class="content-header">
+                <h2 id="contentTitle">ESTADO DE SITUACIÓN CONSOLIDADO Y CONDENSADO</h2>
+                <p class="content-subtitle" id="contentSubtitle"></p>
+                        <div class="content-toolbar">
+                            <!-- Primera fila: Período y Descargar -->
+                            <div class="filter-row filter-row-top">
+                                <div class="period-selector">
+                                    <label>Período: Desde</label>
+                                    <select id="periodFrom">
+                                        <option value="2007" selected>2007</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                    <label>Hasta</label>
+                                    <select id="periodTo">
+                                        <option value="2020">2020</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>>
+                                        <option value="2025">2025</option>
+                                        <option value="2026"selected>2024</option>
+                                    </select>
+                                </div>
+                                <div class="toolbar-actions">
+                                    <button class="btn-tool" id="btnDownloadTable" title="Descargar tabla completa">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Separador -->
+                            <hr class="filter-separator">
+
+                            <!-- Segunda fila: Sector y Análisis -->
+                            <div class="filter-row filter-row-bottom">
+                                <div class="sector-selector">
+                                    <label for="sectorFilter">Seleccione Sector Financiero:</label>
+                                    <select id="sectorFilter">
+                                        <option value="nacional" selected>Sistema Financiero Nacional (privado y eps)</option>
+                                        <option value="privado">Sector Financiero Privado</option>
+                                        <option value="popular">Sector Financiero Popular y Solidario</option>
+                                        <option value="grande">Bancos Privados Grandes</option>
+                                        <option value="medianos">Bancos Privados Medianos</option>
+                                        <option value="peque">Bancos Privados Pequeños</option>
+                                        <option value="seg1">Coop. Segmento 1</option>
+                                        <option value="seg2">Coop. Segmento 2</option>
+                                        <option value="seg3">Coop. Segmento 3</option>
+                                        <option value="mut">Asociación Mutualistas de Ahorro y Crédito para la Vivienda</option>
+                                    </select>
+                                </div>
+
+                                <!-- ✅ SELECTOR: Entidades Financieras con Select2 (Buscador integrado) -->
+                                <div class="sector-selector" id="entidadFilterContainer" style="display: none;">
+                                    <label for="entidadFilter">Seleccione Entidad Financiera:</label>
+                                    <!-- Select2 convertirá esto en un buscador automáticamente -->
+                                    <select id="entidadFilter" style="width: 350px;">
+                                        <option value="todas">Todas las Entidades</option>
+                                        <!-- Las opciones se llenan con JS -->
+                                    </select>
+                                </div>
+
+                                <div class="sector-selector" id="analisisFilterContainer">
+                                    <label>Seleccione Análisis:</label>
+                                    <select id="analisisFilter">
+                                        <option value="saldo">Saldo Millones USD</option>
+                                        <option value="horizontal">Análisis Horizontal (%)</option>
+                                        <option value="vertical">Análisis Vertical (%)</option>
+                                    </select>
+                                </div>
+
+                                <div class="sector-selector" id="carteraFilterContainer">
+                                    <label>Seleccione Tipo Crédito:</label>
+                                    <select id="carteraFilter">
+                                        <option value="prod">Productivo</option>
+                                        <option value="consumo">Consumo</option>
+                                        <option value="inmo">Inmobiliario</option>
+                                        <option value="vips">Vivienda interés Público y Social</option>
+                                        <option value="edu">Educativo</option>
+                                        <option value="micro">Microcrédito</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+            </div>
+            
+            <div class="table-container" id="tableContainer">
+                <div class="loading-table">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando datos...</p>
+                </div>
+            </div>
+            <div id="tableContainer"></div>
+            <div id="notasContainer" class="notas-panel" style="display: none;"></div>
+        </main>
+
+        <!-- COLUMNA 2: Mi Colección -->
+        <aside class="collection-panel">
+            <div class="collection-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                <h3><i class="fas fa-star"></i> Mi Colección</h3>
+                
+                <!-- Botón del carrito movido aquí -->
+        <button class="btn-carrito-header" onclick="abrirModalCarrito()" title="Ver carrito">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="carrito-contador-header" id="carritoContadorHeader" style="display: none;">0</span>
+        </button>
+                    </div>
+
+                <span class="collection-count" id="collectionCount">0 series</span>
+                <button class="btn-ampliar" id="btnAmpliar" title="Ampliar gráfico">
+                    <i class="fas fa-expand"></i> AMPLIAR
+                </button>
+
+                    <!-- NUEVO: Toggle para mostrar/ocultar etiquetas -->
+            <div class="labels-toggle">
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleLabels" onchange="toggleLabelsVisibility()">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">📊 Mostrar valores en gráficos</span>
+                </label>
+                <p class="toggle-hint">Active/desactive etiquetas.</p>
+            </div>
+
+            </div>
+            
+            <div class="collection-body">
+                <!-- Recuadro 1: Gráficos (arriba) -->
+                <div class="collection-charts" id="collectionCharts">
+                    <div class="empty-charts">
+                        <i class="fas fa-chart-line charts-icon"></i>
+                        <p>Selecciona una serie para ver su gráfico</p>
+                    </div>
+                    <div id="mainChart" style="width: 100%; height: 100%; display: none;"></div>
+                </div>
+                
+                <!-- Recuadro 2: Series seleccionadas (abajo) -->
+                <div class="collection-series" id="collectionSeries">
+                    <div class="empty-collection">
+                        <p>Activa hasta 10 series que quieras analizar.</p>
+                        <p class="small-text">Selecciona tus series del cuadro y agrégalas aquí.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de gráfico ampliado -->
+    <div class="modal-overlay" id="chartModal">
+        <div class="modal-chart">
+            <div class="modal-chart-header">
+                <h3 id="modalChartTitle">Gráfico Ampliado</h3>
+                <div class="modal-chart-controls">
+                    <button class="btn-close-modal" id="btnCloseModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-chart-body">
+                <div id="expandedChart" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Gráfico Individual -->
+<div id="singleChartModal" class="modal-overlay">
+    <div class="modal-chart">
+        <div class="modal-chart-header">
+            <h3 id="singleChartTitle">Título del Gráfico</h3>
+            <div class="modal-chart-controls">
+                <!-- Toggle para mostrar/ocultar etiquetas -->
+                <div class="labels-toggle-inline">
+                    <label class="toggle-label-small">
+                        <input type="checkbox" id="toggleLabelsSingle" onchange="toggleLabelsSingleVisibility()">
+                        <span class="toggle-slider-small"></span>
+                        <span class="toggle-text-small">📊 Mostrar valores</span>
+                    </label>
+                </div>
+                <button class="btn-close-modal" id="btnCloseSingleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="modal-chart-body">
+            <div id="singleChart" style="width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo-column">
+                <img src="images/IDCE.png" alt="IDCE Consulting" class="footer-idce-logo">
+                <p class="footer-copyright">© 2025 DataFinanciero by IDCE Consulting.</p>
+                <p class="footer-rights">Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-contact-column">
+                <h4 class="footer-contact-title">Contacto:</h4>
+                <div class="footer-contact-info">
+                    <p class="footer-address"><strong>Dirección:</strong> Av. Orellana E11-75 y Av. La Coruña<br>Edificio Albra - Piso 4 - Of. 405<br>Quito - Ecuador</p>
+                    <p class="footer-phone"><strong>Teléfono:</strong> (+593) 2 382 6201</p>
+                    <p class="footer-mobile"><strong>Móvil:</strong> (+593) 993 165 074</p>
+                    <p class="footer-email"><strong>E-mail:</strong> <a href="mailto:info@idceconsulting.com">info@idceconsulting.com</a></p>
+                    <p class="footer-web"><strong>Web:</strong> <a href="https://www.idceconsulting.com" target="_blank">www.idceconsulting.com</a></p>
+                </div>
+            </div>
+            <div class="footer-social-column">
+                <h4 class="footer-social-title">Síguenos:</h4>
+                <div class="footer-social-icons">
+                    <a href="#" class="social-icon"><img src="images/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="#" class="social-icon"><img src="images/linkedin.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+<!-- Modal del Carrito (SOLO UNA VEZ) -->
+<div id="modalCarrito" class="modal-overlay">
+    <div class="modal-carrito">
+        <div class="modal-carrito-header">
+            <h3><i class="fas fa-shopping-cart"></i> Mi Carrito de Series</h3>
+            <button class="btn-cerrar-modal" onclick="cerrarModalCarrito()" title="Cerrar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-carrito-body" id="modalCarritoBody">
+            <!-- Se llena dinámicamente con JS -->
+        </div>
+        
+        <div class="modal-carrito-footer">
+            <button class="btn-vaciar-carrito" onclick="vaciarCarrito()" title="Vaciar todo el carrito">
+                <i class="fas fa-trash"></i> Vaciar Carrito
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="tasas.js"></script>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="spinner-circle"></div>
+        <div class="loading-text">CARGANDO...</div>
+    </div>
+</div>
+
+</body>
+</html>

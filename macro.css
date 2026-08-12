@@ -1,3 +1,7 @@
+body {
+    font-size: 9px;  /* o 13px si necesitas más pequeño */
+}
+
 /* ===================================
 LAYOUT PRINCIPAL - 3 COLUMNAS (FIJO)
 =================================== */
@@ -154,7 +158,7 @@ SIDEBAR COMO OVERLAY (NO MODIFICA LAYOUT)
 
 .node-label {
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.60rem;
     color: #334155;
     line-height: 1.4;
     flex: 1;
@@ -206,7 +210,7 @@ SIDEBAR COMO OVERLAY (NO MODIFICA LAYOUT)
 .tree-item.leaf .node-label {
     flex: 1;
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.60rem;
     color: #334155;
     line-height: 1.4;
 }
@@ -238,7 +242,7 @@ COLUMNA 1: ÁREA DE CONTENIDO
 
 .content-header h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     color: var(--primary-blue);
     margin: 0 0 15px 0;
     font-weight: 700;
@@ -712,7 +716,7 @@ ESTILOS DE TABLA
 
 .content-subtitle {
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #64748b;
     margin: 5px 0 15px 0;
     font-weight: 500;

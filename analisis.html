@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Financiero - Data Financiero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="analisis.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="dashboard.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <div class="logo">
+                    <h1>DATA FINANCIERO</h1>
+                    <span>Administración de Bases de Datos</span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="dashboard.html">Home</a>
+                <a href="macroeconomico.html">Entorno Macroeconómico</a>
+                <a href="sistema.html">Sistema Financiero</a>
+                <a href="tasas.html">Tasas de Interés</a>
+                <a href="analisis.html" class="active">Análisis Financiero</a>
+            </nav>
+            
+            <div class="header-right">
+                <span class="welcome-text">Bienvenido, <span id="username">Usuario</span></span>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Salir
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="hub-container">
+        <div class="hub-header">
+            <div class="hub-title-section">
+                <h1>DASHBOARD DE REPORTES</h1>
+                <p>Accede a los reportes del equipo de forma rápida y sencilla.</p>
+            </div>
+            
+            <div class="last-update">
+                <div class="update-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="update-info">
+                    <span class="update-label">Datos actualizados</span>
+                    <span class="update-date" id="currentDateTime">27/06/2025 9:00 a.m.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Reportes -->
+        <div class="reports-grid">
+            <!-- Balances -->
+            <div class="report-card finanzas" onclick="openReport('finanzas')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Balances</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Intermediación Financiera -->
+            <div class="report-card ventas" onclick="openReport('ventas')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Intermediación Financiera</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Indicadores Financieros -->
+            <div class="report-card rrhh" onclick="openReport('rrhh')">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Indicadores Financieros</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Tasas de Interés -->
+            <div class="report-card operaciones" onclick="openReport('operaciones')">
+                <div class="card-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Tasas de Interés</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Rannking Financiero -->
+            <div class="report-card riesgos" onclick="openReport('riesgos')">
+                <div class="card-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Rannking Financiero</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Comparativo entre entidades -->
+            <div class="report-card cumplimiento" onclick="openReport('cumplimiento')">
+                <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Comparativo entre entidades</h3>
+                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+            </div>
+
+            <!-- Enlaces Externos -->
+            <div class="report-card externos" onclick="openReport('externos')">
+                <div class="card-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h3>ENLACES EXTERNOS</h3>
+                <p>Abrir <i class="fas fa-external-link-alt"></i></p>
+            </div>
+        </div>
+
+        <!-- Footer del Hub -->
+        <div class="hub-footer">
+            <div class="footer-info">
+                <div class="info-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="info-text">
+                    <h4>Todo lo que necesitas, en un solo lugar.</h4>
+                    <p>Explora los reportes del equipo de forma fácil y rápida.</p>
+                </div>
+            </div>
+            <div class="footer-illustration">
+                <i class="fas fa-chart-line"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 DataFinanciero by IDCE Consulting. Todos los derechos reservados.</p>
+            <div class="footer-contact">
+                <p><strong>Contacto:</strong></p>
+                <p>Dirección: Av. Orellana E11-75 y Av. La Coruña Edificio Albra - Piso 4 - Of. 405 Quito - Ecuador</p>
+                <p>Teléfono: (+593) 2 382 6201 | Móvil: (+593) 993 165 074</p>
+                <p>E-mail: <a href="mailto:info@idceconsulting.com">info@idceconsulting.com</a> | Web: <a href="https://www.idceconsulting.com" target="_blank">www.idceconsulting.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="analisis.js"></script>
+</body>
+</html>

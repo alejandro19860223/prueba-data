@@ -134,7 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===================================
 // CONFIGURACIÓN INICIAL
 // ===================================
-const DATA_FILES = ['data/base_estru_sistema.json'];
+const DATA_PATHS = {
+    sistema: 'data/base_estru_sistema.json',       // <-- TU ARCHIVO ORIGINAL
+    listaEntidades: 'data/entidades_lista.json',   // El mapa que genera el script de R
+    carpetaEntidades: 'data/entidades/',            // La carpeta con los JSON individuales
+    balancesEntidades: 'data/balances/'            // La carpeta con los JSON de balances
+};
+
 const NOTAS_FILE = 'data/base_notas.json';
 let allDataCache = [];
 let tableData = [];
@@ -148,27 +154,26 @@ let singleChart = null;
 let showLabels = false;
 let notasData = {};
 let balancesData = [];
+let carteraData = [];
+let entidadDataCache = {};  
+let currentEntidadData = null; 
+let entidadesMap = {}; 
+let entidadBalancesDataCache = {}; // <-- NUEVA CACHÉ PARA NO REPETIR FETCH
 
-// ===================================
-// CARGAR TODOS LOS ARCHIVOS JSON
-// ===================================
-async function loadAllDataFiles() {
-    console.log('🔄 Cargando todos los archivos de datos...');
+
+// 1. Cargar el sistema consolidado al inicio
+async function loadSistemaData() {
+    console.log('🔄 Cargando datos consolidados del sistema...');
     try {
-        const promises = DATA_FILES.map(file => fetch(file).then(res => {
-            if (!res.ok) throw new Error(`Error cargando ${file}`);
-            return res.json();
-        }));
-        
-        const allResults = await Promise.all(promises);
-        allDataCache = allResults.flat();
-        console.log(`✅ Todos los datos cargados: ${allDataCache.length} filas totales`);
-        return allDataCache;
+        const res = await fetch(DATA_PATHS.sistema); // <-- USA TU ARCHIVO ORIGINAL
+        if (!res.ok) throw new Error('Error cargando el sistema');
+        allDataCache = await res.json();
+        console.log(`✅ Sistema cargado: ${allDataCache.length} filas`);
     } catch (error) {
-        console.error('❌ Error cargando archivos:', error);
-        return [];
+        console.error('❌ Error cargando sistema:', error);
     }
 }
+
 
 // ===================================
 // CARGAR BASE DE BALANCES
@@ -188,23 +193,366 @@ async function loadBalancesData() {
 }
 
 // ===================================
-// CARGAR TABLA DESDE EL MENÚ
+// CARGAR BASE DE CARTERA
+// ===================================
+async function loadCarteraData() {
+    console.log('🔄 Cargando base de cartera...');
+    try {
+        const response = await fetch('data/base_cartera.json');
+        if (!response.ok) throw new Error('Error cargando base_cartera.json');
+        carteraData = await response.json();
+        console.log(`✅ Cartera cargada: ${carteraData.length} filas`);
+        return carteraData;
+    } catch (error) {
+        console.error('❌ Error cargando cartera:', error);
+        return [];
+    }
+}
+
+// ===================================
+// CARGAR DATOS DE ENTIDAD ESPECÍFICA (BAJO DEMANDA)
+// ===================================
+async function loadEntidadData(entidadNombre) {
+    // 1. Verificar si ya está en caché (para no descargarla dos veces)
+    if (entidadDataCache[entidadNombre]) {
+        console.log(`💾 Usando caché para: ${entidadNombre}`);
+        return entidadDataCache[entidadNombre];
+    }
+    
+    console.log(`🔄 Cargando datos bajo demanda de: ${entidadNombre}`);
+    
+    try {
+        // 2. Crear nombre de archivo seguro (sin tildes ni caracteres raros)
+        const nombreArchivo = entidadNombre
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '') 
+            .replace(/[^A-Za-z0-9]/g, '_');                    
+        
+        // ✅ CORRECCIÓN: Usar DATA_PATHS.carpetaEntidades, no DATA_FILES
+        const url = `${DATA_PATHS.carpetaEntidades}${nombreArchivo}.json`;
+        
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`No se encontró el archivo: ${url}`);
+        
+        const data = await response.json();
+        
+        // 3. Guardar en caché para la próxima vez
+        entidadDataCache[entidadNombre] = data;
+        console.log(`✅ Entidad cargada exitosamente: ${data.length} filas`);
+        
+        return data;
+    } catch (error) {
+        console.error(`❌ Error cargando entidad ${entidadNombre}:`, error);
+        return [];
+    }
+}
+
+
+// ===================================
+// CARGAR BALANCES DE ENTIDAD ESPECÍFICA (BAJO DEMANDA)
+// ===================================
+async function loadBalancesEntidadData(entidadNombre) {
+    // 1. Verificar caché
+    if (entidadBalancesDataCache[entidadNombre]) {
+        console.log(`💾 Usando caché de balances para: ${entidadNombre}`);
+        return entidadBalancesDataCache[entidadNombre];
+    }
+    
+    console.log(`🔄 Cargando balances bajo demanda de: ${entidadNombre}`);
+    
+    try {
+        // 2. Crear nombre de archivo seguro
+        const nombreArchivo = entidadNombre
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '') 
+            .replace(/[^A-Za-z0-9]/g, '_');                    
+        
+        const url = `${DATA_PATHS.balancesEntidades}${nombreArchivo}.json`;
+        console.log(`📂 Intentando cargar desde: ${url}`);
+        
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`No se encontró el archivo: ${url} (Status: ${response.status})`);
+        
+        const data = await response.json();
+        
+        // 3. Guardar en caché
+        entidadBalancesDataCache[entidadNombre] = data;
+        console.log(`✅ Balances de entidad cargados exitosamente: ${data.length} filas`);
+        
+        // 🔍 DEBUG: Mostrar un ejemplo de la primera fila para verificar estructura
+        if (data.length > 0) {
+            console.log('🔍 Ejemplo de primera fila cargada:', data[0]);
+        }
+        
+        return data;
+    } catch (error) {
+        console.error(`❌ Error cargando balances de ${entidadNombre}:`, error);
+        return [];
+    }
+}
+
+// ===================================
+// 🏦 CARGAR TABLA DE BALANCES POR ENTIDAD FINANCIERA (EFI)
+// ===================================
+async function loadBalancesTableEfi(cuadroId) {
+    console.log(`🔄 Cargando tabla de balances EFI: ${cuadroId}`);
+    
+    showLoading();
+    currentCuadroId = cuadroId;
+    
+    // 1. Manejo de visibilidad de filtros
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'none';
+    }
+
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) {
+        entidadContainer.classList.add('visible');
+    }
+    
+    const analisisContainer = document.getElementById('analisisFilterContainer');
+    if (analisisContainer) {
+        analisisContainer.classList.add('visible');
+    }
+    
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.remove('visible');
+
+    try {
+        // 2. Obtener entidad seleccionada
+        const entidadFilter = document.getElementById('entidadFilter');
+        let entidadNombre = 'BP. AMAZONAS'; // Valor por defecto
+        
+        if (entidadFilter && entidadFilter.value && entidadFilter.value !== 'todas') {
+            entidadNombre = entidadFilter.value;
+        } else if (entidadFilter) {
+            entidadFilter.value = 'BP. AMAZONAS';
+        }
+        
+        // 3. Obtener tipo de análisis seleccionado
+        const analisisFilter = document.getElementById('analisisFilter');
+        const analisisValor = analisisFilter ? analisisFilter.value : 'saldo';
+        
+        const idMap = {
+            'saldo': 'Saldo Millones USD',
+            'horizontal': 'Análisis Horizontal (%)',
+            'vertical': 'Análisis Vertical (%)'
+        };
+        const targetId = idMap[analisisValor];
+        
+        console.log(`🏦 Parámetros de búsqueda -> Entidad: "${entidadNombre}" | Cuadro: "${cuadroId}" | ID buscado: "${targetId}"`);
+        
+        // 4. Cargar datos bajo demanda
+        const dataEntidad = await loadBalancesEntidadData(entidadNombre);
+        
+        if (dataEntidad.length === 0) {
+            console.warn(`⚠️ La entidad "${entidadNombre}" no devolvió datos.`);
+        }
+        
+        // 5. Filtrar localmente por Cuadro y ID de análisis
+        tableData = dataEntidad.filter(row => {
+            return row.Cuadro === cuadroId && row.ID === targetId;
+        });
+        
+        console.log(`📊 Filas después del filtro: ${tableData.length}`);
+        
+        if (tableData.length === 0) {
+            // 🔍 DEBUG: Mostrar valores únicos en el JSON para ayudarte a corregir el R
+            const cuadrosUnicos = [...new Set(dataEntidad.map(r => r.Cuadro))];
+            const idsUnicos = [...new Set(dataEntidad.map(r => r.ID))];
+            console.warn(`⚠️ No se encontraron coincidencias.`);
+            console.warn(`   -> Cuadros disponibles en el JSON:`, cuadrosUnicos);
+            console.warn(`   -> IDs disponibles en el JSON:`, idsUnicos);
+
+            const tableContainer = document.getElementById('tableContainer');
+            if (tableContainer) {
+                tableContainer.innerHTML = `
+                    <div class="loading-table">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron datos de balances para: ${entidadNombre}</p>
+                        <p style="font-size: 0.75rem; color: #f59e0b; margin-top: 10px;">
+                            Revisa la consola (F12) para ver qué valores de "Cuadro" e "ID" tiene tu JSON.
+                        </p>
+                    </div>
+                `;
+            }
+            hideLoading();
+            return;
+        }
+        
+        // 6. Actualizar títulos de la página
+        const contentTitle = document.getElementById('contentTitle');
+        if (contentTitle) contentTitle.textContent = tableData[0].Titulo_Cuadro || 'Balances Detallados';
+        
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        if (contentSubtitle) {
+            const analisisTexto = analisisFilter ? analisisFilter.options[analisisFilter.selectedIndex].text : '';
+            contentSubtitle.textContent = `${tableData[0].Unidad || ''} - ${analisisTexto} - ${entidadNombre}`;
+        }
+
+        // 7. Renderizar
+        const sidebarTree = document.getElementById('sidebarTree');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarTree) sidebarTree.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        
+        renderBalancesTableOptimized();
+        populatePeriodSelectors();
+        updateCollectionPanel();
+        
+        console.log(`✅ Balances EFI cargados y renderizados: ${tableData.length} filas`);
+        
+    } catch (error) {
+        console.error('❌ Error en loadBalancesTableEfi:', error);
+        const tableContainer = document.getElementById('tableContainer');
+        if (tableContainer) {
+            tableContainer.innerHTML = `
+                <div class="loading-table">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Error al cargar datos: ${error.message}</p>
+                </div>
+            `;
+        }
+    } finally {
+        hideLoading();
+    }
+}
+
+// ===================================
+// 🏦 CARGAR TABLA POR ENTIDAD FINANCIERA (OPTIMIZADA)
+// ===================================
+async function loadTableEfi(cuadroId) {
+    console.log('🔄 Cargando tabla EFI:', cuadroId);
+    
+    showLoading();
+    currentCuadroId = cuadroId;
+    
+    
+    // Ocultar sector, mostrar entidad
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'none';
+    }
+
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) {
+        entidadContainer.classList.add('visible');
+    }
+    
+    const analisisContainer = document.getElementById('analisisFilterContainer');
+    if (analisisContainer) analisisContainer.classList.remove('visible');
+    
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.remove('visible');
+
+    try {
+        const entidadFilter = document.getElementById('entidadFilter');
+        const searchInput = document.getElementById('entidadSearch');
+        
+        // ✅ CAMBIO: Valor por defecto 'BP. AMAZONAS'
+        let entidadNombre = 'BP. AMAZONAS';
+        
+        // Si el filtro ya tiene un valor válido (diferente de 'todas' o vacío), lo respetamos
+        if (entidadFilter && entidadFilter.value && entidadFilter.value !== 'todas') {
+            entidadNombre = entidadFilter.value;
+        } else if (entidadFilter) {
+            // Si no, forzamos el valor por defecto en el selector y en el input de búsqueda
+            entidadFilter.value = 'BP. AMAZONAS';
+            if (searchInput) {
+                searchInput.value = 'BP. AMAZONAS';
+            }
+        }
+        
+        console.log('🏦 Entidad seleccionada:', entidadNombre);
+        
+        // ✅ CARGAR SOLO LOS DATOS DE ESTA ENTIDAD
+        if (entidadNombre === 'Todas las Entidades' || entidadNombre === 'todas') {
+            // Usar datos SFN
+            tableData = allDataCache.filter(row => row.Cuadro === cuadroId);
+        } else {
+            // Cargar datos específicos de la entidad
+            currentEntidadData = await loadEntidadData(entidadNombre);
+            tableData = currentEntidadData.filter(row => row.Cuadro === cuadroId);
+        }
+        
+        console.log(`✅ Filas filtradas: ${tableData.length}`);
+        
+        if (tableData.length === 0) {
+            const tableContainer = document.getElementById('tableContainer');
+            if (tableContainer) {
+                tableContainer.innerHTML = `
+                    <div class="loading-table">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron datos para: ${entidadNombre}</p>
+                        <p style="font-size: 0.75rem; color: #f59e0b; margin-top: 10px;">
+                            Cuadro: ${cuadroId}
+                        </p>
+                    </div>
+                `;
+            }
+            hideLoading();
+            return;
+        }
+        
+        // Actualizar títulos
+        const titulo = tableData[0].Titulo_Cuadro;
+        const contentTitle = document.getElementById('contentTitle');
+        if (contentTitle) contentTitle.textContent = titulo;
+        
+        const unidad = tableData[0].Unidad;
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        if (contentSubtitle && unidad) {
+            contentSubtitle.textContent = `${unidad} - ${entidadNombre}`;
+        }
+
+        // Cerrar sidebar
+        const sidebarTree = document.getElementById('sidebarTree');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarTree) sidebarTree.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        
+        // Renderizar tabla
+        renderTable();
+        populatePeriodSelectors();
+        updateCollectionPanel();
+        mostrarNotas(cuadroId);
+
+        console.log(`✅ TABLA EFI CARGADA: ${tableData.length} filas`);
+        
+    } catch (error) {
+        console.error('❌ Error en loadTableEfi:', error);
+    } finally {
+        hideLoading();
+    }
+}
+
+// ===================================
+// CARGAR TABLA DESDE EL MENÚ (SFN)
 // ===================================
 async function loadTable(cuadroId) {
     console.log('🔄 Cargando tabla:', cuadroId);
     
-    // ✅ MOSTRAR LOADING
     showLoading();
-    
     currentCuadroId = cuadroId;
     selectedSeries = [];
     
-    // Ocultar filtro de análisis para tablas regulares
+    // ✅ RESTAURAR selector de sector (por si fue ocultado por EFI)
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'flex';
+    }
+
+    // Ocultar filtros que no aplican a tablas regulares
     const analisisContainer = document.getElementById('analisisFilterContainer');
     if (analisisContainer) analisisContainer.classList.remove('visible');
     
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.remove('visible');
+
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) entidadContainer.classList.remove('visible');
+
     if (allDataCache.length === 0) {
-        await loadAllDataFiles();
+        await loadSistemaData();
     }
     
     try {
@@ -270,7 +618,270 @@ async function loadTable(cuadroId) {
             `;
         }
     } finally {
-        // ✅ SIEMPRE OCULTAR LOADING
+        hideLoading();
+    }
+}
+
+// ===================================
+// 🏦 CARGAR TABLA DE CARTERA POR ENTIDAD FINANCIERA (EFI)
+// ===================================
+async function loadCarteraTableEfi(cuadroId) {
+    console.log('🔄 Cargando tabla de cartera EFI:', cuadroId);
+    
+    showLoading();
+    currentCuadroId = cuadroId;
+    
+    // 1. Manejo de visibilidad de filtros
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'none';
+    }
+
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) {
+        entidadContainer.classList.add('visible');
+    }
+    
+    // Mostrar filtro de cartera
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.add('visible');
+    
+    // Ocultar filtro de análisis
+    const analisisContainer = document.getElementById('analisisFilterContainer');
+    if (analisisContainer) analisisContainer.classList.remove('visible');
+
+    try {
+        // 2. Obtener entidad seleccionada
+        const entidadFilter = document.getElementById('entidadFilter');
+        let entidadNombre = 'BP. AMAZONAS'; // Valor por defecto
+        
+        if (entidadFilter && entidadFilter.value && entidadFilter.value !== 'todas') {
+            entidadNombre = entidadFilter.value;
+        } else if (entidadFilter) {
+            entidadFilter.value = 'BP. AMAZONAS';
+        }
+        
+        // 3. Obtener tipo de crédito seleccionado
+        const carteraFilter = document.getElementById('carteraFilter');
+        const tipoCreditoValor = carteraFilter ? carteraFilter.value : 'total';
+        
+        const tipoCreditoMap = {
+            'total': 'Cartera Total',
+            'prod': 'Productivo',
+            'consumo': 'Consumo',
+            'inmo': 'Inmobiliario',
+            'vips': 'Vivienda interés Público y Social',
+            'edu': 'Educativo',
+            'micro': 'Microcrédito'
+        };
+        
+        const tipoCreditoTexto = tipoCreditoMap[tipoCreditoValor] || 'Cartera Total';
+        
+        console.log(`🏦 Entidad: ${entidadNombre} | Tipo Crédito: ${tipoCreditoTexto}`);
+        
+        // 4. Cargar datos bajo demanda desde carpetaEntidades
+        const dataEntidad = await loadEntidadData(entidadNombre);
+        
+        if (dataEntidad.length === 0) {
+            console.warn(`️ La entidad "${entidadNombre}" no devolvió datos.`);
+        }
+        
+        // 5. Filtrar por Cuadro y tipo de crédito
+        tableData = dataEntidad.filter(row => {
+            const matchCuadro = row.Cuadro === cuadroId;
+            const idRow = row.ID || '';
+            const matchTipoCredito = idRow === tipoCreditoTexto;
+            return matchCuadro && matchTipoCredito;
+        });
+        
+        console.log(`📊 Filas después del filtro: ${tableData.length}`);
+        
+        if (tableData.length === 0) {
+            const tableContainer = document.getElementById('tableContainer');
+            if (tableContainer) {
+                tableContainer.innerHTML = `
+                    <div class="loading-table">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron datos de cartera para: ${entidadNombre}</p>
+                        <p style="font-size: 0.75rem; color: #f59e0b; margin-top: 10px;">
+                            Cuadro: ${cuadroId} | Tipo: ${tipoCreditoTexto}
+                        </p>
+                    </div>
+                `;
+            }
+            hideLoading();
+            return;
+        }
+        
+        // 6. Actualizar títulos
+        const titulo = tableData[0].Titulo_Cuadro || 'Cartera de Créditos';
+        const contentTitle = document.getElementById('contentTitle');
+        if (contentTitle) contentTitle.textContent = titulo;
+        
+        const unidad = tableData[0].Unidad || '';
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        if (contentSubtitle) {
+            const tipoCreditoDisplay = carteraFilter ? carteraFilter.options[carteraFilter.selectedIndex].text : tipoCreditoTexto;
+            contentSubtitle.textContent = `${unidad} - ${tipoCreditoDisplay} - ${entidadNombre}`;
+        }
+
+        // 7. Cerrar sidebar y renderizar
+        const sidebarTree = document.getElementById('sidebarTree');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarTree) sidebarTree.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        
+        renderTable();
+        populatePeriodSelectors();
+        updateCollectionPanel();
+        mostrarNotas(cuadroId);
+        
+        console.log(`✅ Cartera EFI cargada: ${tableData.length} filas`);
+        
+    } catch (error) {
+        console.error('❌ Error en loadCarteraTableEfi:', error);
+        const tableContainer = document.getElementById('tableContainer');
+        if (tableContainer) {
+            tableContainer.innerHTML = `
+                <div class="loading-table">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Error al cargar datos: ${error.message}</p>
+                </div>
+            `;
+        }
+    } finally {
+        hideLoading();
+    }
+}
+
+
+// ===================================
+// CARGAR TABLA DE CARTERA DE CRÉDITOS
+// ===================================
+async function loadCarteraTable(cuadroId) {
+    console.log('🔄 Cargando tabla de cartera:', cuadroId);
+    
+    showLoading();
+    currentCuadroId = cuadroId;
+
+    
+    // ✅ RESTAURAR selector de sector
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'flex';
+    }
+
+    // Mostrar filtro de cartera
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.add('visible');
+    
+    // Ocultar filtro de análisis
+    const analisisContainer = document.getElementById('analisisFilterContainer');
+    if (analisisContainer) analisisContainer.classList.remove('visible');
+    
+    // Ocultar filtro de entidad
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) entidadContainer.classList.remove('visible');
+    
+    if (carteraData.length === 0) {
+        await loadCarteraData();
+    }
+    
+    try {
+        const datosCuadro = carteraData.filter(row => row.Cuadro === cuadroId);
+        
+        const sectorFilter = document.getElementById('sectorFilter');
+        const carteraFilter = document.getElementById('carteraFilter');
+        
+        const sectorValor = sectorFilter ? sectorFilter.value : 'nacional';
+        const tipoCreditoValor = carteraFilter ? carteraFilter.value : 'total';
+        
+        const tipoCreditoMap = {
+            'total': 'Cartera Total',
+            'prod': 'Productivo',
+            'consumo': 'Consumo',
+            'inmo': 'Inmobiliario',
+            'vips': 'Vivienda interés Público y Social',
+            'edu': 'Educativo',
+            'micro': 'Microcrédito'
+        };
+        
+        const tipoCreditoTexto = tipoCreditoMap[tipoCreditoValor] || 'Cartera Total';
+        
+        tableData = datosCuadro.filter(row => {
+            const filtroRow = row.Filtro || '';
+            const idRow = row.ID || '';
+            
+            const matchSector = filtrarPorSector(filtroRow, sectorValor);
+            const matchTipoCredito = idRow === tipoCreditoTexto;
+            
+            return matchSector && matchTipoCredito;
+        });
+        
+        const tableContainer = document.getElementById('tableContainer');
+        
+        if (tableData.length === 0) {
+            if (tableContainer) {
+                tableContainer.innerHTML = `
+                    <div class="loading-table">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron datos para los filtros seleccionados</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">Sector: ${sectorValor} | Tipo: ${tipoCreditoTexto}</p>
+                    </div>
+                `;
+            }
+            hideLoading();
+            return;
+        }
+        
+        try {
+            const notasResponse = await fetch(NOTAS_FILE);
+            if (notasResponse.ok) {
+                const todasLasNotas = await notasResponse.json();
+                const notasCuadro = todasLasNotas.filter(nota => nota.Cuadro === cuadroId);
+                if (notasCuadro.length > 0) {
+                    notasData[cuadroId] = notasCuadro;
+                }
+            }
+        } catch (error) {
+            console.warn('⚠️ No se pudieron cargar las notas:', error);
+        }
+        
+        const titulo = tableData[0].Titulo_Cuadro;
+        const contentTitle = document.getElementById('contentTitle');
+        if (contentTitle) contentTitle.textContent = titulo;
+        
+        const unidad = tableData[0].Unidad;
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        if (contentSubtitle && unidad) {
+            const tipoCreditoTextoDisplay = carteraFilter ? carteraFilter.options[carteraFilter.selectedIndex].text : 'Cartera Total';
+            contentSubtitle.textContent = `${unidad} - ${tipoCreditoTextoDisplay}`;
+        }
+
+        const sidebarTree = document.getElementById('sidebarTree');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarTree) sidebarTree.classList.remove('open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        
+        renderTable();
+        populatePeriodSelectors();
+        updateCollectionPanel();
+        mostrarNotas(cuadroId);
+        
+        console.log(`✅ Cartera cargada: ${tableData.length} filas`);
+        
+    } catch (error) {
+        console.error('❌ Error:', error);
+        const tableContainer = document.getElementById('tableContainer');
+        if (tableContainer) {
+            tableContainer.innerHTML = `
+                <div class="loading-table">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Error al cargar datos: ${error.message}</p>
+                </div>
+            `;
+        }
+    } finally {
         hideLoading();
     }
 }
@@ -281,16 +892,24 @@ async function loadTable(cuadroId) {
 async function loadBalancesTable(cuadroId) {
     console.log('🔄 Cargando tabla de balances:', cuadroId);
     
-    // ✅ MOSTRAR LOADING
     showLoading();
-    
     currentCuadroId = cuadroId;
     
+    // ✅ RESTAURAR selector de sector
+    const sectorContainer = document.querySelector('.sector-selector label[for="sectorFilter"]');
+    if (sectorContainer && sectorContainer.parentElement) {
+        sectorContainer.parentElement.style.display = 'flex';
+    }
+
+    const carteraContainer = document.getElementById('carteraFilterContainer');
+    if (carteraContainer) carteraContainer.classList.remove('visible');
     
-    // Mostrar filtro de análisis
     const analisisContainer = document.getElementById('analisisFilterContainer');
     if (analisisContainer) analisisContainer.classList.add('visible');
     
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    if (entidadContainer) entidadContainer.classList.remove('visible');
+
     if (balancesData.length === 0) {
         await loadBalancesData();
     }
@@ -315,26 +934,10 @@ async function loadBalancesTable(cuadroId) {
             const matchId = row.ID === targetId;
             const filtroRow = row.Filtro || '';
             
-            // ✅ CORRECCIÓN: Filtrado correcto para los 3 sectores
-            let matchSector = false;
-            
-            if (sectorValor === 'nacional') {
-                // Nacional = NO es Privado, NO es Popular, NO es Solidario
-                matchSector = !filtroRow.includes('Privado') && 
-                             !filtroRow.includes('Popular') && 
-                             !filtroRow.includes('Solidario');
-            } else if (sectorValor === 'privado') {
-                matchSector = filtroRow.includes('Privado');
-            } else if (sectorValor === 'popular') {
-                matchSector = filtroRow.includes('Popular') || filtroRow.includes('Solidario');
-            } else {
-                matchSector = true;
-            }
+            const matchSector = filtrarPorSector(filtroRow, sectorValor);
             
             return matchCuadro && matchId && matchSector;
         });
-        
-        console.log(`📊 Filas filtradas: ${tableData.length} (sector: ${sectorValor})`);
         
         const tableContainer = document.getElementById('tableContainer');
         
@@ -347,7 +950,6 @@ async function loadBalancesTable(cuadroId) {
                     </div>
                 `;
             }
-            // ✅ OCULTAR LOADING
             hideLoading();
             return;
         }
@@ -363,7 +965,6 @@ async function loadBalancesTable(cuadroId) {
             contentSubtitle.textContent = `${unidad} - ${analisisTexto}`;
         }
 
-        // ✅ Renderizar con algoritmo O(n) optimizado
         renderBalancesTableOptimized();
         populatePeriodSelectors();
         updateCollectionPanel();
@@ -382,7 +983,6 @@ async function loadBalancesTable(cuadroId) {
             `;
         }
     } finally {
-        // ✅ SIEMPRE OCULTAR LOADING (incluso si hay error)
         hideLoading();
     }
 }
@@ -459,33 +1059,43 @@ tableData = balancesData.filter(row => {
 
 
 // ===================================
-// RENDERIZAR TABLA NORMAL
-// ===================================
-// ===================================
-// RENDERIZAR TABLA NORMAL
+// RENDERIZAR TABLA NORMAL - VERSIÓN CORREGIDA
 // ===================================
 function renderTable() {
     const container = document.getElementById('tableContainer');
     if (!container) return;
     
-    const sectorFilter = document.getElementById('sectorFilter');
+    console.log(' Renderizando tabla...', {
+        cuadroId: currentCuadroId,
+        totalFilas: tableData.length,
+        esEFI: currentCuadroId.startsWith('EFI')
+    });
+    
     let filteredData = tableData;
 
-if (sectorFilter && sectorFilter.value) {
-    filteredData = tableData.filter(row => {
-        const filtroRow = row.Filtro || '';
-        const filtroSeleccionado = sectorFilter.value;
-        
-        // ✅ USAR FUNCIÓN DE FILTRADO ACTUALIZADA
-        return filtrarPorSector(filtroRow, filtroSeleccionado);
-    });
-}
+    // ✅ SOLO aplicar filtro de sector si NO es una tabla EFI
+    if (!currentCuadroId.startsWith('EFI')) {
+        const sectorFilter = document.getElementById('sectorFilter');
+        if (sectorFilter && sectorFilter.value) {
+            console.log(' Aplicando filtro de sector:', sectorFilter.value);
+            filteredData = tableData.filter(row => {
+                const filtroRow = row.Filtro || '';
+                const filtroSeleccionado = sectorFilter.value;
+                return filtrarPorSector(filtroRow, filtroSeleccionado);
+            });
+        }
+    } else {
+        console.log('️ Saltando filtro de sector (tabla EFI)');
+    }
     
     const firstRow = filteredData[0];
     if (!firstRow) {
+        console.error('❌ No hay datos después del filtrado');
         container.innerHTML = `<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><h3>No hay datos para el sector seleccionado</h3></div>`;
         return;
     }
+    
+    console.log(`✅ Datos para renderizar: ${filteredData.length} filas`);
     
     const allColumns = Object.keys(firstRow);
     const dateColumns = allColumns.filter(col => 
@@ -505,7 +1115,7 @@ if (sectorFilter && sectorFilter.value) {
         return;
     }
     
-    // ✅ CORRECCIÓN: Guardar el índice ORIGINAL en tableData, no en filteredData
+    // Guardar el índice ORIGINAL en tableData
     const rowsWithLevel = filteredData.map((row) => {
         let nivel = 0;
         if (row.Nivel1 && row.Nivel1.toString().trim() !== '') nivel = 1;
@@ -516,9 +1126,7 @@ if (sectorFilter && sectorFilter.value) {
         if (row.Nivel6 && row.Nivel6.toString().trim() !== '') nivel = 6;
         if (row.Nivel7 && row.Nivel7.toString().trim() !== '') nivel = 7;
         
-        // ✅ Buscar el índice original en tableData
         const originalIndex = tableData.indexOf(row);
-        
         return { index: originalIndex, row, nivel };
     });
     
@@ -593,29 +1201,34 @@ if (sectorFilter && sectorFilter.value) {
     
     html += `</tbody></table></div>`;
     container.innerHTML = html;
+    console.log('✅ Tabla renderizada correctamente');
 }
 
 // ===================================
 // 🚀 RENDERIZAR TABLA DE BALANCES - VERSIÓN FINAL CON COLUMNA SEPARADA
 // ===================================
 function renderBalancesTableOptimized() {
-    // ✅ APLICAR MISMO FILTRADO DE SECTOR QUE renderTable
+    // ✅ DETECTAR si estamos en modo EFI
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    const esModoEntidad = entidadContainer && entidadContainer.classList.contains('visible');
+    
+    // ✅ APLICAR FILTRADO DE SECTOR SOLO si NO es modo EFI
     const sectorFilter = document.getElementById('sectorFilter');
     let validTableData = tableData.filter(row => row.Variable !== undefined && row.Variable !== null);
 
-// En renderBalancesTableOptimized - reemplazar el filtrado:
-if (sectorFilter && sectorFilter.value) {
-    validTableData = validTableData.filter(row => {
-        const filtroRow = row.Filtro || '';
-        const filtroSeleccionado = sectorFilter.value;
-        
-        // ✅ USAR FUNCIÓN DE FILTRADO ACTUALIZADA
-        return filtrarPorSector(filtroRow, filtroSeleccionado);
-    });
-}
+    // ✅ SOLO aplicar filtro de sector si NO es una tabla EFI
+    if (!esModoEntidad && sectorFilter && sectorFilter.value) {
+        validTableData = validTableData.filter(row => {
+            const filtroRow = row.Filtro || '';
+            const filtroSeleccionado = sectorFilter.value;
+            
+            // ✅ USAR FUNCIÓN DE FILTRADO ACTUALIZADA
+            return filtrarPorSector(filtroRow, filtroSeleccionado);
+        });
+    }
     
-    console.log('🔍 Datos de balances:', validTableData.length, 'filas');
-    
+    console.log('🔍 Datos de balances:', validTableData.length, 'filas', esModoEntidad ? '(modo EFI)' : '(modo SFN)');
+ 
     const container = document.getElementById('tableContainer');
     if (!container) return;
     
@@ -976,8 +1589,26 @@ function toggleSeriesCheckbox(checkbox) {
         return;
     }
     
-    // Obtener sector actual
-    const sector = getSectorActual();
+    // ✅ CORRECCIÓN: Detectar si estamos en modo EFI o sector normal
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    const esModoEntidad = entidadContainer && entidadContainer.classList.contains('visible');
+    
+    let sectorInfo;
+    
+    if (esModoEntidad) {
+        // ✅ MODO ENTIDAD: Obtener nombre de la entidad seleccionada
+        const entidadFilter = document.getElementById('entidadFilter');
+        const entidadNombre = entidadFilter ? entidadFilter.value : 'Entidad';
+        sectorInfo = {
+            valor: 'entidad_' + entidadNombre.toLowerCase().replace(/\s+/g, '_'),
+            texto: entidadNombre,
+            tipo: 'entidad'
+        };
+    } else {
+        // ✅ MODO SECTOR: Usar sector financiero normal
+        sectorInfo = getSectorActual();
+        sectorInfo.tipo = 'sector';
+    }
     
     if (checkbox.checked) {
         if (selectedSeries.length >= 10) {
@@ -986,28 +1617,28 @@ function toggleSeriesCheckbox(checkbox) {
             return;
         }
         
-        // Crear ID único considerando el sector
-        const idUnico = crearIdUnico(currentCuadroId, row.Variable, sector.valor);
+        // Crear ID único considerando sector/entidad
+        const idUnico = crearIdUnico(currentCuadroId, row.Variable, sectorInfo.valor);
         
-        // Verificar si ya existe esta variable en el MISMO sector
+        // Verificar si ya existe esta variable en el MISMO sector/entidad
         const existeIndex = selectedSeries.findIndex(s => s.idUnico === idUnico);
         
         if (existeIndex >= 0) {
-            // Ya existe en este sector: Actualizar los datos
-            console.log(`🔄 Actualizando serie existente: ${row.Variable} - ${sector.texto}`);
+            // Ya existe en este sector/entidad: Actualizar los datos
+            console.log(`🔄 Actualizando serie existente: ${row.Variable} - ${sectorInfo.texto}`);
             selectedSeries[existeIndex] = {
                 ...selectedSeries[existeIndex],
                 index: index,
                 variable: row.Variable,
                 data: row, // ✅ Ahora row contiene los datos CORRECTOS del sector
                 idUnico: idUnico,
-                sector: sector.valor,
-                sectorNombre: sector.texto,
+                sector: sectorInfo.valor,
+                sectorNombre: sectorInfo.texto,
                 cuadroId: currentCuadroId
             };
         } else {
             // No existe: Agregar como nueva serie
-            console.log(`➕ Agregando nueva serie: ${row.Variable} - ${sector.texto}`);
+            console.log(`➕ Agregando nueva serie: ${row.Variable} - ${sectorInfo.texto}`);
             selectedSeries.push({
                 index: index,
                 variable: row.Variable,
@@ -1015,14 +1646,14 @@ function toggleSeriesCheckbox(checkbox) {
                 useRightAxis: false,
                 chartType: 'line',
                 idUnico: idUnico,
-                sector: sector.valor,
-                sectorNombre: sector.texto,
+                sector: sectorInfo.valor,
+                sectorNombre: sectorInfo.texto,
                 cuadroId: currentCuadroId
             });
         }
     } else {
-        // Eliminar considerando el sector
-        const idUnico = crearIdUnico(currentCuadroId, row.Variable, sector.valor);
+        // Eliminar considerando el sector/entidad
+        const idUnico = crearIdUnico(currentCuadroId, row.Variable, sectorInfo.valor);
         selectedSeries = selectedSeries.filter(s => s.idUnico !== idUnico);
     }
     
@@ -1174,8 +1805,19 @@ function formatDateLabel(dateStr, dataType) {
     return dateStr;
 }
 
+// Ejemplo: Cuando el usuario hace clic en "Estadísticas por entidad financiera"
+function mostrarSelectorEntidades() {
+    document.getElementById('entidadFilterContainer').style.display = 'block';
+    document.getElementById('sectorFilter').value = 'entidad_especifica'; // Opcional
+}
+
+// Ejemplo: Cuando vuelve a "Sistema Financiero Nacional"
+function ocultarSelectorEntidades() {
+    document.getElementById('entidadFilterContainer').style.display = 'none';
+}
+
 // ===================================
-// RENDERIZAR GRÁFICO PRINCIPAL
+// RENDERIZAR GRÁFICO PRINCIPAL - VERSIÓN MEJORADA
 // ===================================
 function renderMainChart() {
     if (selectedSeries.length === 0) return;
@@ -1300,6 +1942,22 @@ yAxisConfig.push({
     
     const xAxisLabels = allDateColumns.map(dateCol => formatDateLabel(dateCol, dataType));
     
+    // ✅ CORRECCIÓN: Crear nombres de series más descriptivos
+    const seriesNames = selectedSeries.map(s => {
+        // Si es una entidad financiera, mostrar el nombre de la entidad
+        if (s.sector && s.sector.startsWith('entidad_')) {
+            return `${s.variable} - ${s.sectorNombre}`;
+        }
+        // Si es un sector, mostrar el nombre del sector
+        else if (s.sectorNombre) {
+            return `${s.variable} - ${s.sectorNombre}`;
+        }
+        // Por defecto, solo la variable
+        else {
+            return s.variable;
+        }
+    });
+    
     const option = {
         title: {
             text: sectorTitle,
@@ -1337,7 +1995,7 @@ yAxisConfig.push({
             }
         },
         legend: {
-            data: selectedSeries.map(s => s.variable),
+            data: seriesNames, // ✅ USAR NOMRES MEJORADOS
             bottom: 35,
             type: 'scroll',
             textStyle: {
@@ -1398,7 +2056,7 @@ yAxisConfig.push({
             }
         ],
         series: selectedSeries.map((s, idx) => ({
-            name: s.variable,
+            name: seriesNames[idx], // ✅ USAR NOMBRE MEJORADO
             type: s.chartType || 'line',
             yAxisIndex: s.useRightAxis ? 1 : 0,
             data: allDateColumns.map(dateCol => parseFloat(s.data[dateCol]) || 0),
@@ -1811,41 +2469,52 @@ function renderExpandedChart() {
     }
     ];
     
-if (hasRightAxisSeries) {
-    const rightAxisSeriesNames = selectedSeries
-        .filter(s => s.useRightAxis)
-        .map(s => s.variable)
-        .join(', ');
-    
-yAxisConfig.push({
-    type: 'value',
-    name: '',
-    nameLocation: 'end',
-    nameGap: 10,
-    nameTextStyle: {
-        fontFamily: "'Open Sans', sans-serif",
-        color: '#059669',
-        fontSize: 10,
-        fontWeight: 600
-    },
-    position: 'right',
-    axisLabel: {
-        fontFamily: "'Open Sans', sans-serif",
-        color: '#059669',
-        fontSize: 11,
-        formatter: function(value) {
-            return value.toFixed(1);
-        }
-    },
-    splitLine: { show: false },
-    axisLine: { 
-        show: true, 
-        lineStyle: { color: '#059669' } 
+    if (hasRightAxisSeries) {
+        const rightAxisSeriesNames = selectedSeries
+            .filter(s => s.useRightAxis)
+            .map(s => s.variable)
+            .join(', ');
+        
+        yAxisConfig.push({
+            type: 'value',
+            name: '',
+            nameLocation: 'end',
+            nameGap: 10,
+            nameTextStyle: {
+                fontFamily: "'Open Sans', sans-serif",
+                color: '#059669',
+                fontSize: 10,
+                fontWeight: 600
+            },
+            position: 'right',
+            axisLabel: {
+                fontFamily: "'Open Sans', sans-serif",
+                color: '#059669',
+                fontSize: 11,
+                formatter: function(value) {
+                    return value.toFixed(1);
+                }
+            },
+            splitLine: { show: false },
+            axisLine: { 
+                show: true, 
+                lineStyle: { color: '#059669' } 
+            }
+        });
     }
-});
-}
     
     const xAxisLabels = allDateColumns.map(dateCol => formatDateLabel(dateCol, dataType));
+    
+    // ✅ CORRECCIÓN: Crear nombres de series más descriptivos (igual que en renderMainChart)
+    const seriesNames = selectedSeries.map(s => {
+        if (s.sector && s.sector.startsWith('entidad_')) {
+            return `${s.variable} - ${s.sectorNombre}`;
+        } else if (s.sectorNombre) {
+            return `${s.variable} - ${s.sectorNombre}`;
+        } else {
+            return s.variable;
+        }
+    });
     
     const option = {
         title: {
@@ -1918,7 +2587,7 @@ yAxisConfig.push({
             }
         },
         legend: {
-            data: selectedSeries.map(s => s.variable),
+            data: seriesNames, // ✅ USAR NOMBRES MEJORADOS
             bottom: 35,
             type: 'scroll',
             textStyle: {
@@ -1979,7 +2648,7 @@ yAxisConfig.push({
             }
         ],
         series: selectedSeries.map((s, idx) => ({
-            name: s.variable,
+            name: seriesNames[idx], // ✅ USAR NOMBRE MEJORADO
             type: s.chartType || currentChartType,
             yAxisIndex: s.useRightAxis ? 1 : 0,
             data: allDateColumns.map(dateCol => parseFloat(s.data[dateCol]) || 0),
@@ -2053,10 +2722,29 @@ function agregarAlCarrito(index) {
     const row = tableData[index];
     if (!row) return;
     
-    const sector = getSectorActual();
+    // ✅ CORRECCIÓN: Detectar si estamos en modo EFI o sector normal
+    const entidadContainer = document.getElementById('entidadFilterContainer');
+    const esModoEntidad = entidadContainer && entidadContainer.classList.contains('visible');
     
-    // Crear ID único considerando sector
-    const idUnico = crearIdUnico(currentCuadroId, row.Variable, sector.valor);
+    let sectorInfo;
+    
+    if (esModoEntidad) {
+        // ✅ MODO ENTIDAD: Obtener nombre de la entidad seleccionada
+        const entidadFilter = document.getElementById('entidadFilter');
+        const entidadNombre = entidadFilter ? entidadFilter.value : 'Entidad';
+        sectorInfo = {
+            valor: 'entidad_' + entidadNombre.toLowerCase().replace(/\s+/g, '_'),
+            texto: entidadNombre,
+            tipo: 'entidad'
+        };
+    } else {
+        // ✅ MODO SECTOR: Usar sector financiero normal
+        sectorInfo = getSectorActual();
+        sectorInfo.tipo = 'sector';
+    }
+    
+    // Crear ID único considerando sector/entidad
+    const idUnico = crearIdUnico(currentCuadroId, row.Variable, sectorInfo.valor);
     
     // Verificar si ya existe esta combinación exacta
     const existe = carritoSeries.find(s => {
@@ -2070,17 +2758,17 @@ function agregarAlCarrito(index) {
             variable: row.Variable,
             cuadroId: currentCuadroId,
             cuadroNombre: tableData[0]?.Titulo_Cuadro || currentCuadroId,
-            sector: sector.valor,
-            sectorNombre: sector.texto,
+            sector: sectorInfo.valor,
+            sectorNombre: sectorInfo.texto,
             data: row
         });
         
         localStorage.setItem('carritoSeries', JSON.stringify(carritoSeries));
         actualizarContadorCarrito();
         
-        alert(`✅ "${row.Variable}" del ${sector.texto} añadida al carrito.`);
+        alert(`✅ "${row.Variable}" de ${sectorInfo.texto} añadida al carrito.`);
     } else {
-        alert(`⚠️ La serie "${row.Variable}" del ${sector.texto} ya se encuentra en el carrito.`);
+        alert(`️ La serie "${row.Variable}" de ${sectorInfo.texto} ya se encuentra en el carrito.`);
     }
 }
 
@@ -2401,7 +3089,7 @@ window.loadTable = loadTable;
 // ===================================
 // 🎯 UN SOLO DOMCONTENTLOADED - SIN DUPLICACIONES
 // ===================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Botón Ampliar
     const btnAmpliar = document.getElementById('btnAmpliar');
     if (btnAmpliar) {
@@ -2534,26 +3222,42 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sectorFilter) {
         sectorFilter.addEventListener('change', () => {
             console.log(`🏦 Filtro de sector aplicado: ${sectorFilter.value}`);
-            // ✅ Detectar si estamos en tabla de balances o normal
+            
+            // ✅ CORRECCIÓN: Detectar qué tipo de tabla está activa
             const analisisContainer = document.getElementById('analisisFilterContainer');
+            const carteraContainer = document.getElementById('carteraFilterContainer');
+
             if (analisisContainer && analisisContainer.classList.contains('visible')) {
+                // Estamos en Balances
                 loadBalancesTable(currentCuadroId);
+            } else if (carteraContainer && carteraContainer.classList.contains('visible')) {
+                // ✅ ESTO ES LO QUE FALTABA: Estamos en Cartera, recargar con nuevo sector
+                loadCarteraTable(currentCuadroId);
             } else {
+                // Tabla Normal / Estructura General
                 renderTable();
             }
         });
     }
 
-    // Filtro de análisis (solo para balances)
-    const analisisFilter = document.getElementById('analisisFilter');
-    if (analisisFilter) {
-        analisisFilter.addEventListener('change', () => {
-            console.log(`📊 Tipo de análisis cambiado: ${analisisFilter.value}`);
-            if (currentCuadroId) {
+// Filtro de análisis (solo para balances)
+const analisisFilter = document.getElementById('analisisFilter');
+if (analisisFilter) {
+    analisisFilter.addEventListener('change', () => {
+        console.log(` Tipo de análisis cambiado: ${analisisFilter.value}`);
+        if (currentCuadroId) {
+            // ✅ DETECTAR si es modo entidad
+            const entidadContainer = document.getElementById('entidadFilterContainer');
+            const esModoEntidad = entidadContainer && entidadContainer.classList.contains('visible');
+            
+            if (esModoEntidad || currentCuadroId.startsWith('EFI')) {
+                loadBalancesTableEfi(currentCuadroId);
+            } else {
                 loadBalancesTable(currentCuadroId);
             }
-        });
-    }
+        }
+    });
+}
 
     actualizarContadorCarrito();
     
@@ -2567,6 +3271,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cargar tabla por defecto
-    loadTable('SFN01');
+    // Filtro de cartera de créditos
+const carteraFilter = document.getElementById('carteraFilter');
+if (carteraFilter) {
+    carteraFilter.addEventListener('change', () => {
+        console.log(`📊 Tipo de crédito cambiado: ${carteraFilter.value}`);
+        if (currentCuadroId) {
+            const entidadContainer = document.getElementById('entidadFilterContainer');
+            const esModoEntidad = entidadContainer && entidadContainer.classList.contains('visible');
+            
+            if (esModoEntidad || currentCuadroId.startsWith('EFI')) {
+                loadCarteraTableEfi(currentCuadroId);
+            } else {
+                loadCarteraTable(currentCuadroId);
+            }
+        }
+    });
+}
+
+// Ocultar filtro de cartera por defecto
+const carteraContainer = document.getElementById('carteraFilterContainer');
+if (carteraContainer) {
+    carteraContainer.classList.remove('visible');
+}
+
+// ===================================
+// CARGAR SELECTOR DE ENTIDADES CON SELECT2
+// ===================================
+const selectEntidad = document.getElementById('entidadFilter');
+
+if (selectEntidad) {
+    fetch(DATA_PATHS.listaEntidades) 
+        .then(response => {
+            if (!response.ok) throw new Error('No se pudo cargar el archivo de entidades');
+            return response.json();
+        })
+        .then(data => {
+            console.log(`✅ Datos recibidos: ${data.length} entidades`);
+            
+            // 1. Ordenar alfabéticamente
+            data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            
+            // 2. Guardar en variable global
+            window.entidadesData = data;
+            
+            // 3. Limpiar select
+            selectEntidad.innerHTML = '';
+            
+            const defaultNombre = 'BP. AMAZONAS';
+            
+            data.forEach(entidad => {
+                const option = document.createElement('option');
+                option.value = entidad.nombre;
+                option.textContent = entidad.nombre;
+                if (entidad.nombre === defaultNombre) {
+                    option.selected = true;
+                }
+                selectEntidad.appendChild(option);
+            });
+            
+            console.log(`✅ ${data.length} entidades cargadas en Select2`);
+            
+            // 4. INICIALIZAR SELECT2
+            $(selectEntidad).select2({
+                placeholder: 'Buscar entidad financiera...',
+                allowClear: true,
+                width: '100%',
+                dropdownParent: $(document.body),
+                language: {
+                    noResults: function() {
+                        return "No se encontró la entidad";
+                    },
+                    searching: function() {
+                        return "Buscando...";
+                    }
+                }
+            });
+            
+// 5. EVENTO: Cuando el usuario selecciona una entidad en Select2
+$(selectEntidad).on('change', function() {
+    const entidadSeleccionada = $(this).val();
+    console.log(`🏦 Entidad seleccionada: ${entidadSeleccionada}`);
+    
+    if (currentCuadroId) {
+        if (currentCuadroId === 'EFI06') { 
+            loadBalancesTableEfi(currentCuadroId);
+        } else if (currentCuadroId === 'EFI07') { // <-- Ajusta al ID de tu cuadro de cartera
+            loadCarteraTableEfi(currentCuadroId);
+        } else {
+            loadTableEfi(currentCuadroId);
+        }
+    }
+});
+
+
+        })
+        .catch(error => {
+            console.error('❌ Error cargando entidades:', error);
+            selectEntidad.innerHTML = '<option value="error">Error al cargar entidades</option>';
+        });
+}
+
+// ===================================
+// CARGAR TABLA POR DEFECTO AL INICIAR
+// ===================================
+console.log('🚀 Iniciando carga inicial del sistema...');
+await loadSistemaData();
+loadTable('SFN01');
 });
