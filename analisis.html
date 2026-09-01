@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análisis Financiero - Data Financiero</title>
+    
+    <!-- Librerías Externas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Estilos Personalizados -->
     <link rel="stylesheet" href="analisis.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- ==========================================
+         HEADER PRINCIPAL
+    ========================================== -->
     <header class="main-header">
         <div class="header-container">
             <div class="header-left">
@@ -39,109 +46,3401 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="hub-container">
-        <div class="hub-header">
-            <div class="hub-title-section">
-                <h1>DASHBOARD DE REPORTES</h1>
-                <p>Accede a los reportes del equipo de forma rápida y sencilla.</p>
+    <!-- ==========================================
+         CONTENIDO DEL HUB DE REPORTES
+    ========================================== -->
+    <main class="hub-container-v2">
+        <!-- Header del Hub -->
+        <div class="hub-header-v2">
+            <div class="hub-title-v2">
+                <h1>REPORTES INTERACTIVOS</h1>
+                <p>Explora los reportes de forma fácil y rápida.</p>
             </div>
             
-            <div class="last-update">
-                <div class="update-icon">
-                    <i class="fas fa-calendar-check"></i>
+            <div class="last-update-v2">
+                <div class="update-icon-v2">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <div class="update-info">
-                    <span class="update-label">Datos actualizados</span>
-                    <span class="update-date" id="currentDateTime">27/06/2025 9:00 a.m.</span>
+                <div class="update-info-v2">
+                    <span class="update-label-v2">Datos actualizados</span>
+                    <span class="update-date-v2" id="currentDateTime">27/06/2025 9:00 a.m.</span>
                 </div>
             </div>
         </div>
 
-        <!-- Grid de Reportes -->
-        <div class="reports-grid">
-            <!-- Balances -->
-            <div class="report-card finanzas" onclick="openReport('finanzas')">
-                <div class="card-icon">
-                    <i class="fas fa-chart-bar"></i>
+        <!-- Contenido Principal Dividido -->
+        <div class="hub-content-split">
+            
+            <!-- Columna Izquierda: Dashboard Preview + Selector + Info Panel -->
+            <div class="left-sidebar">
+                
+                <!-- FILA 1: Dashboard Preview -->
+                <div class="dashboard-preview">
+                    <div class="preview-card">
+                        <div class="preview-header">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard de Calidad</span>
+                        </div>
+                        <div class="preview-body">
+                            <p>Seguimiento de indicadores y métricas</p>
+                        </div>
+                    </div>
                 </div>
-                <h3>Balances</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
+
+                <!-- FILA 2 y 3: Selector de Entidad + Panel de Información -->
+                <div class="sector-selector" id="entidadFilterContainer">
+                    <label for="entidadFilter">Seleccione Entidad Financiera:</label>
+                    <select id="entidadFilter" style="width: 100%;">
+                        <option value="todas">Todas las Entidades</option>
+                        <!-- Las opciones se llenan con JS desde data/entidades_lista.json -->
+                    </select>
+                    
+                    <!-- ✅ PANEL DE INFORMACIÓN DE LA ENTIDAD (NUEVO) -->
+                    <div class="entity-info-panel" id="entityInfoPanel" style="display: none;">
+                        <div class="entity-info-header">
+                            <i class="fas fa-building"></i>
+                            <span id="entityNameDisplay">BP. AMAZONAS</span>
+                        </div>
+                        <div class="entity-info-grid">
+                            <div class="entity-info-item">
+                                <div class="info-label">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Tamaño</span>
+                                </div>
+                                <div class="info-value" id="entityTamaño">-</div>
+                            </div>
+                            <div class="entity-info-item">
+                                <div class="info-label">
+                                    <i class="fas fa-coins"></i>
+                                    <span>Nivel Activos</span>
+                                </div>
+                                <div class="info-value" id="entityRangoActivos">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Intermediación Financiera -->
-            <div class="report-card ventas" onclick="openReport('ventas')">
-                <div class="card-icon">
-                    <i class="fas fa-chart-pie"></i>
+            <!-- Columna Derecha: Lista de Reports -->
+            <div class="reports-list">
+                
+                <!-- ✅ NUEVO: Botón Entorno Macroeconómico (Primera posición) -->
+                <div class="report-item report-dark" onclick="openReport('balances')">
+                    <div class="report-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="report-info">
+                        <h4>Balances Financieros: Principales Cuentas</h4>
+                        <p>Reporte detallado de los balances financieros</p>
+                    </div>
                 </div>
-                <h3>Intermediación Financiera</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
-            </div>
 
-            <!-- Indicadores Financieros -->
-            <div class="report-card rrhh" onclick="openReport('rrhh')">
-                <div class="card-icon">
-                    <i class="fas fa-users"></i>
+                <div class="report-item report-yellow" onclick="openReport('intermediacion')">
+                    <div class="report-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="report-info">
+                        <h4>Intermediación Financiera</h4>
+                        <p>Análisis de colocaciones y captaciones</p>
+                    </div>
                 </div>
-                <h3>Indicadores Financieros</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
-            </div>
 
-            <!-- Tasas de Interés -->
-            <div class="report-card operaciones" onclick="openReport('operaciones')">
-                <div class="card-icon">
-                    <i class="fas fa-clipboard-list"></i>
+                <div class="report-item report-dark" onclick="openReport('indicadores')">
+                    <div class="report-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="report-info">
+                        <h4>Indicadores Financieros</h4>
+                        <p>Métricas clave</p>
+                    </div>
                 </div>
-                <h3>Tasas de Interés</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
-            </div>
 
-            <!-- Rannking Financiero -->
-            <div class="report-card riesgos" onclick="openReport('riesgos')">
-                <div class="card-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
+                <div class="report-item report-yellow" onclick="openReport('tasas')">
+                    <div class="report-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="report-info">
+                        <h4>Tasas de Interés</h4>
+                        <p>Análisis de tasas de interés</p>
+                    </div>
                 </div>
-                <h3>Rannking Financiero</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
-            </div>
 
-            <!-- Comparativo entre entidades -->
-            <div class="report-card cumplimiento" onclick="openReport('cumplimiento')">
-                <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="report-item report-dark" onclick="openReport('comparativo')">
+                    <div class="report-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="report-info">
+                        <h4>Comparativa de Indicadores</h4>
+                        <p>Comparación de métricas clave por entidad financiera</p>
+                    </div>
                 </div>
-                <h3>Comparativo entre entidades</h3>
-                <p>Ver reporte <i class="fas fa-arrow-right"></i></p>
-            </div>
 
-            <!-- Enlaces Externos -->
-            <div class="report-card externos" onclick="openReport('externos')">
-                <div class="card-icon">
-                    <i class="fas fa-link"></i>
-                </div>
-                <h3>ENLACES EXTERNOS</h3>
-                <p>Abrir <i class="fas fa-external-link-alt"></i></p>
+
+
             </div>
         </div>
 
         <!-- Footer del Hub -->
-        <div class="hub-footer">
-            <div class="footer-info">
-                <div class="info-icon">
+        <div class="hub-footer-v2">
+            <div class="footer-info-v2">
+                <div class="info-icon-v2">
                     <i class="fas fa-lightbulb"></i>
                 </div>
-                <div class="info-text">
+                <div class="info-text-v2">
                     <h4>Todo lo que necesitas, en un solo lugar.</h4>
                     <p>Explora los reportes del equipo de forma fácil y rápida.</p>
                 </div>
             </div>
-            <div class="footer-illustration">
+            <div class="footer-illustration-v2">
                 <i class="fas fa-chart-line"></i>
+                <i class="fas fa-chart-pie"></i>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- ==========================================
+         CONTENEDOR DE LA REVISTA DIGITAL 
+         (Oculto por defecto, se activa al abrir reporte)
+    ========================================== -->
+    <div id="digital-magazine-view" class="magazine-view hidden">
+        
+        <!-- Barra de Navegación de la Revista (DEFINITIVA) -->
+        <div class="magazine-toolbar">
+            <button class="btn-back-magazine" onclick="closeMagazine()">
+                <i class="fas fa-arrow-left"></i> Volver al Hub
+            </button>
+
+            <button class="btn-download-pdf" onclick="downloadMagazinePDF()">
+                <i class="fas fa-file-pdf"></i> Descargar PDF
+            </button>
+
+            <!-- ✅ NUEVO: Interruptor para mostrar/ocultar etiquetas -->
+            <div class="filter-group toggle-labels-group">
+                <label class="switch-label" for="showLabelsToggle">
+                    <input type="checkbox" id="showLabelsToggle" checked>
+                    <span class="slider round"></span>
+                    <span class="toggle-text">📊 Mostrar valores en gráficos</span>
+                </label>
+                <small style="display:block; font-size:10px; color:#64748b; margin-top:2px;">Activa/desactiva etiquetas.</small>
+            </div>
+
+            <div class="magazine-filters-group">
+                <!-- Selectores de Fecha -->
+                <div class="filter-group">
+                    <label>Año:</label>
+                    <select id="yearSelector"></select>
+                </div>
+                <div class="filter-group">
+                    <label>Mes:</label>
+                    <select id="monthSelector"></select>
+                </div>
+                
+                <!-- Selector de Entidad Integrado y Alineado -->
+                <div class="filter-group entity-filter-group">
+                    <label>Entidad:</label>
+                    <select id="magazineEntityFilter"></select>
+                </div>
+                    <!-- Panel de información en la revista -->
+                    <div class="entity-info-mini" id="entityInfoMini" style="display: none;">
+                        <div class="mini-info-item">
+                            <span class="mini-label">Tamaño:</span>
+                            <span class="mini-value" id="miniEntityTamaño">-</span>
+                        </div>
+                        <div class="mini-info-item">
+                            <span class="mini-label">Nivel:</span>
+                            <span class="mini-value" id="miniEntityRango">-</span>
+                        </div>
+                    </div>
+
+
+            </div>
+        </div>
+
+<!-- PÁGINA 1: RESUMEN EJECUTIVO Y TABLA PRINCIPAL -->
+<div class="magazine-page page-1 active">
+    <div class="page-header">
+        <h2>PANEL DE ANÁLISIS: PRINCIPALES CUENTAS DEL BALANCE GENERAL</h2>
+        <p>Análisis Comparativo del Activo, Pasivo y Patrimonio</p>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL EN DOS FILAS -->
+    <div class="page-content-grid">
+        
+        <!-- ==========================================
+             FILA 1: KPIs (Izquierda) + Tabla (Derecha)
+        ========================================== -->
+        <div class="top-row">
+            <!-- Recuadro Azul (KPIs) -->
+            <div class="summary-box">
+                <h3>Principales resultados</h3>
+                <div class="kpi-list">
+                    <div class="kpi-item activo">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Activo</span>
+                            <span class="kpi-value" id="kpi-activo">0</span>
+                            <span class="kpi-var positive" id="var-activo">+0%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-item pasivo">
+                        <i class="fas fa-balance-scale-right"></i>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Pasivo</span>
+                            <span class="kpi-value" id="kpi-pasivo">0</span>
+                            <span class="kpi-var negative" id="var-pasivo">-0%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-item patrimonio">
+                        <i class="fas fa-landmark"></i>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Patrimonio</span>
+                            <span class="kpi-value" id="kpi-patrimonio">0</span>
+                            <span class="kpi-var positive" id="var-patrimonio">+0%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-item ganancias">
+                        <i class="fas fa-coins"></i>
+                        <div class="kpi-info">
+                            <span class="kpi-label">Ganancias</span>
+                            <span class="kpi-value" id="kpi-ganancias">0</span>
+                            <span class="kpi-var neutral" id="var-ganancias">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla Principal -->
+            <div class="main-table-container">
+                <table class="magazine-table">
+                    <thead>
+                        <tr>
+                            <th>Cuentas / Métricas</th>
+                            <th id="th-prev-year">dic-23</th>
+                            <th id="th-prev-month">may-24</th>
+                            <th id="th-current">jun-24</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="balancesTableBody">
+                        <!-- Filas generadas dinámicamente por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             FILA 2: Gráficos (Uno al lado del otro)
+        ========================================== -->
+        <div class="bottom-row">
+            <div class="chart-card">
+                
+                <div id="chartActivo" class="echart-container"></div>
+            </div>
+            <div class="chart-card">
+                
+                <div id="chartPasivo" class="echart-container"></div>
+            </div>
+            <div class="chart-card">
+                
+                <div id="chartPatrimonio" class="echart-container"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <!-- PÁGINA 2: EVOLUCIÓN HISTÓRICA -->
+        <div class="magazine-page page-2">
+            <div class="page-header">
+                <h2>Evolución Histórica de Cuentas Clave</h2>
+                <p>Tendencias de los últimos 12 meses y comparativas sectoriales</p>
+            </div>
+            
+            <div class="historical-layout">
+                <div class="series-selector-panel">
+                    <h3>Series a graficar:</h3>
+                    <div class="checkbox-list" id="historicalSeriesList">
+                        <!-- Checkboxes generados dinámicamente por JS -->
+                    </div>
+                </div>
+                
+                <div class="historical-charts-grid">
+                    <div class="hist-chart-box">
+                        
+                        <div id="histChartActivo" class="echart-container-large"></div>
+                    </div>
+                    <div class="hist-chart-box">
+                        
+                        <div id="histChartPasivo" class="echart-container-large"></div>
+                    </div>
+                    <div class="hist-chart-box">
+                        
+                        <div id="histChartPatrimonio" class="echart-container-large"></div>
+                    </div>
+                    <div class="hist-chart-box">
+                        
+                        <div id="histChartGanancias" class="echart-container-large"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+<!-- PÁGINA 3: ESTRUCTURA DEL ACTIVO PRODUCTIVO -->
+<div class="magazine-page page-3">
+    <div class="page-header">
+        <h2>ESTRUCTURA DEL ACTIVO PRODUCTIVO</h2>
+        <p>Análisis detallado de la composición del activo productivo</p>
+    </div>
+    
+    <div class="estructura-layout">
+        <!-- PRIMERA COLUMNA -->
+        <div class="estructura-left-column">
+            <!-- Fila 1: KPIs MEJORADOS -->
+            <div class="kpi-row-estructura">
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">BANCOS Y OTRAS INSTITUCIONES FINANCIERAS</span>
+                    <span class="kpi-value-estructura" id="kpi-1103-value">0</span>
+                    <div class="kpi-variation" id="kpi-1103-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">INVERSIONES</span>
+                    <span class="kpi-value-estructura" id="kpi-13-value">0</span>
+                    <div class="kpi-variation" id="kpi-13-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">CARTERA POR VENCER</span>
+                    <span class="kpi-value-estructura" id="kpi-cartera-vencer-value">0</span>
+                    <div class="kpi-variation" id="kpi-cartera-vencer-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila 2: Gráficos de barras -->
+            <div class="charts-row-estructura">
+                <div class="chart-box-estructura">
+                    <h4>Activos Productivos</h4>
+                    <div id="chartBarrasApiladas" class="chart-container-simple"></div>
+                </div>
+                <div class="chart-box-estructura">
+                    <h4>Distribución por Cuenta</h4>
+                    <div id="chartBarrasCuentas" class="chart-container-simple"></div>
+                </div>
+            </div>
+            
+            <!-- Fila 3: Gráfico histórico con zoom -->
+            <div class="historical-row-estructura">
+                <div class="chart-box-full">
+                    
+                    <div id="chartHistoricoEstructura" class="chart-container-large"></div>
+                </div>
+            </div>
+        </div>
+        
+            <!-- SEGUNDA COLUMNA: Tabla + Análisis -->
+            <div class="estructura-right-column">
+                <div class="tabla-estructura-container">
+                    <table class="tabla-estructura">
+                        <thead>
+                            <tr>
+                                <th>Cuentas/Meses</th>
+                                <th id="th-mes1-estructura">abr-19</th>
+                                <th id="th-mes2-estructura">dic-19</th>
+                                <th id="th-mes3-estructura">mar-20</th>
+                                <th>Variación Mensual</th>
+                                <th>Variación Anual</th>
+                            </tr>
+                        </thead>
+                        <tbody id="estructuraTableBody">
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- ✅ NUEVO: Contenedor de Análisis Dinámico -->
+                <div class="analisis-dinamico-container">
+                    <div class="analisis-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Análisis Dinámico - <span id="analisis-fecha">jun-26</span></h4>
+                    </div>
+                    <div class="analisis-content" id="analisis-content">
+                        <!-- Análisis generado dinámicamente -->
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- PÁGINA 4: ESTRUCTURA DEL ACTIVO IMPRODUCTIVO -->
+<div class="magazine-page page-4">
+    <div class="page-header">
+        <h2>ESTRUCTURA DEL ACTIVO IMPRODUCTIVO</h2>
+        <p>Análisis detallado de la composición del activo improductivo</p>
+    </div>
+    
+    <div class="estructura-layout">
+        <!-- PRIMERA COLUMNA -->
+        <div class="estructura-left-column">
+            <!-- Fila 1: KPIs MEJORADOS -->
+            <div class="kpi-row-estructura">
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">ACTIVOS IMPRODUCTIVOS BRUTOS</span>
+                    <span class="kpi-value-estructura" id="kpi-sb003-value">0</span>
+                    <div class="kpi-variation" id="kpi-sb003-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">PROVISIONES TOTALES</span>
+                    <span class="kpi-value-estructura" id="kpi-sb008-value">0</span>
+                    <div class="kpi-variation" id="kpi-sb008-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">ACTIVOS IMPRODUCTIVOS NETOS</span>
+                    <span class="kpi-value-estructura" id="kpi-sb004-value">0</span>
+                    <div class="kpi-variation" id="kpi-sb004-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila 2: Gráficos de barras -->
+            <div class="charts-row-estructura">
+                <div class="chart-box-estructura">
+                    <h4>Activos Improductivos Netos</h4>
+                    <div id="chartBarrasImproductivos" class="chart-container-simple"></div>
+                </div>
+                <div class="chart-box-estructura">
+                    <h4>Distribución por Cuenta</h4>
+                    <div id="chartBarrasCuentasImproductivas" class="chart-container-simple"></div>
+                </div>
+            </div>
+            
+            <!-- Fila 3: Gráfico histórico -->
+            <div class="historical-row-estructura">
+                <div class="chart-box-full">
+                    
+                    <div id="chartHistoricoImproductivos" class="chart-container-large"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA COLUMNA: Tabla -->
+        <div class="estructura-right-column">
+            <div class="tabla-estructura-container">
+                <table class="tabla-estructura">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-improductivo">abr-19</th>
+                            <th id="th-mes2-improductivo">dic-19</th>
+                            <th id="th-mes3-improductivo">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="improductivoTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Análisis Dinámico -->
+            <div class="analisis-dinamico-container">
+                <div class="analisis-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Análisis Dinámico - <span id="analisis-fecha-improductivo">jun-26</span></h4>
+                </div>
+                <div class="analisis-content" id="analisis-content-improductivo">
+                    <!-- Análisis generado dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 5: RANKING -->
+<div class="magazine-page page-5">
+    <div class="page-header">
+        <h2>RANKING DE ENTIDADES FINANCIERAS POR ACTIVOS</h2>
+        <p>Comparativa de indicadores clave por entidad</p>
+    </div>
+    
+    <div class="ranking-layout">
+        <!-- COLUMNA IZQUIERDA: 2 Paneles -->
+        <div class="ranking-left-column">
+            
+            <!-- Panel 1 -->
+            <div class="ranking-panel" id="rankingPanel1">
+                <h4 class="panel-title">Filtros Ranking</h4>
+                <div class="panel-content">
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRanking" value="sector" checked>
+                            <span class="radio-text">Por Sector Financiero</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRanking" value="activos">
+                            <span class="radio-text">Por nivel de Activos</span>
+                        </label>
+                            <!-- ✅ NUEVO RADIO BUTTON -->
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRanking" value="provincia">
+                            <span class="radio-text">Por Provincia</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Panel 2 -->
+                <div class="ranking-panel" id="rankingPanel2">
+                    <h4 class="panel-title">RESUMEN DEL CUADRO</h4>
+                    <div class="panel-content">
+                        <table class="panel2-table">
+                            <thead>
+                                <tr>
+                                    <th>Cuenta</th>
+                                    <th id="panel2-prev-year">jun-25</th>
+                                    <th id="panel2-current">jun-26</th>
+                                    <th>Variación</th>
+                                </tr>
+                            </thead>
+                            <tbody id="panel2TableBody">
+                                <!-- Filas generadas dinámicamente -->
+                            </tbody>
+                        </table>
+                        
+                        <!-- ✅ NUEVO: Número de Ranking -->
+                        <div class="ranking-number-container">
+                            <div class="ranking-badge" id="rankingBadge">
+                                <span class="ranking-number" id="rankingNumber">-</span>
+                                <span class="ranking-label">POSICIÓN EN EL RANKING</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+            <!-- COLUMNA CENTRAL: Tabla Ranking -->
+            <div class="ranking-center-column">
+                <div class="ranking-table-container">
+                    <table class="ranking-table">
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Entidad</th>
+                                <th id="ranking-header-1">Activos</th>
+                                <th id="ranking-header-2">Participación</th>
+                                <th id="ranking-header-3">Activos</th>
+                                <th id="ranking-header-4">Participación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingTableBody">
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+        <!-- COLUMNA DERECHA: Gráfico -->
+        <div class="ranking-right-column">
+            <div class="ranking-chart-box">
+                <h4>GRÁFICO 1</h4>
+                <div id="chartRanking" class="ranking-chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 6: ESTRUCTURA DEL PASIVO - OBLIGACIONES CON EL PÚBLICO -->
+<div class="magazine-page page-6">
+    <div class="page-header">
+        <h2>ESTRUCTURA DEL PASIVO - OBLIGACIONES CON EL PÚBLICO</h2>
+        <p>Análisis detallado de la composición del pasivo</p>
+    </div>
+    <div class="estructura-layout">
+        <!-- PRIMERA COLUMNA -->
+        <div class="estructura-left-column">
+            <!-- Fila 1: KPIs MEJORADOS -->
+            <div class="kpi-row-estructura">
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">OBLIGACIONES CON EL PÚBLICO</span>
+                    <span class="kpi-value-estructura" id="kpi-21-value">0</span>
+                    <div class="kpi-variation" id="kpi-21-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS A PLAZO</span>
+                    <span class="kpi-value-estructura" id="kpi-2103-value">0</span>
+                    <div class="kpi-variation" id="kpi-2103-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS DE AHORRO</span>
+                    <span class="kpi-value-estructura" id="kpi-210135-value">0</span>
+                    <div class="kpi-variation" id="kpi-210135-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila 2: Gráficos de barras -->
+            <div class="charts-row-estructura">
+                <div class="chart-box-estructura">
+                    <h4>Obligaciones con el Público</h4>
+                    <div id="chartBarrasApiladasPasivo" class="chart-container-simple"></div>
+                </div>
+                <div class="chart-box-estructura">
+                    <h4>Distribución por Cuenta</h4>
+                    <div id="chartBarrasCuentasPasivo" class="chart-container-simple"></div>
+                </div>
+            </div>
+            
+            <!-- Fila 3: Gráfico histórico con zoom -->
+            <div class="historical-row-estructura">
+                <div class="chart-box-full">
+                    
+                    <div id="chartHistoricoEstructuraPasivo" class="chart-container-large"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA COLUMNA: Tabla + Análisis -->
+        <div class="estructura-right-column">
+            <div class="tabla-estructura-container">
+                <table class="tabla-estructura">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-pasivo">abr-19</th>
+                            <th id="th-mes2-pasivo">dic-19</th>
+                            <th id="th-mes3-pasivo">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pasivoTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Contenedor de Análisis Dinámico -->
+            <div class="analisis-dinamico-container">
+                <div class="analisis-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Análisis Dinámico - <span id="analisis-fecha-pasivo">jun-26</span></h4>
+                </div>
+                <div class="analisis-content" id="analisis-content-pasivo">
+                    <!-- Análisis generado dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 7: PASIVOS EXIGIBLES - DEPÓSITOS A PLAZO -->
+<div class="magazine-page page-7">
+    <div class="page-header">
+        <h2>PASIVOS EXIGIBLES</h2>
+        <p>Análisis detallado de la composición de los pasivos exigibles</p>
+    </div>
+    
+    <div class="estructura-layout">
+        <!-- PRIMERA COLUMNA -->
+        <div class="estructura-left-column">
+            <!-- Fila 1: KPIs -->
+            <div class="kpi-row-estructura">
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">PASIVOS EXIGIBLES</span>
+                    <span class="kpi-value-estructura" id="kpi-sb002-value">0</span>
+                    <div class="kpi-variation" id="kpi-sb002-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS A PLAZO: 1 - 30 DÍAS</span>
+                    <span class="kpi-value-estructura" id="kpi-210305-value">0</span>
+                    <div class="kpi-variation" id="kpi-210305-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS A PLAZO: MÁS DE 361 DÍAS</span>
+                    <span class="kpi-value-estructura" id="kpi-210325-value">0</span>
+                    <div class="kpi-variation" id="kpi-210325-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila 2: Gráficos de barras -->
+            <div class="charts-row-estructura">
+                <div class="chart-box-estructura">
+                    <h4>Pasivos Exigibles</h4>
+                    <div id="chartBarrasApiladasExigible" class="chart-container-simple"></div>
+                </div>
+                <div class="chart-box-estructura">
+                    <h4>Distribución por Plazo</h4>
+                    <div id="chartBarrasCuentasExigible" class="chart-container-simple"></div>
+                </div>
+            </div>
+            
+            <!-- Fila 3: Gráfico histórico con línea y barras apiladas -->
+            <div class="historical-row-estructura">
+                <div class="chart-box-full">
+                    
+                    <div id="chartHistoricoEstructuraExigible" class="chart-container-large"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA COLUMNA: Tabla + Análisis -->
+        <div class="estructura-right-column">
+            <div class="tabla-estructura-container">
+                <table class="tabla-estructura">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-exigible">abr-19</th>
+                            <th id="th-mes2-exigible">dic-19</th>
+                            <th id="th-mes3-exigible">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exigibleTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Análisis Dinámico -->
+            <div class="analisis-dinamico-container">
+                <div class="analisis-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Análisis Dinámico - <span id="analisis-fecha-exigible">jun-26</span></h4>
+                </div>
+                <div class="analisis-content" id="analisis-content-exigible">
+                    <!-- Análisis generado dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 8: PASIVOS CON COSTO -->
+<div class="magazine-page page-8">
+    <div class="page-header">
+        <h2>PASIVOS CON COSTO</h2>
+        <p>Análisis detallado de la composición de los pasivos con costo</p>
+    </div>
+    
+    <div class="estructura-layout">
+        <!-- PRIMERA COLUMNA -->
+        <div class="estructura-left-column">
+            <!-- Fila 1: KPIs -->
+            <div class="kpi-row-estructura">
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">PASIVOS CON COSTO</span>
+                    <span class="kpi-value-estructura" id="kpi-sb007-value">0</span>
+                    <div class="kpi-variation" id="kpi-sb007-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS DE GARANTÍA</span>
+                    <span class="kpi-value-estructura" id="kpi-2104-value">0</span>
+                    <div class="kpi-variation" id="kpi-2104-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+                <div class="kpi-box-estructura">
+                    <span class="kpi-title-estructura">DEPÓSITOS RESTRINGIDOS</span>
+                    <span class="kpi-value-estructura" id="kpi-2105-value">0</span>
+                    <div class="kpi-variation" id="kpi-2105-var">
+                        <span class="var-value">+0%</span>
+                        <span class="var-date">dic-23</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fila 2: Gráficos de barras -->
+            <div class="charts-row-estructura">
+                <div class="chart-box-estructura">
+                    <h4>Pasivos con Costo</h4>
+                    <div id="chartBarrasApiladasCosto" class="chart-container-simple"></div>
+                </div>
+                <div class="chart-box-estructura">
+                    <h4>Distribución por Cuenta</h4>
+                    <div id="chartBarrasCuentasCosto" class="chart-container-simple"></div>
+                </div>
+            </div>
+            
+            <!-- Fila 3: Gráfico histórico -->
+            <div class="historical-row-estructura">
+                <div class="chart-box-full">
+                    <h4>Evolución Histórica</h4>
+                    <div id="chartHistoricoEstructuraCosto" class="chart-container-large"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA COLUMNA: Tabla + Análisis -->
+        <div class="estructura-right-column">
+            <div class="tabla-estructura-container">
+                <table class="tabla-estructura">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-costo">abr-19</th>
+                            <th id="th-mes2-costo">dic-19</th>
+                            <th id="th-mes3-costo">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="costoTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Análisis Dinámico -->
+            <div class="analisis-dinamico-container">
+                <div class="analisis-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Análisis Dinámico - <span id="analisis-fecha-costo">jun-26</span></h4>
+                </div>
+                <div class="analisis-content" id="analisis-content-costo">
+                    <!-- Análisis generado dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- PÁGINA 9: RANKING DE PASIVOS -->
+        <div class="magazine-page page-9">
+            <div class="page-header">
+                    <h2>RANKING DE ENTIDADES FINANCIERAS POR PASIVOS</h2>
+                    <p>Comparativa de pasivos por entidad financiera</p>
+            </div>
+
+            <div class="ranking-layout">
+                    <!-- COLUMNA IZQUIERDA: 2 Paneles -->
+                 <div class="ranking-left-column">
+                            <!-- Panel 1 -->
+                        <div class="ranking-panel" id="rankingPanel1_Pasivo">
+                                <h4 class="panel-title">Filtros Ranking</h4>
+                            <div class="panel-content">
+                                    <div class="radio-group">
+                                                <label class="radio-option">
+                                                        <input type="radio" name="tipoRankingPasivo" value="sector" checked>
+                                                        <span class="radio-text">Por Sector Financiero</span>
+                                                </label>
+                                                    <label class="radio-option">
+                                                        <input type="radio" name="tipoRankingPasivo" value="activos">
+                                                        <span class="radio-text">Por nivel de Activos</span>
+                                                    </label>
+                                                        <!-- ✅ NUEVO RADIO BUTTON -->
+                                                        <label class="radio-option">
+                                                            <input type="radio" name="tipoRankingPasivo" value="provincia">
+                                                            <span class="radio-text">Por Provincia</span>
+                                                        </label>
+
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- Panel 2 -->
+                        <div class="ranking-panel" id="rankingPanel2_Pasivo">
+                                            <h4 class="panel-title">RESUMEN DEL CUADRO</h4>
+                            <div class="panel-content">
+                                            <table class="panel2-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Cuenta</th>
+                                                            <th id="panel2-prev-year-pasivo">jun-25</th>
+                                                            <th id="panel2-current-pasivo">jun-26</th>
+                                                            <th>Variación</th>
+                                                    </tr>
+                                                                </thead>
+                                                    <tbody id="panel2TableBody_Pasivo">
+                                                            <!-- Filas generadas dinámicamente -->
+                                                    </tbody>
+                                            </table>
+                                    <!-- Número de Ranking -->
+                                    <div class="ranking-number-container">
+                                        <div class="ranking-badge" id="rankingBadge_Pasivo">
+                                            <span class="ranking-number" id="rankingNumber_Pasivo">-</span>
+                                            <span class="ranking-label">POSICIÓN EN EL RANKING</span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                 </div>
+                        <!-- COLUMNA CENTRAL: Tabla Ranking -->
+                        <div class="ranking-center-column">
+                            <div class="ranking-table-container">
+                                <table class="ranking-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Posición</th>
+                                                <th>Entidad</th>
+                                                <th id="ranking-header-1-pasivo">Pasivo</th>
+                                                <th id="ranking-header-2-pasivo">Participación</th>
+                                                <th id="ranking-header-3-pasivo">Pasivo 3</th>
+                                                <th id="ranking-header-4-pasivo">Participación 4</th>
+                                            </tr>
+                                        </thead>
+                                                <tbody id="rankingTableBody_Pasivo">
+                                                <!-- Filas generadas dinámicamente -->
+                                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                                <!-- COLUMNA DERECHA: Gráfico -->
+                            <div class="ranking-right-column">
+                                    <div class="ranking-chart-box">
+                                            <h4>GRÁFICO 1</h4>
+                                                <div id="chartRanking_Pasivo" class="ranking-chart-container"></div>
+                                    </div>
+                            </div>
+            </div>
+        </div>
+
+ <!-- PÁGINA 10: ESTADO DE PÉRDIDAS Y GANANCIAS -->
+<div class="magazine-page page-10">
+    <div class="page-header">
+        <h2>ESTADO DE PÉRDIDAS Y GANANCIAS MENSUALIZADO</h2>
+        <p>Análisis detallado de ingresos, gastos y resultados del ejercicio</p>
+    </div>
+
+    <!-- FILA A: KPIs -->
+    <div class="kpi-row-estructura" style="margin-bottom: 30px;">
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">INGRESOS</span>
+            <span class="kpi-value-estructura" id="kpi-ingresos-value">0</span>
+            <div class="kpi-variation" id="kpi-ingresos-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">GASTOS</span>
+            <span class="kpi-value-estructura" id="kpi-gastos-value">0</span>
+            <div class="kpi-variation" id="kpi-gastos-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">GANANCIA O (PÉRDIDA) DEL EJERCICIO</span>
+            <span class="kpi-value-estructura" id="kpi-ganeje-value">0</span>
+            <div class="kpi-variation" id="kpi-ganeje-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FILA B: TABLA + GRÁFICOS (LAYOUT MEJORADO) -->
+    <div class="pyg-layout">
+        <!-- COLUMNA IZQUIERDA: TABLA DETALLADA (40%) -->
+        <div class="pyg-left-column">
+            <div class="pyg-table-container">
+                <table class="pyg-table">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-pyg">abr-19</th>
+                            <th id="th-mes2-pyg">dic-19</th>
+                            <th id="th-mes3-pyg">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pygTableBody">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+                                    <!-- Agrega esto antes del cierre de </div> de page-10 -->
+                <div class="analisis-dinamico-container" style="margin-top: 20px;">
+                    <div class="analisis-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Análisis Dinámico - <span id="analisis-fecha-pyg">jun-26</span></h4>
+                    </div>
+                    <div class="analisis-content" id="analisis-content-pyg">
+                        <!-- Análisis generado dinámicamente -->
+                    </div>
+                </div>
+        </div>
+
+
+
+        <!-- COLUMNA DERECHA: GRÁFICOS (60%) -->
+        <div class="pyg-right-column">
+            <!-- Gráfico Comparativo -->
+            <div class="pyg-chart-container" style="height: 45%; margin-bottom: 20px;">
+                <h4>Análisis Comparativo Ganancias y Pérdidas</h4>
+                <div id="chartComparativoPyG" class="pyg-chart-box"></div>
+            </div>
+            
+            <!-- Gráfico Sankey -->
+            <div class="pyg-chart-container" style="height: 55%;">
+                
+                <div id="chartHistoricoEstructuraPYG" class="pyg-chart-box"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- PÁGINA 11: ESTADO DE PÉRDIDAS Y GANANCIAS ANUALIZADO -->
+<div class="magazine-page page-11">
+    <div class="page-header">
+        <h2>ESTADO DE PÉRDIDAS Y GANANCIAS ANUALIZADO</h2>
+        <p>Análisis detallado de ingresos, gastos y resultados del ejercicio (Anualizado)</p>
+    </div>
+
+    <!-- FILA A: KPIs -->
+    <div class="kpi-row-estructura" style="margin-bottom: 30px;">
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">INGRESOS</span>
+            <span class="kpi-value-estructura" id="kpi-ingresos-anual-value">0</span>
+            <div class="kpi-variation" id="kpi-ingresos-anual-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">GASTOS</span>
+            <span class="kpi-value-estructura" id="kpi-gastos-anual-value">0</span>
+            <div class="kpi-variation" id="kpi-gastos-anual-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+        <div class="kpi-box-estructura">
+            <span class="kpi-title-estructura">GANANCIA O (PÉRDIDA) DEL EJERCICIO</span>
+            <span class="kpi-value-estructura" id="kpi-ganeje-anual-value">0</span>
+            <div class="kpi-variation" id="kpi-ganeje-anual-var">
+                <span class="var-value">+0%</span>
+                <span class="var-date">dic-23</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FILA B: TABLA + GRÁFICOS (LAYOUT MEJORADO) -->
+    <div class="pyg-layout">
+        <!-- COLUMNA IZQUIERDA: TABLA DETALLADA (40%) -->
+        <div class="pyg-left-column">
+            <div class="pyg-table-container">
+                <table class="pyg-table">
+                    <thead>
+                        <tr>
+                            <th>Cuentas/Meses</th>
+                            <th id="th-mes1-pyg-anual">abr-19</th>
+                            <th id="th-mes2-pyg-anual">dic-19</th>
+                            <th id="th-mes3-pyg-anual">mar-20</th>
+                            <th>Variación Mensual</th>
+                            <th>Variación Anual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pygTableBodyAnual">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+                                    <!-- Agrega esto antes del cierre de </div> de page-10 -->
+                <div class="analisis-dinamico-container" style="margin-top: 20px;">
+                    <div class="analisis-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Análisis Dinámico - <span id="analisis-fecha-pygA">jun-26</span></h4>
+                    </div>
+                    <div class="analisis-content" id="analisis-content-pygA">
+                        <!-- Análisis generado dinámicamente -->
+                    </div>
+                </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: GRÁFICOS (60%) -->
+        <div class="pyg-right-column">
+            <!-- Gráfico Comparativo -->
+            <div class="pyg-chart-container" style="height: 45%; margin-bottom: 20px;">
+                <h4>Análisis Comparativo Ganancias y Pérdidas (Anualizado)</h4>
+                <div id="chartComparativoPyGAnual" class="pyg-chart-box"></div>
+            </div>
+            
+            <!-- Gráfico Sankey -->
+            <div class="pyg-chart-container" style="height: 55%;">
+                
+                <div id="chartHistoricoEstructuraPYGANUAL" class="pyg-chart-box"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 12: INTERMEDIACIÓN FINANCIERA -->
+<div class="magazine-page page-12">
+    <div class="page-header">
+        <h2>PRINCIPALES INDICADORES: COLOCACIONES DEL SISTEMA FINANCIERO NACIONAL</h2>
+        <p>Colocaciones (Crédito) de la Entidad Financiera</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA BRUTA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if011-value">0</span>
+                <div class="kpi-variation" id="kpi-if011-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NETA</span>
+                <span class="kpi-value-intermediacion" id="kpi-14-value">0</span>
+                <div class="kpi-variation" id="kpi-14-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA POR VENCER</span>
+                <span class="kpi-value-intermediacion" id="kpi-if007-value">0</span>
+                <div class="kpi-variation" id="kpi-if007-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA VENCIDA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if009-value">0</span>
+                <div class="kpi-variation" id="kpi-if009-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NO DEV. INT.</span>
+                <span class="kpi-value-intermediacion" id="kpi-if008-value">0</span>
+                <div class="kpi-variation" id="kpi-if008-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Gráfico histórico con doble eje -->
+            <div class="intermediacion-chart-box">
+                <div id="chartHistoricoCartera" class="chart-container-large"></div>
+            </div>
+            
+            <!-- Columna B: Dos sub-filas con gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Cartera</h4>
+                    <div id="chartComposicionCartera" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Índice de Morosidad</h4>
+                    <div id="chartMorosidad" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+            <!-- TERCERA FILA: 6 KPIs con mini gráficos y resumen -->
+            <div class="kpi-row-intermediacion-6">
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">MOROSIDAD</span>
+                    <span class="kpi-mini-value" id="kpi-if012-mini-value">0%</span>
+                    <div id="chartMiniIf012" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-if012">Cargando...</div>
+                </div>
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">REND. CART. TOTAL</span>
+                    <span class="kpi-mini-value" id="kpi-sb036-mini-value">0%</span>
+                    <div id="chartMiniSb036" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-sb036">Cargando...</div>
+                </div>
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">REND. CART. PRODUCTIVO</span>
+                    <span class="kpi-mini-value" id="kpi-sb037-mini-value">0%</span>
+                    <div id="chartMiniSb037" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-sb037">Cargando...</div>
+                </div>
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">REND. CART. CONSUMO</span>
+                    <span class="kpi-mini-value" id="kpi-sb038-mini-value">0%</span>
+                    <div id="chartMiniSb038" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-sb038">Cargando...</div>
+                </div>
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">REND. CART. INMOBILIARIO</span>
+                    <span class="kpi-mini-value" id="kpi-sb039-mini-value">0%</span>
+                    <div id="chartMiniSb039" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-sb039">Cargando...</div>
+                </div>
+                <div class="kpi-mini-box">
+                    <span class="kpi-mini-title">REND. CART. MICROCRÉDITO</span>
+                    <span class="kpi-mini-value" id="kpi-sb040-mini-value">0%</span>
+                    <div id="chartMiniSb040" class="chart-mini-container"></div>
+                    <div class="kpi-mini-summary" id="summary-sb040">Cargando...</div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- PÁGINA 13: CARTERA DE CRÉDITO PRODUCTIVO -->
+<div class="magazine-page page-13">
+    <div class="page-header">
+        <h2>CARTERA DE CRÉDITO PRODUCTIVO</h2>
+        <p>Colocaciones (Crédito) de la Entidad Financiera</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA BRUTA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if011-prod-value">0</span>
+                <div class="kpi-variation" id="kpi-if011-prod-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NETA</span>
+                <span class="kpi-value-intermediacion" id="kpi-1401-prod-value">0</span>
+                <div class="kpi-variation" id="kpi-1401-prod-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA POR VENCER</span>
+                <span class="kpi-value-intermediacion" id="kpi-if007-prod-value">0</span>
+                <div class="kpi-variation" id="kpi-if007-prod-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA VENCIDA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if009-prod-value">0</span>
+                <div class="kpi-variation" id="kpi-if009-prod-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NO DEV. INT.</span>
+                <span class="kpi-value-intermediacion" id="kpi-if008-prod-value">0</span>
+                <div class="kpi-variation" id="kpi-if008-prod-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <!-- Primera sub-fila: Gráfico histórico con doble eje -->
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoCarteraProd" class="chart-container-large"></div>
+                </div>
+                <!-- Segunda sub-fila: Gráfico histórico Refinanciada/Reestructurada -->
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoRefiRees" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos sub-filas con gráficos -->
+            <div class="intermediacion-charts-column">
+                <!-- Primera sub-fila: Distribución por cuenta -->
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Cartera</h4>
+                    <div id="chartComposicionCarteraProd" class="chart-container-medium"></div>
+                </div>
+                <!-- Segunda sub-fila: Morosidad -->
+                <div class="intermediacion-subchart-box">
+                    <h4>Índice de Morosidad</h4>
+                    <div id="chartMorosidadProd" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 6 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1425-mini-value">0</span>
+                <div id="chartMini1425" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1425">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1433-mini-value">0</span>
+                <div id="chartMini1433" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1433">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1441-mini-value">0</span>
+                <div id="chartMini1441" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1441">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CARTERA VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1449-mini-value">0</span>
+                <div id="chartMini1449" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1449">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1457-mini-value">0</span>
+                <div id="chartMini1457" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1457">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1465-mini-value">0</span>
+                <div id="chartMini1465" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1465">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 14: CARTERA DE CRÉDITO CONSUMO -->
+<div class="magazine-page page-14">
+    <div class="page-header">
+        <h2>CARTERA DE CRÉDITO CONSUMO</h2>
+        <p>Colocaciones (Crédito) de la Entidad Financiera</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA BRUTA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if011-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-if011-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NETA</span>
+                <span class="kpi-value-intermediacion" id="kpi-1402-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-1402-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA POR VENCER</span>
+                <span class="kpi-value-intermediacion" id="kpi-if007-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-if007-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA VENCIDA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if009-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-if009-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NO DEV. INT.</span>
+                <span class="kpi-value-intermediacion" id="kpi-if008-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-if008-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoCarteraCons" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoRefiReesCons" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos sub-filas con gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Cartera</h4>
+                    <div id="chartComposicionCarteraCons" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Índice de Morosidad</h4>
+                    <div id="chartMorosidadCons" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 6 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1426-mini-value">0</span>
+                <div id="chartMini1426" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1426">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1434-mini-value">0</span>
+                <div id="chartMini1434" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1434">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1442-mini-value">0</span>
+                <div id="chartMini1442" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1442">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CARTERA VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1450-mini-value">0</span>
+                <div id="chartMini1450" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1450">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1458-mini-value">0</span>
+                <div id="chartMini1458" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1458">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1466-mini-value">0</span>
+                <div id="chartMini1466" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1466">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 15: CARTERA DE CRÉDITO INMOBILIARIO -->
+<div class="magazine-page page-15">
+    <div class="page-header">
+        <h2>CARTERA DE CRÉDITO INMOBILIARIO</h2>
+        <p>Colocaciones (Crédito) de la Entidad Financiera</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA BRUTA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if011-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-if011-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NETA</span>
+                <span class="kpi-value-intermediacion" id="kpi-1403-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-1403-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA POR VENCER</span>
+                <span class="kpi-value-intermediacion" id="kpi-if007-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-if007-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA VENCIDA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if009-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-if009-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NO DEV. INT.</span>
+                <span class="kpi-value-intermediacion" id="kpi-if008-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-if008-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoCarteraInmo" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoRefiReesInmo" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos sub-filas con gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Cartera</h4>
+                    <div id="chartComposicionCarteraInmo" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Índice de Morosidad</h4>
+                    <div id="chartMorosidadInmo" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 6 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1427-mini-value">0</span>
+                <div id="chartMini1427" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1427">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1435-mini-value">0</span>
+                <div id="chartMini1435" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1435">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1443-mini-value">0</span>
+                <div id="chartMini1443" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1443">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CARTERA VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1451-mini-value">0</span>
+                <div id="chartMini1451" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1451">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1459-mini-value">0</span>
+                <div id="chartMini1459" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1459">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1467-mini-value">0</span>
+                <div id="chartMini1467" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1467">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 16: CARTERA DE CRÉDITO MICROCRÉDITO -->
+<div class="magazine-page page-16">
+    <div class="page-header">
+        <h2>CARTERA DE CRÉDITO MICROCRÉDITO</h2>
+        <p>Colocaciones (Crédito) de la Entidad Financiera</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA BRUTA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if011-micro-value">0</span>
+                <div class="kpi-variation" id="kpi-if011-micro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NETA</span>
+                <span class="kpi-value-intermediacion" id="kpi-1404-micro-value">0</span>
+                <div class="kpi-variation" id="kpi-1404-micro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA POR VENCER</span>
+                <span class="kpi-value-intermediacion" id="kpi-if007-micro-value">0</span>
+                <div class="kpi-variation" id="kpi-if007-micro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA VENCIDA</span>
+                <span class="kpi-value-intermediacion" id="kpi-if009-micro-value">0</span>
+                <div class="kpi-variation" id="kpi-if009-micro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA NO DEV. INT.</span>
+                <span class="kpi-value-intermediacion" id="kpi-if008-micro-value">0</span>
+                <div class="kpi-variation" id="kpi-if008-micro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    <h4>Evolución Histórica de Cartera Microcrédito</h4>
+                    <div id="chartHistoricoCarteraMicro" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    <h4>Cartera Refinanciada y Reestructurada Microcrédito</h4>
+                    <div id="chartHistoricoRefiReesMicro" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos sub-filas con gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Cartera</h4>
+                    <div id="chartComposicionCarteraMicro" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Índice de Morosidad</h4>
+                    <div id="chartMorosidadMicro" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 6 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1428-mini-value">0</span>
+                <div id="chartMini1428" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1428">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1436-mini-value">0</span>
+                <div id="chartMini1436" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1436">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. NO DEV. INT.</span>
+                <span class="kpi-mini-value" id="kpi-1444-mini-value">0</span>
+                <div id="chartMini1444" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1444">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CARTERA VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1452-mini-value">0</span>
+                <div id="chartMini1452" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1452">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REF. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1460-mini-value">0</span>
+                <div id="chartMini1460" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1460">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CART. REES. VENCIDA</span>
+                <span class="kpi-mini-value" id="kpi-1468-mini-value">0</span>
+                <div id="chartMini1468" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-1468">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 17: ÍNDICE DE TURBULENCIA -->
+<div class="magazine-page page-17">
+    <div class="page-header">
+        <h2>ÍNDICE DE TURBULENCIA</h2>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs (SIN VARIACIÓN) -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CARTERA TOTAL - VAR. ANUAL (%)</span>
+                <span class="kpi-value-intermediacion" id="kpi-tasa14-value">0</span>
+                <div class="kpi-date-only" id="kpi-tasa14-date">dic-23</div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CART. PRODUCTIVA - VAR. ANUAL (%)</span>
+                <span class="kpi-value-intermediacion" id="kpi-tasaif0071-value">0</span>
+                <div class="kpi-date-only" id="kpi-tasaif0071-date">dic-23</div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CART. CONSUMO - VAR. ANUAL (%)</span>
+                <span class="kpi-value-intermediacion" id="kpi-tasaif0072-value">0</span>
+                <div class="kpi-date-only" id="kpi-tasaif0072-date">dic-23</div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CART. INMOBILIARIO - VAR. ANUAL (%)</span>
+                <span class="kpi-value-intermediacion" id="kpi-tasaif0073-value">0</span>
+                <div class="kpi-date-only" id="kpi-tasaif0073-date">dic-23</div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">CART. MICROCRÉDITO - VAR. ANUAL (%)</span>
+                <span class="kpi-value-intermediacion" id="kpi-tasaif0074-value">0</span>
+                <div class="kpi-date-only" id="kpi-tasaif0074-date">dic-23</div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: 4 Gráficos de Turbulencia (2 columnas x 2 filas) -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartTurbulenciaProductiva" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartTurbulenciaConsumo" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    
+                    <div id="chartTurbulenciaInmo" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    
+                    <div id="chartTurbulenciaMicro" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: Análisis del Indicador -->
+        <div class="turbulencia-analysis-box">
+            <h4 style="margin-bottom: 15px; color: var(--primary-blue); font-size: 14px;">ANÁLISIS DEL ÍNDICE DE TURBULENCIA</h4>
+            <div class="analysis-content" id="turbulenciaAnalysisContent">
+                <p style="margin-bottom: 12px; font-style: italic; color: #64748b; border-left: 3px solid var(--accent-blue); padding-left: 12px;">
+                    <strong>Concepto:</strong> El índice de turbulencia financiera en el sistema financiero ecuatoriano mide las variaciones bruscas o anomalías en el saldo de la cartera de crédito en comparación con su comportamiento habitual.
+                </p>
+                <div id="turbulenciaDetailedAnalysis">
+                    Cargando análisis...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 18: MONTO DE OPERACIONES ACTIVAS Y PASIVAS -->
+<div class="magazine-page page-18">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES ACTIVAS Y PASIVAS</h2>
+        <p>Operaciones de Crédito y Depósitos a Plazo Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 6 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO OPER. ACTIVAS (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-monto-total-value">0</span>
+                <div class="kpi-variation" id="kpi-monto-total-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO OPER. ACTIVAS (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-num-ope-total-value">0</span>
+                <div class="kpi-variation" id="kpi-num-ope-total-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO PROMEDIO ACTIVAS (USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-monto-pro-value">0</span>
+                <div class="kpi-variation" id="kpi-monto-pro-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO OPER. PASIVAS (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-mop-value">0</span>
+                <div class="kpi-variation" id="kpi-mop-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO OPER. PASIVAS (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-optpe-value">0</span>
+                <div class="kpi-variation" id="kpi-optpe-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO PROMEDIO PASIVAS (USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-pro-mop-value">0</span>
+                <div class="kpi-variation" id="kpi-pro-mop-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos con doble eje -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoActivas" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoPasivas" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Operaciones Activas</h4>
+                    <div id="chartComposicionActivas" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Depósitos por Plazo</h4>
+                    <div id="chartComposicionDepositos" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: Análisis Dinámico -->
+        <div class="turbulencia-analysis-box">
+            <h4 style="margin-bottom: 15px; color: var(--primary-blue); font-size: 14px;">ANÁLISIS DE CRÉDITO Y DEPÓSITOS</h4>
+            <div class="analysis-content" id="analisisCreditoDepositos">
+                Cargando análisis...
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 19: MONTO DE OPERACIONES ACTIVAS SEGMENTO PRODUCTIVO -->
+<div class="magazine-page page-19">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES ACTIVAS SEGMENTO PRODUCTIVO</h2>
+        <p>Operaciones de Crédito Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO TOTAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-moa-cor-value">0</span>
+                <div class="kpi-variation" id="kpi-moa-cor-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO DE OPERACIONES TOTAL (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-num-cor-value">0</span>
+                <div class="kpi-variation" id="kpi-num-cor-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">PRODUCTIVO CORPORATIVO (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-proc-value">0</span>
+                <div class="kpi-variation" id="kpi-proc-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">PRODUCTIVO EMPRESARIAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-prodem-value">0</span>
+                <div class="kpi-variation" id="kpi-prodem-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">PRODUCTIVO PYMES (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-prodpy-value">0</span>
+                <div class="kpi-variation" id="kpi-prodpy-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoMontoSegProd" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoNumSegProd" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Montos</h4>
+                    <div id="chartComposicionMontoSegProd" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Número de Operaciones</h4>
+                    <div id="chartComposicionNumSegProd" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 4 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6 page-19-mini-kpis">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO SEG. PRODUCTIVO</span>
+                <span class="kpi-mini-value" id="kpi-pro-cor-mini-value">0</span>
+                <div id="chartMiniProCor" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-cor">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO PROD. CORPORATIVO</span>
+                <span class="kpi-mini-value" id="kpi-pro-proc-mini-value">0</span>
+                <div id="chartMiniProProc" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-proc">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO PROD. EMPRESARIAL</span>
+                <span class="kpi-mini-value" id="kpi-pro-prodem-mini-value">0</span>
+                <div id="chartMiniProProdem" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-prodem">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO PROD. PYMES</span>
+                <span class="kpi-mini-value" id="kpi-pro-prodpy-mini-value">0</span>
+                <div id="chartMiniProProdpy" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-prodpy">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 20: MONTO DE OPERACIONES ACTIVAS SEGMENTO CONSUMO Y EDUCATIVO -->
+<div class="magazine-page page-20">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES ACTIVAS SEGMENTO CONSUMO Y EDUCATIVO</h2>
+        <p>Operaciones de Crédito Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO DE CONSUMO (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO DE OPERACIONES DE CONSUMO (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-num-cons-value">0</span>
+                <div class="kpi-variation" id="kpi-num-cons-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">EDUCATIVO TOTAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-moa-educ-value">0</span>
+                <div class="kpi-variation" id="kpi-moa-educ-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">EDUCATIVO (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-edu-value">0</span>
+                <div class="kpi-variation" id="kpi-edu-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">EDUCATIVO SOCIAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-eduso-value">0</span>
+                <div class="kpi-variation" id="kpi-eduso-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoMontoSegCons" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoNumSegCons" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Montos</h4>
+                    <div id="chartComposicionMontoSegCons" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Número de Operaciones</h4>
+                    <div id="chartComposicionNumSegCons" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 3 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6 page-20-mini-kpis">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CONSUMO</span>
+                <span class="kpi-mini-value" id="kpi-cons-mini-value">0</span>
+                <div id="chartMiniCons" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-cons">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">EDUCATIVO</span>
+                <span class="kpi-mini-value" id="kpi-edu-mini-value">0</span>
+                <div id="chartMiniEdu" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-edu">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">EDUCATIVO SOCIAL</span>
+                <span class="kpi-mini-value" id="kpi-eduso-mini-value">0</span>
+                <div id="chartMiniEduso" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-eduso">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 21: MONTO DE OPERACIONES ACTIVAS SEGMENTO INMOBILIARIO Y VIVIENDA -->
+<div class="magazine-page page-21">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES ACTIVAS SEGMENTO INMOBILIARIO - VIVIENDA DE INTERÉS PÚBLICO Y SOCIAL</h2>
+        <p>Operaciones de Crédito Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO DE INMOBILIARIO (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-inmo-value">0</span>
+                <div class="kpi-variation" id="kpi-inmo-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO DE OPERACIONES DE INMOBILIARIO (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-num-in-value">0</span>
+                <div class="kpi-variation" id="kpi-num-in-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO VIVIENDA DE INTERÉS PÚBLICO Y SOCIAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-moa-vi-value">0</span>
+                <div class="kpi-variation" id="kpi-moa-vi-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO VIVIENDA DE INTERÉS PÚBLICO (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-vip-value">0</span>
+                <div class="kpi-variation" id="kpi-vip-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO VIVIENDA DE INTERÉS SOCIAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-vis-value">0</span>
+                <div class="kpi-variation" id="kpi-vis-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoMontoSegInmo" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoNumSegInmo" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Montos</h4>
+                    <div id="chartComposicionMontoSegInmo" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Número de Operaciones</h4>
+                    <div id="chartComposicionNumSegInmo" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 3 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6 page-21-mini-kpis">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO INMOBILIARIO (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-in-mini-value">0</span>
+                <div id="chartMiniProIn" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-in">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO VIVIENDA INTERÉS PÚBLICO (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-vip-mini-value">0</span>
+                <div id="chartMiniProVip" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-vip">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO VIVIENDA INTERÉS SOCIAL (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-vis-mini-value">0</span>
+                <div id="chartMiniProVis" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-vis">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 22: MONTO DE OPERACIONES ACTIVAS SEGMENTO MICROCRÉDITO -->
+<div class="magazine-page page-22">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES ACTIVAS SEGMENTO MICROCRÉDITO</h2>
+        <p>Operaciones de Crédito Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 5 KPIs -->
+        <div class="kpi-row-intermediacion">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO MICROCRÉDITO TOTAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-moa-mic-value">0</span>
+                <div class="kpi-variation" id="kpi-moa-mic-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO DE OPERACIONES DE MICROCRÉDITO TOTAL (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-num-mic-value">0</span>
+                <div class="kpi-variation" id="kpi-num-mic-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO MIC. MINORISTA (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-mino-value">0</span>
+                <div class="kpi-variation" id="kpi-mino-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO MIC. ACUM. SIMPLE (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-mas-value">0</span>
+                <div class="kpi-variation" id="kpi-mas-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO CRÉDITO MIC. ACUM. AMPLIADA (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-maa-value">0</span>
+                <div class="kpi-variation" id="kpi-maa-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoMontoSegMic" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoNumSegMic" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Montos</h4>
+                    <div id="chartComposicionMontoSegMic" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Número de Operaciones</h4>
+                    <div id="chartComposicionNumSegMic" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 4 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6 page-22-mini-kpis">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO MICROCRÉDITO TOTAL (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-mic-mini-value">0</span>
+                <div id="chartMiniProMic" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-mic">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO MIC. MINORISTA (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-mino-mini-value">0</span>
+                <div id="chartMiniProMino" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-mino">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO MIC. ACUM. SIMPLE (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-mas-mini-value">0</span>
+                <div id="chartMiniProMas" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-mas">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">CRÉDITO PROMEDIO MIC. ACUM. AMPLIADA (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-maa-mini-value">0</span>
+                <div id="chartMiniProMaa" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-maa">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 23: MONTO DE OPERACIONES PASIVAS -->
+<div class="magazine-page page-23">
+    <div class="page-header">
+        <h2>MONTO DE OPERACIONES PASIVAS</h2>
+        <p>Depósitos a Plazo Nuevos</p>
+    </div>
+    
+    <div class="intermediacion-layout">
+        <!-- PRIMERA FILA: 3 KPIs (Ajustado a las 3 variables proporcionadas) -->
+        <div class="kpi-row-intermediacion page-23-kpis">
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">DEPÓSITOS A PLAZO TOTAL (MILLONES USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-pasivas-value">0</span>
+                <div class="kpi-variation" id="kpi-pasivas-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">NÚMERO DE OPERACIONES TOTAL (#)</span>
+                <span class="kpi-value-intermediacion" id="kpi-operacionespas-value">0</span>
+                <div class="kpi-variation" id="kpi-operacionespas-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+            <div class="kpi-box-intermediacion">
+                <span class="kpi-title-intermediacion">MONTO PLAZO PROMEDIO (USD)</span>
+                <span class="kpi-value-intermediacion" id="kpi-promediopas-value">0</span>
+                <div class="kpi-variation" id="kpi-promediopas-var">
+                    <span class="var-value">+0%</span>
+                    <span class="var-date">dic-23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGUNDA FILA: Dos columnas -->
+        <div class="intermediacion-second-row">
+            <!-- Columna A: Dos gráficos históricos combinados -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoMontoSegPas" class="chart-container-large"></div>
+                </div>
+                <div class="intermediacion-chart-box" style="height: 50%;">
+                    
+                    <div id="chartHistoricoNumSegPas" class="chart-container-large"></div>
+                </div>
+            </div>
+            
+            <!-- Columna B: Dos gráficos de composición -->
+            <div class="intermediacion-charts-column">
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Montos por Plazo</h4>
+                    <div id="chartComposicionMontoSegPas" class="chart-container-medium"></div>
+                </div>
+                <div class="intermediacion-subchart-box">
+                    <h4>Composición de Número de Operaciones por Plazo</h4>
+                    <div id="chartComposicionNumSegPas" class="chart-container-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERCERA FILA: 7 KPIs con mini gráficos -->
+        <div class="kpi-row-intermediacion-6 page-23-mini-kpis">
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">MONTO PROMEDIO PLAZO (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-mop-mini-value">0</span>
+                <div id="chartMiniProMop" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-mop">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO 30 - 60 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op30-mini-value">0</span>
+                <div id="chartMiniProOp30" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op30">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO 61 - 90 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op61-mini-value">0</span>
+                <div id="chartMiniProOp61" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op61">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO 91 - 120 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op91-mini-value">0</span>
+                <div id="chartMiniProOp91" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op91">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO 121 - 180 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op121-mini-value">0</span>
+                <div id="chartMiniProOp121" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op121">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO 181 - 360 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op181-mini-value">0</span>
+                <div id="chartMiniProOp181" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op181">Cargando...</div>
+            </div>
+            <div class="kpi-mini-box">
+                <span class="kpi-mini-title">PROMEDIO PLAZO +360 (USD)</span>
+                <span class="kpi-mini-value" id="kpi-pro-op361-mini-value">0</span>
+                <div id="chartMiniProOp361" class="chart-mini-container"></div>
+                <div class="kpi-mini-summary" id="summary-pro-op361">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- PÁGINA 24: RANKING DE CARTERA DE CRÉDITOS -->
+<div class="magazine-page page-24">
+    <div class="page-header">
+        <h2>RANKING DE LAS ENTIDADES FINANCIERAS POR CARTERA DE CRÉDITOS</h2>
+        <p>Comparativa de la Cartera de Crédito por entidad financiera</p>
+    </div>
+
+    <div class="ranking-layout page-24-ranking-layout">
+        <!-- COLUMNA IZQUIERDA: 2 Paneles -->
+        <div class="ranking-left-column">
+            <!-- Panel 1: Filtros -->
+            <div class="ranking-panel" id="rankingPanel1_Cartera">
+                <h4 class="panel-title">Filtros Ranking</h4>
+                <div class="panel-content">
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingCartera" value="sector" checked>
+                            <span class="radio-text">Por Sector Financiero</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingCartera" value="activos">
+                            <span class="radio-text">Por nivel de Activos</span>
+                        </label>
+                            <!-- ✅ NUEVO RADIO BUTTON -->
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingCartera" value="provincia">
+                            <span class="radio-text">Por Provincia</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Panel 2: Resumen -->
+            <div class="ranking-panel" id="rankingPanel2_Cartera">
+                <h4 class="panel-title">RESUMEN DEL CUADRO</h4>
+                <div class="panel-content">
+                    <table class="panel2-table">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th id="panel2-prev-year-cartera">jun-25</th>
+                                <th id="panel2-current-cartera">jun-26</th>
+                                <th>Variación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="panel2TableBody_Cartera">
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                    <!-- Número de Ranking -->
+                    <div class="ranking-number-container">
+                        <div class="ranking-badge" id="rankingBadge_Cartera">
+                            <span class="ranking-number" id="rankingNumber_Cartera">-</span>
+                            <span class="ranking-label">POSICIÓN EN EL RANKING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMNA CENTRAL: Tabla Ranking -->
+        <div class="ranking-center-column">
+            <div class="ranking-table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Entidad</th>
+                            <th id="ranking-header-1-cartera">Cartera Vencer Ant.</th>
+                            <th id="ranking-header-2-cartera">Participación Ant.</th>
+                            <th id="ranking-header-3-cartera">Cartera Vencer Act.</th>
+                            <th id="ranking-header-4-cartera">Participación Act.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTableBody_Cartera">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Gráfico -->
+        <div class="ranking-right-column">
+            <div class="ranking-chart-box">
+                <h4>DISTRIBUCIÓN DE CARTERA POR VENCER</h4>
+                <div id="chartRanking_Cartera" class="ranking-chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- PÁGINA 25: RANKING DE MOA -->
+<div class="magazine-page page-25">
+    <div class="page-header">
+        <h2>RANKING DE LAS ENTIDADES FINANCIERAS POR MONTO DE OPERACIONES ACTIVAS</h2>
+        <p>Comparativa deL MOA por entidad financiera</p>
+    </div>
+
+    <div class="ranking-layout page-25-ranking-layout">
+        <!-- COLUMNA IZQUIERDA: 2 Paneles -->
+        <div class="ranking-left-column">
+            <!-- Panel 1: Filtros -->
+            <div class="ranking-panel" id="rankingPanel1_MOA">
+                <h4 class="panel-title">Filtros Ranking</h4>
+                <div class="panel-content">
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOA" value="sector" checked>
+                            <span class="radio-text">Por Sector Financiero</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOA" value="activos">
+                            <span class="radio-text">Por nivel de Activos</span>
+                        </label>
+                            <!-- ✅ NUEVO RADIO BUTTON -->
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOA" value="provincia">
+                            <span class="radio-text">Por Provincia</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Panel 2: Resumen -->
+            <div class="ranking-panel" id="rankingPanel2_MOA">
+                <h4 class="panel-title">RESUMEN DEL CUADRO</h4>
+                <div class="panel-content">
+                    <table class="panel2-table">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th id="panel2-prev-year-moa">jun-25</th>
+                                <th id="panel2-current-moa">jun-26</th>
+                                <th>Variación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="panel2TableBody_MOA">
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                    <!-- Número de Ranking -->
+                    <div class="ranking-number-container">
+                        <div class="ranking-badge" id="rankingBadge_MOA">
+                            <span class="ranking-number" id="rankingNumber_MOA">-</span>
+                            <span class="ranking-label">POSICIÓN EN EL RANKING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMNA CENTRAL: Tabla Ranking -->
+        <div class="ranking-center-column">
+            <div class="ranking-table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Entidad</th>
+                            <th id="ranking-header-1-moa">Cartera Vencer Ant.</th>
+                            <th id="ranking-header-2-moa">Participación Ant.</th>
+                            <th id="ranking-header-3-moa">Cartera Vencer Act.</th>
+                            <th id="ranking-header-4-moa">Participación Act.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTableBody_MOA">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Gráfico -->
+        <div class="ranking-right-column">
+            <div class="ranking-chart-box">
+                <h4>DISTRIBUCIÓN DEl MONTO DE OPERACIONES ACTIVAS</h4>
+                <div id="chartRanking_MOA" class="ranking-chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- PÁGINA 25: RANKING DE MOA -->
+<div class="magazine-page page-26">
+    <div class="page-header">
+        <h2>RANKING DE LAS ENTIDADES FINANCIERAS POR MONTO DE OPERACIONES ACTIVAS</h2>
+        <p>Comparativa deL MOA por entidad financiera</p>
+    </div>
+
+    <div class="ranking-layout page-26-ranking-layout">
+        <!-- COLUMNA IZQUIERDA: 2 Paneles -->
+        <div class="ranking-left-column">
+            <!-- Panel 1: Filtros -->
+            <div class="ranking-panel" id="rankingPanel1_MOP">
+                <h4 class="panel-title">Filtros Ranking</h4>
+                <div class="panel-content">
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOP" value="sector" checked>
+                            <span class="radio-text">Por Sector Financiero</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOP" value="activos">
+                            <span class="radio-text">Por nivel de Pasivos</span>
+                        </label>
+                            <!-- ✅ NUEVO RADIO BUTTON -->
+                        <label class="radio-option">
+                            <input type="radio" name="tipoRankingMOP" value="provincia">
+                            <span class="radio-text">Por Provincia</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Panel 2: Resumen -->
+            <div class="ranking-panel" id="rankingPanel2_MOP">
+                <h4 class="panel-title">RESUMEN DEL CUADRO</h4>
+                <div class="panel-content">
+                    <table class="panel2-table">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th id="panel2-prev-year-mop">jun-25</th>
+                                <th id="panel2-current-mop">jun-26</th>
+                                <th>Variación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="panel2TableBody_MOP">
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                    <!-- Número de Ranking -->
+                    <div class="ranking-number-container">
+                        <div class="ranking-badge" id="rankingBadge_MOP">
+                            <span class="ranking-number" id="rankingNumber_MOP">-</span>
+                            <span class="ranking-label">POSICIÓN EN EL RANKING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMNA CENTRAL: Tabla Ranking -->
+        <div class="ranking-center-column">
+            <div class="ranking-table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Entidad</th>
+                            <th id="ranking-header-1-mop">Cartera Vencer Ant.</th>
+                            <th id="ranking-header-2-mop">Participación Ant.</th>
+                            <th id="ranking-header-3-mop">Cartera Vencer Act.</th>
+                            <th id="ranking-header-4-mop">Participación Act.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTableBody_MOP">
+                        <!-- Filas generadas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Gráfico -->
+        <div class="ranking-right-column">
+            <div class="ranking-chart-box">
+                <h4>DISTRIBUCIÓN DEl MONTO DE OPERACIONES PASIVAS</h4>
+                <div id="chartRanking_MOP" class="ranking-chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PÁGINA 27: INDICADORES FINANCIEROS -->
+<div class="magazine-page page-27" id="page-27">
+    <div class="page-header">
+        <h2>INDICADORES FINANCIEROS</h2>
+        <p>Métricas clave de desempeño financiero</p>
+    </div>
+
+    <!-- PRIMERA FILA: BOTONES DE NAVEGACIÓN -->
+    <div class="indicadores-nav-container">
+        <button class="indicador-btn active" data-categoria="estructura" onclick="cambiarCategoriaIndicador('estructura')">
+            <i class="fas fa-chart-pie"></i>
+            <span>Estructura y Eficiencia</span>
+        </button>
+
+        <button class="indicador-btn" data-categoria="endeudamiento" onclick="cambiarCategoriaIndicador('endeudamiento')">
+            <i class="fas fa-percentage"></i>
+            <span>Morosidad - Cobertura - Rentabilidad</span>
+        </button>
+
+        <button class="indicador-btn" data-categoria="cobertura" onclick="cambiarCategoriaIndicador('cobertura')">
+            <i class="fas fa-umbrella"></i>
+            <span>Cobertura</span>
+        </button>
+
+        <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador('roa')">
+            <i class="fas fa-chart-line"></i>
+            <span>Rendimientos</span>
+        </button>
+
+    </div>
+
+    <!-- SEGUNDA FILA: GRÁFICOS (3 COLUMNAS x 3 FILAS) -->
+    <div class="indicadores-grid-container">
+        <!-- COLUMNA 1 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador1" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador2" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador3" class="echart-container"></div>
+            </div>
+        </div>
+
+        <!-- COLUMNA 2 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador4" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador5" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador6" class="echart-container"></div>
+            </div>
+        </div>
+
+        <!-- COLUMNA 3 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador7" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador8" class="echart-container"></div>
+            </div>
+            <div class="chart-card indicador-chart">
+                
+                <div id="chartIndicador9" class="echart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     PÁGINA 28: INDICADORES DE EVALUACIÓN (CAMELS Y PERLAS)
+     ========================================== -->
+<div class="magazine-page page-28" id="page-28">
+    <div class="page-header">
+        <h2><i class="fas fa-chart-line"></i> INDICADORES DE EVALUACIÓN</h2>
+        <p>Sistema CAMELS y Metodología PERLAS</p>
+    </div>
+    
+    <!-- Selector de Indicadores -->
+    <div class="indicator-selector">
+        <button class="btn-indicator active" data-indicator="camels" onclick="switchIndicator('camels')">
+            <i class="fas fa-shield-alt"></i> CAMELS
+        </button>
+        <button class="btn-indicator" data-indicator="perlas" onclick="switchIndicator('perlas')">
+            <i class="fas fa-gem"></i> PERLAS
+        </button>
+    </div>
+    
+    <!-- CONTENIDO CAMELS -->
+    <div id="camels-content" class="indicator-content active">
+        <div class="historical-layout">
+            <!-- Panel de Calificación CAMELS - 3 CÍRCULOS -->
+            <div class="rating-panel-camels">
+                <h3><i class="fas fa-award"></i> CALIFICACIÓN CAMELS</h3>
+                <p class="rating-subtitle">Basado en Índice de Vulnerabilidad Financiera (IVF)</p>
+                
+                <div class="rating-circles-container">
+                    <div class="rating-circle-wrapper">
+                        <div id="camels-rating-current" class="rating-circle">-</div>
+                        <span class="rating-label" id="camels-label-current">jun-26</span>
+                        <span class="rating-ivf" id="camels-ivf-current">0.00%</span>
+                    </div>
+                    
+                    <div class="rating-circle-wrapper">
+                        <div id="camels-rating-prevmonth" class="rating-circle">-</div>
+                        <span class="rating-label" id="camels-label-prevmonth">may-26</span>
+                        <span class="rating-ivf" id="camels-ivf-prevmonth">0.00%</span>
+                    </div>
+                    
+                    <div class="rating-circle-wrapper">
+                        <div id="camels-rating-prevyear" class="rating-circle">-</div>
+                        <span class="rating-label" id="camels-label-prevyear">jun-25</span>
+                        <span class="rating-ivf" id="camels-ivf-prevyear">0.00%</span>
+                    </div>
+                </div>
+                
+                <div class="rating-legend">
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-A">A</span>
+                        <span>Muy Baja Vulnerabilidad (&lt;20%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-B">B</span>
+                        <span>Baja Vulnerabilidad (20-40%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-C">C</span>
+                        <span>Vulnerabilidad Media (40-60%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-D">D</span>
+                        <span>Alta Vulnerabilidad (60-80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-E">E</span>
+                        <span>Muy Alta Vulnerabilidad (≥80%)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabla CAMELS -->
+            <div class="indicator-table-container">
+                <h3><i class="fas fa-table"></i> INDICADORES CAMELS</h3>
+                <div class="table-responsive">
+                    <table class="indicator-table">
+                        <thead>
+                            <tr>
+                                <th>Indicador</th>
+                                <th>Meta</th>
+                                <th id="th-camels-mes1">jun-25</th>
+                                <th id="th-camels-mes2">may-26</th>
+                                <th id="th-camels-mes3">jun-26</th>
+                                <th>Var. Mensual</th>
+                                <th>Var. Anual</th>
+                            </tr>
+                        </thead>
+                        <tbody id="camelsTableBody">
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ✅ AGREGADO: Contenedor del Gráfico CAMELS -->
+            <div class="indicator-chart-container" style="margin-top: 30px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <h3 style="margin-bottom: 15px; color: var(--primary-blue);"><i class="fas fa-chart-area"></i> EVOLUCIÓN HISTÓRICA CAMELS</h3>
+                <div id="chartCamels" class="chart-container-large" style="height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONTENIDO PERLAS -->
+    <div id="perlas-content" class="indicator-content">
+        <div class="historical-layout">
+            <!-- Panel de Calificación PERLAS - 3 CÍRCULOS -->
+            <div class="rating-panel-perlas">
+                <h3><i class="fas fa-award"></i> CALIFICACIÓN PERLAS</h3>
+                <p class="rating-subtitle">Basado en Eficiencia Global PERLAS</p>
+                
+                <div class="rating-circles-container">
+                    <div class="rating-circle-wrapper">
+                        <div id="perlas-rating-current" class="rating-circle">-</div>
+                        <span class="rating-label" id="perlas-label-current">jun-26</span>
+                        <span class="rating-efic" id="perlas-efic-current">0.00%</span>
+                        <span class="rating-acum" id="perlas-acum-current">Puntaje: 0</span>
+                    </div>
+                    
+                    <div class="rating-circle-wrapper">
+                        <div id="perlas-rating-prevmonth" class="rating-circle">-</div>
+                        <span class="rating-label" id="perlas-label-prevmonth">may-26</span>
+                        <span class="rating-efic" id="perlas-efic-prevmonth">0.00%</span>
+                        <span class="rating-acum" id="perlas-acum-prevmonth">Puntaje: 0</span>
+                    </div>
+                    
+                    <div class="rating-circle-wrapper">
+                        <div id="perlas-rating-prevyear" class="rating-circle">-</div>
+                        <span class="rating-label" id="perlas-label-prevyear">jun-25</span>
+                        <span class="rating-efic" id="perlas-efic-prevyear">0.00%</span>
+                        <span class="rating-acum" id="perlas-acum-prevyear">Puntaje: 0</span>
+                    </div>
+                </div>
+                
+                <div class="rating-legend">
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-A">A</span>
+                        <span>Excelente (≥80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-B">B</span>
+                        <span>Muy Bueno (60-79%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-C">C</span>
+                        <span>Saludable (50-59%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-D">D</span>
+                        <span>Regular (40-49%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-circle calificacion-E">E</span>
+                        <span>Alto Riesgo (&lt;40%)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabla PERLAS -->
+            <div class="indicator-table-container">
+                <h3><i class="fas fa-table"></i> INDICADORES PERLAS</h3>
+                <div class="table-responsive">
+                    <table class="indicator-table">
+                        <thead>
+                            <tr>
+                                <th>Indicador</th>
+                                <th>Meta</th>
+                                <th id="th-perlas-mes1">jun-25</th>
+                                <th id="th-perlas-mes2">may-26</th>
+                                <th id="th-perlas-mes3">jun-26</th>
+                                <th>Var. Mensual</th>
+                                <th>Var. Anual</th>
+                            </tr>
+                        </thead>
+                        <tbody id="perlasTableBody">
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ✅ AGREGADO: Contenedor del Gráfico PERLAS -->
+            <div class="indicator-chart-container" style="margin-top: 30px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <h3 style="margin-bottom: 15px; color: var(--primary-blue);"><i class="fas fa-chart-area"></i> EVOLUCIÓN HISTÓRICA PERLAS</h3>
+                <div id="chartPerlas" class="chart-container-large" style="height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- PÁGINA 29: INDICADORES FINANCIEROS (VARIANTE) -->
+<div class="magazine-page page-29" id="page-29">
+    <div class="page-header">
+        <h2>INDICADORES FINANCIEROS CAMELS - PERLAS</h2>
+        <p>Evolución del desempeño financiero</p>
+    </div>
+
+    <!-- PRIMERA FILA: BOTONES DE NAVEGACIÓN -->
+    <div class="indicadores-nav-container">
+        <button class="indicador-btn active" data-categoria="estructura" onclick="cambiarCategoriaIndicador29('estructura')">
+            <i class="fas fa-chart-pie"></i>
+            <span>CAMELS: SUFICIENCIA PATRIMONIAL (C)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="liquidez" onclick="cambiarCategoriaIndicador29('liquidez')">
+            <i class="fas fa-tint"></i>
+            <span>CAMELS: CALIDAD DE ACTIVOS (A)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="solvencia" onclick="cambiarCategoriaIndicador29('solvencia')">
+            <i class="fas fa-shield-alt"></i>
+            <span>CAMELS: MANEJO ADMINISTRATIVO (M)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="endeudamiento" onclick="cambiarCategoriaIndicador29('endeudamiento')">
+            <i class="fas fa-percentage"></i>
+            <span>CAMELS: RENTABILIDAD (E)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="cobertura" onclick="cambiarCategoriaIndicador29('cobertura')">
+            <i class="fas fa-umbrella"></i>
+            <span>CAMELS: LIQUIDEZ (L) Y RIESGO DE MERCADO (S)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="maniobra" onclick="cambiarCategoriaIndicador29('maniobra')">
+            <i class="fas fa-balance-scale"></i>
+            <span>PERLAS: PROTECCIÓN (P)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador29('roa')">
+            <i class="fas fa-chart-line"></i>
+            <span>PERLAS: ESTRUCTURA FINANCIERA EFICAZ (E)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="apalancamiento" onclick="cambiarCategoriaIndicador29('apalancamiento')">
+            <i class="fas fa-lever"></i>
+            <span>PERLAS: TASA DE RENDIMIENTOS Y COSTO (R)</span>
+        </button>   
+        <button class="indicador-btn" data-categoria="maniobra-activo" onclick="cambiarCategoriaIndicador29('activo')">
+            <i class="fas fa-chart-area"></i>
+            <span>PERLAS: LIQUIDEZ (L)</span>
+        </button>             
+        <button class="indicador-btn" data-categoria="roe" onclick="cambiarCategoriaIndicador29('roe')">
+            <i class="fas fa-coins"></i>
+            <span>PERLAS: CALIDAD DE ACTIVOS (A)</span>
+        </button>
+        <button class="indicador-btn" data-categoria="autonomia" onclick="cambiarCategoriaIndicador29('autonomia')">
+            <i class="fas fa-user-check"></i>
+            <span>PERLAS: SEÑALES (S)</span>
+        </button>
+    </div>
+
+    <!-- SEGUNDA FILA: GRÁFICOS (Hasta 9 espacios, el JS ocultará los que no uses) -->
+    <div class="indicadores-grid-container">
+        <!-- COLUMNA 1 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind29-1"><div id="chartInd29_1" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-2"><div id="chartInd29_2" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-3"><div id="chartInd29_3" class="echart-container"></div></div>
+        </div>
+        <!-- COLUMNA 2 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind29-4"><div id="chartInd29_4" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-5"><div id="chartInd29_5" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-6"><div id="chartInd29_6" class="echart-container"></div></div>
+        </div>
+        <!-- COLUMNA 3 (Se ocultará si solo configuras 6 gráficos) -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind29-7"><div id="chartInd29_7" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-8"><div id="chartInd29_8" class="echart-container"></div></div>
+            <div class="chart-card indicador-chart" id="container-ind29-9"><div id="chartInd29_9" class="echart-container"></div></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- PÁGINA 30: INDICADORES FINANCIEROS (VARIANTE) -->
+<div class="magazine-page page-30" id="page-30">
+    <div class="page-header">
+        <h2>TASAS DE INTERÉS ACTIVAS Y PASIVAS</h2>
+        <p>Evolución de las tasas de interes activas y pasivas</p>
+    </div>
+
+    <!-- PRIMERA FILA: BOTONES DE NAVEGACIÓN -->
+    <div class="indicadores-nav-container">
+        <button class="indicador-btn active" data-categoria="estructura" onclick="cambiarCategoriaIndicador30('estructura')">
+            <i class="fas fa-chart-pie"></i>
+            <span>SEGMENTO PRODUCTIVO CORPORATIVO</span>
+        </button>
+        <button class="indicador-btn" data-categoria="solvencia" onclick="cambiarCategoriaIndicador30('solvencia')">
+            <i class="fas fa-shield-alt"></i>
+            <span>SEGMENTO PRODUCTIVO EMPRESARIAL</span>
+        </button>
+        <button class="indicador-btn" data-categoria="endeudamiento" onclick="cambiarCategoriaIndicador30('endeudamiento')">
+            <i class="fas fa-percentage"></i>
+            <span>SEGMENTO PRODUCTIVO PYMES</span>
+        </button>
+        <button class="indicador-btn" data-categoria="cobertura" onclick="cambiarCategoriaIndicador30('cobertura')">
+            <i class="fas fa-umbrella"></i>
+            <span>SEGMENTO CONSUMO</span>
+        </button>
+        <button class="indicador-btn" data-categoria="maniobra" onclick="cambiarCategoriaIndicador30('maniobra')">
+            <i class="fas fa-balance-scale"></i>
+            <span>SEGMENTO EDUCATIVO</span>
+        </button>
+        <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador30('roa')">
+            <i class="fas fa-chart-line"></i>
+            <span>SEGMENTO INMOBILIARIO</span>
+        </button>
+        <button class="indicador-btn" data-categoria="apalancamiento" onclick="cambiarCategoriaIndicador30('apalancamiento')">
+            <i class="fas fa-lever"></i>
+            <span>SEGMENTO VIVIENDA DE INTERÉS PÚBLICO Y SOCIAL</span>
+        </button>   
+        <button class="indicador-btn" data-categoria="maniobra-activo" onclick="cambiarCategoriaIndicador30('activo')">
+            <i class="fas fa-chart-area"></i>
+            <span>SEGMENTO MICROCRÉDITO MINORISTA</span>
+        </button>             
+        <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador30('simple')">
+            <i class="fas fa-chart-line"></i>
+            <span>SEGMENTO MICROCRÉDITO ACUMULACIÓN SIMPLE</span>
+        </button>
+        <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador30('ampli')">
+            <i class="fas fa-chart-line"></i>
+            <span>SEGMENTO MICROCRÉDITO ACUMULACIÓN AMPLIADA</span>
+        </button>
+                <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador30('depo')">
+            <i class="fas fa-chart-line"></i>
+            <span>TASAS DE INTERÉS PASIVAS</span>
+        </button>
+    </div>
+
+    <!-- SEGUNDA FILA: GRÁFICOS (Hasta 9 espacios, el JS ocultará los que no uses) -->
+    <div class="indicadores-grid-container">
+        <!-- COLUMNA 1 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind30-1"><div id="chartInd30_1" class="echart-container"></div></div>
+            
+        </div>
+        <!-- COLUMNA 2 -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind30-4"><div id="chartInd30_4" class="echart-container"></div></div>
+            
+        </div>
+        <!-- COLUMNA 3 (Se ocultará si solo configuras 6 gráficos) -->
+        <div class="indicadores-column">
+            <div class="chart-card indicador-chart" id="container-ind30-7"><div id="chartInd30_7" class="echart-container"></div></div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!-- PÁGINA 31: COMPARATIVO CON OTRAS ENTIDADES -->
+<div class="magazine-page page-31" id="page-31">
+    <div class="page-header">
+        <h2>COMPARATIVO CON OTRAS ENTIDADES FINANCIERAS</h2>
+        <p>Análisis comparativo de indicadores clave</p>
+    </div>
+
+    <div class="comparativo-layout">
+        <!-- COLUMNA IZQUIERDA: FILTROS -->
+        <div class="comparativo-sidebar">
+            <div class="filtro-section">
+                <h4><i class="fas fa-filter"></i> Filtros de Búsqueda para Comparación</h4>
+                
+                <!-- Filtro 1: Tamaño/Segmento -->
+                <div class="filtro-item">
+                    <label><i class="fas fa-chart-pie"></i> Tamaño/Segmento</label>
+                    <select id="filtroTamaño" onchange="actualizarFiltrosComparativo()">
+                        <option value="todos">Todos</option>
+                        <option value="Banco Privado Grande">Bancos Privados Grandes</option>
+                        <option value="Banco Privado Mediano">Bancos Privados Medianos</option>
+                        <option value="Banco Privado Pequeño">Bancos Privados Pequeños</option>
+                        <option value="Segmento 1">Coop. Segmento 1</option>
+                        <option value="Segmento 2">Coop. Segmento 2</option>
+                        <option value="Segmento 3">Coop. Segmento 3</option>
+                        <option value="Asociación Mutualistas de Ahorro y Crédito para la Vivienda">Mutualistas</option>
+                    </select>
+                </div>
+
+                <!-- Filtro 2: Provincia -->
+                <div class="filtro-item">
+                    <label><i class="fas fa-map-marker-alt"></i> Provincia (DPA_PR)</label>
+                    <select id="filtroProvincia" onchange="actualizarFiltrosComparativo()">
+                        <option value="todos">Todos</option>
+                        <option value="Azuay">Azuay</option>
+                        <option value="Bolivar">Bolivar</option>
+                        <option value="Cañar">Cañar</option>
+                        <option value="Carchi">Carchi</option>
+                        <option value="Chimborazo">Chimborazo</option>
+                        <option value="Cotopaxi">Cotopaxi</option>
+                        <option value="El Oro">El Oro</option>
+                        <option value="Esmeraldas">Esmeraldas</option>
+                        <option value="Galapagos">Galapagos</option>
+                        <option value="Guayas">Guayas</option>
+                        <option value="Imbabura">Imbabura</option>
+                        <option value="Loja">Loja</option>
+                        <option value="Los Rios">Los Ríos</option>
+                        <option value="Manabi">Manabi</option>
+                        <option value="Morona Santiago">Morona Santiago</option>
+                        <option value="Napo">Napo</option>
+                        <option value="Orellana">Orellana</option>
+                        <option value="Pastaza">Pastaza</option>
+                        <option value="Pichincha">Pichincha</option>
+                        <option value="Santa Elena">Santa Elena</option>
+                        <option value="Santo Domingo de los Tsachilas">Santo Domingo de los Tsachilas</option>
+                        <option value="Sucumbios">Sucumbios</option>
+                        <option value="Tungurahua">Tungurahua</option>
+                        <option value="Zamora Chinchipe">Zamora Chinchipe</option>
+                    </select>
+                </div>
+
+                <!-- Filtro 3: Rango/Nivel de Activos -->
+                <div class="filtro-item">
+                    <label><i class="fas fa-chart-bar"></i> Rango / Nivel de Activos</label>
+                    <select id="filtroRango" onchange="actualizarFiltrosComparativo()">
+                        <option value="todos">Todos</option>
+                        <option value="Nivel 1: 5 Millones - 13 Millones">Nivel 1: 5 - 13 Millones</option>
+                        <option value="Nivel 2: 14 Millones - 25 Millones">Nivel 2: 14 - 25 Millones</option>
+                        <option value="Nivel 3: 27 Millones - 49 Millones">Nivel 3: 27 - 49 Millones</option>
+                        <option value="Nivel 4: 52 Millones - 103 Millones">Nivel 4: 52 - 103 Millones</option>
+                        <option value="Nivel 5: 116 Millones - 199 Millones">Nivel 5: 116 - 199 Millones</option>
+                        <option value="Nivel 6: 261 Millones - 598 Millones">Nivel 6: 261 - 598 Millones</option>
+                        <option value="Nivel 7: 640 Millones - 2493 Millones">Nivel 7: 640 - 2493 Millones</option>
+                        <option value="Nivel 8: 3269 Millones - 22807 Millones">Nivel 8: 3269 - 22807 Millones</option>
+                    </select>
+                </div>
+
+                <!-- Filtro 4: Entidades Adicionales (Checkbox múltiple) -->
+                <div class="filtro-item">
+                    <label><i class="fas fa-building"></i> Entidades Adicionales (múltiple) - Máx. 3</label>
+                    <div id="entidadesAdicionalesContainer" class="checkbox-list">
+                        <!-- Se llena dinámicamente con JS -->
+                        <p style="color: #64748b; font-size: 11px; font-style: italic;">Seleccione los filtros superiores para ver entidades disponibles</p>
+                    </div>
+                    <small style="color: #64748b; display: block; margin-top: 5px;">
+                        <i class="fas fa-info-circle"></i> Se pueden seleccionar hasta 3 entidades para comparar
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: CONTENIDO PRINCIPAL -->
+        <div class="comparativo-content">
+            <!-- FILA 1: BOTONES DE NAVEGACIÓN -->
+            <div class="indicadores-nav-container">
+                <button class="indicador-btn active" data-categoria="estructura" onclick="cambiarCategoriaIndicador31('estructura')">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>CUC DEL BALANCE</span>
+                </button>
+                <button class="indicador-btn" data-categoria="liquidez" onclick="cambiarCategoriaIndicador31('liquidez')">
+                    <i class="fas fa-tint"></i>
+                    <span>IND. FINANCIEROS</span>
+                </button>
+                <button class="indicador-btn" data-categoria="solvencia" onclick="cambiarCategoriaIndicador31('solvencia')">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>IND. CAMELS</span>
+                </button>
+                <button class="indicador-btn" data-categoria="endeudamiento" onclick="cambiarCategoriaIndicador31('endeudamiento')">
+                    <i class="fas fa-percentage"></i>
+                    <span>IND. PERLAS</span>
+                </button>
+                <button class="indicador-btn" data-categoria="cobertura" onclick="cambiarCategoriaIndicador31('cobertura')">
+                    <i class="fas fa-umbrella"></i>
+                    <span>CRÉDITO</span>
+                </button>
+                <button class="indicador-btn" data-categoria="maniobra" onclick="cambiarCategoriaIndicador31('maniobra')">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>CRÉDITOS (FLUJOS)</span>
+                </button>
+                <button class="indicador-btn" data-categoria="roa" onclick="cambiarCategoriaIndicador31('roa')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>DEP. PLAZO (FLUJOS)</span>
+                </button>
+                <button class="indicador-btn" data-categoria="apalancamiento" onclick="cambiarCategoriaIndicador31('apalancamiento')">
+                    <i class="fas fa-lever"></i>
+                    <span>TASAS DE INT. ACTIVAS</span>
+                </button>   
+                <button class="indicador-btn" data-categoria="activo" onclick="cambiarCategoriaIndicador31('activo')">
+                    <i class="fas fa-chart-area"></i>
+                    <span>TASAS ACTIVAS EQUILIBRIO</span>
+                </button>             
+                <button class="indicador-btn" data-categoria="roe" onclick="cambiarCategoriaIndicador31('roe')">
+                    <i class="fas fa-coins"></i>
+                    <span>TASAS PASIVAS</span>
+                </button>
+            </div>
+
+            <!-- FILA 2: GRÁFICOS (3 columnas x 3 filas = 9 gráficos) -->
+            <div class="indicadores-grid-container">
+                <!-- COLUMNA 1 -->
+                <div class="indicadores-column">
+                    <div class="chart-card indicador-chart" id="container-ind31-1">
+                        <div id="chartInd31_1" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-2">
+                        <div id="chartInd31_2" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-3">
+                        <div id="chartInd31_3" class="echart-container"></div>
+                    </div>
+                </div>
+                
+                <!-- COLUMNA 2 -->
+                <div class="indicadores-column">
+                    <div class="chart-card indicador-chart" id="container-ind31-4">
+                        <div id="chartInd31_4" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-5">
+                        <div id="chartInd31_5" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-6">
+                        <div id="chartInd31_6" class="echart-container"></div>
+                    </div>
+                </div>
+                
+                <!-- COLUMNA 3 -->
+                <div class="indicadores-column">
+                    <div class="chart-card indicador-chart" id="container-ind31-7">
+                        <div id="chartInd31_7" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-8">
+                        <div id="chartInd31_8" class="echart-container"></div>
+                    </div>
+                    <div class="chart-card indicador-chart" id="container-ind31-9">
+                        <div id="chartInd31_9" class="echart-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NAVEGACIÓN PROFESIONAL -->
+<div class="page-navigator">
+    <!-- Botones de navegación -->
+    <button class="nav-btn" onclick="goToFirstPage()" title="Primera página">
+        <i class="fas fa-angle-double-left"></i>
+    </button>
+    <button class="nav-btn" onclick="goToPrevPage()" title="Anterior">
+        <i class="fas fa-angle-left"></i>
+    </button>
+    
+    <!-- Indicador de página actual -->
+    <div class="page-indicator">
+        <span>Página</span>
+        <select id="pageSelector" onchange="goToPage(parseInt(this.value))">
+            <!-- Se llena dinámicamente con JS -->
+        </select>
+        <span>de <strong id="totalPages">14</strong></span>
+    </div>
+    
+    <button class="nav-btn" onclick="goToNextPage()" title="Siguiente">
+        <i class="fas fa-angle-right"></i>
+    </button>
+    <button class="nav-btn" onclick="goToLastPage()" title="Última página">
+        <i class="fas fa-angle-double-right"></i>
+    </button>
+</div>
+
+
+
+    <!-- ==========================================
+         FOOTER PRINCIPAL
+    ========================================== -->
     <footer class="main-footer">
         <div class="footer-content">
             <p>&copy; 2025 DataFinanciero by IDCE Consulting. Todos los derechos reservados.</p>
@@ -154,6 +3453,16 @@
         </div>
     </footer>
 
+    <!-- ==========================================
+         SCRIPTS NECESARIOS
+    ========================================== -->
+    <!-- jQuery (Requerido para Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Apache ECharts (Para los gráficos de la revista) -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <!-- Script principal de lógica -->
     <script src="analisis.js"></script>
 </body>
 </html>

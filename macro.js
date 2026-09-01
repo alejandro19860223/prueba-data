@@ -2116,5 +2116,5 @@ if (periodTo) {
     }
 
     // Cargar tabla por defecto
-    loadTable('IEA111');
+    loadTable('IEA111A');
 });

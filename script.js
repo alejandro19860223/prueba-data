@@ -234,7 +234,7 @@ if (welcomeModal) {
     const user = getCurrentUser();
     
     if (!user) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     } else {
         welcomeUser.textContent = `Bienvenido, ${user.username}`;
         
@@ -254,7 +254,7 @@ if (welcomeModal) {
 if (btnLogout) {
     btnLogout.addEventListener('click', () => {
         localStorage.removeItem(SESSION_KEY);
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     });
 }
 

@@ -64,7 +64,7 @@
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Monetario y Financiero</span>
+                                <span class="node-label">1. ESTADÍSTICAS MONETARIAS Y FINANCIERAS</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
@@ -74,32 +74,249 @@
                                         
                                         <!-- sub capitulo cuentas monetarias -->
                                         
-                                        <span class="node-label">CUENTAS MONETARIAS</span>
+                                        <span class="node-label">1.1 Principales Indicadores Monetarios y Financieros</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA111')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA111A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.1 Panorama: Banco Central del Ecuador</span>
+                                            <span class="node-label">1.1.1 Oferta Monetaria (M1) y Liquidez Total (M2)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA112')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA112A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.2 Panorama: Bancos Privados</span>
+                                            <span class="node-label">1.1.2 Captaciones y Crédito del Panorama Financiero por Sectores</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA113')">
+                                      </ul>
+                                </li>
+
+                                <!-- sub capitulo principales indicadores monetarios -->
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.2 Banco Central del Ecuador</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA121A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.3 Panorama Monetario (PM)</span>
+                                            <span class="node-label">1.2.1 Reservas Internacionales</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA114')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA122A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.4 Panorama: Otras Sociedades de Depósito (OSD)</span>
+                                            <span class="node-label">1.2.2 Panorama: Banco Central del Ecuador</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA115')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA123A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.5 Panorama: Otras Sociedades Financieras (OSF)</span>
+                                            <span class="node-label">1.2.3 Balance Sectorial: Banco Central del Ecuador</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA116')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA124A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.6 Panorama Financiero (PF)</span>
+                                            <span class="node-label">1.2.4 Sistema de Balances</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.3 Otras Sociedades de Depósito (OSD)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA131A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.3.1 Panorama: Otras Sociedades de Depósito (OSD)</span>
+                                        </li>
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA132A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.3.2 Balance Sectorial: Otras Sociedades de Depósito (OSD)</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">Panoramas y Balance Sectorial</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA14A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.4 Panorama monetario (PM)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA15A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.5 Panorama: Otros Sociedades Financieras (OSF)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA16A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.6 Panorama Financiero (PF)</span>
+                                        </li> 
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.7 Bancos Privados</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA171A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.7.1 Panorama: Bancos Privado</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA172A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.7.2 Balance Sectorial: Bancos Privados</span>
+                                        </li> 
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.8 Captaciones del Sistema Financiero</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA18A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.8 Captaciones del Sistema Financiero</span>
+                                        </li> 
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.9 Crédito al Sector Privado para Particulares</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA19A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.9 Crédito al Sector Privado para Particulares</span>
+                                        </li> 
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.10 Tasas de Interés</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA1101A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.1 Tasas de Interés Referenciales Vigentes</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA1102')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.2 Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Agosto 2015 - Abril 2021)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA1102A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.2a Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li> 
+                                        
+                                        <li class="tree-item leaf" onclick="loadTable('IEA1103')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.3 Monto de Operaciones Activas por la Segmentación de la Cartera (Septiembre 2015 - Abril 2021)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA1103A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.3a Monto de Operaciones Activas por la Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEAPASA')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.4 Tasas Pasivas Referenciales Vigentes por Plazo</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+ 
+                       <!-- capitulo II 2. ESTADÍSTICAS DE FINANZAS PÚBLICAS  -->
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">2. ESTADÍSTICAS DE FINANZAS PÚBLICAS </span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        
+                                 <!-- sub capitulo cuentas monetarias -->
+                                        
+                                        <span class="node-label">2.1 Operaciones del Sector Público No Financiero (Base devengado - Porcentajes del PIB)</span>
+                                        </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA21A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.1 Operaciones del Sector Público No Financiero (Base devengado - Porcentajes del PIB)</span>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo principales indicadores monetarios -->
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.2 Operaciones del Sector Público No Financiero (Base devengado - Millones de Dólares)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA22A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2 Operaciones del Sector Público No Financiero (Base devengado - Millones de Dólares)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA221A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.1 Operaciones de Consolidación del Sector Público No Financiero (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA222A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.2 Operaciones del Gobierno Central (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA223A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.3 Operaciones de los Fondos de la Seguridad Social (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA224A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.4 Operaciones de los Gobiernos Autónomos Descentralizados (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA225A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.5 Operaciones de Empresas Públicas No Financieras (Base Devengado)</span>
                                         </li>
                                     </ul>
                                 </li>
@@ -110,183 +327,119 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">PRINCIPALES INDICADORES MONETARIOS</span>
+                                        <span class="node-label">2.3 Flujos de Financiamiento del Sector Público No Financiero</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA121')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA23A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.1	Reservas Internacionales</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA122')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.2	Cuasidinero</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA123')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.3	Crédito al Sector Privado</span>
+                                            <span class="node-label">2.3 Flujos de Financiamiento del Sector Público No Financiero</span>
                                         </li>
                                     </ul>
                                 </li>
 
-                                <!-- sub capitulo TASAS DE INTERÉS -->
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
                                  
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">TASAS DE INTERÉS</span>
+                                        <span class="node-label">2.4 Situación Financiera de la Administración del Estado (Base Caja)</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA131')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA24A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.1	Tasas de interés Referenciales Vigentes</span>
+                                            <span class="node-label">2.4 Situación Financiera de la Administración del Estado (Base Caja)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA132')">
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA241A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.2	Tasas de interés Activas Efectivas y Máximas Referenciales Vigentes por Segmento de Crédito (hasta julio de 2015)</span>
+                                            <span class="node-label">2.4.1 Resultado Global, Presupuestario y Primario de la Administración del Estado (Base Caja)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA133')">
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA242A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.3	Tasas de interés Activas Efectivas y Máximas Referenciales Vigentes por Segmento de Crédito (desde agosto de 2015 - hasta abril 2021)</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA134')">
+                                            <span class="node-label">2.4.2 Ingresos Petroleros y No Petroleros de la Administración del Estado (Base Caja)</span>
+                                        </li>  
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEA243A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.4	Tasas de interés Activas Efectivas y Máximas Referenciales Vigentes por Segmento de Crédito (desde mayo 2021)</span>
-                                        </li>
+                                            <span class="node-label">2.4.3 Erogaciones de la Administración del Estado (Base Caja)</span>
+                                        </li>                                                                               
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.5 Estado y Movimiento de la Deuda Pública Interna Agregada del Sector Público Total</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA25A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.5 Estado y Movimiento de la Deuda Pública Interna Agregada del Sector Público Total</span>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
-                        
-                        <!-- capitulo ii Sector Externo -->
+
+                        <!-- capitulo 3. ESTADÍSTICAS DEL SECTOR EXTERNO  -->
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Externo</span>
+                                <span class="node-label">3. ESTADÍSTICAS DEL SECTOR EXTERNO</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">BALANZA DE PAGOS (Quinta versión del Manual de Balanza de Pagos)</span>
+                                        <span class="node-label">3.1 Comercio Exterior de Bienes</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEA311A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">2.1.1.a	Balanza de Pagos: presentación analítica</span>
+                                            <span class="node-label">3.1.1 Exportaciones FOB por Producto Principal</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEA312A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">2.1.2.a	Balanza de Servicios</span>
+                                            <span class="node-label">3.1.2 Exportaciones FOB por Grupos de Productos</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEA313A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">2.1.3.a	Renta</span>
+                                            <span class="node-label">3.1.3 Exportaciones FOB según Intensidad Tecnológica Incorporada</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA314A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.4 Exportaciones FOB Mensuales por Continente y País Destino</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA315A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.1.5 Exportaciones e Importaciones por Regímenes Aduaneros</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEA316A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">2.1.6.a	Indicadores del sector externo: Balanza de Pagos</span>
+                                            <span class="node-label">3.1.6 Importaciones FOB por Uso o Destino Económico</span>
                                         </li>
-
-                                    </ul>
-                                </li>
-
-                                <li class="tree-item has-children collapsed">
-                                    <div class="tree-node" onclick="toggleNode(this)">
-                                        <span class="toggle-icon">+</span>
-                                        <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">BALANZA DE PAGOS (Sexta versión del Manual de Balanza de Pagos)</span>
-                                    </div>
-                                    <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA311B')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA317A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.1.b	Balanza de Pagos: presentación normalizada</span>
+                                            <span class="node-label">3.1.7 Importaciones CIF por Uso o Destino Económico</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA312B')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA318A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.2.b	Balanza de Servicios</span>
+                                            <span class="node-label">3.1.8 Importaciones FOB Mensuales por Continente y País de Origen</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA313B')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA319A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.3.b	Ingreso Primario</span>
+                                            <span class="node-label">3.1.9 Importaciones CIF Mensuales por Continente y País de Origen</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA314B')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA3110A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.4.b	Inversión extranjera por ramas de actividad económica</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA315B')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.5.b	Inversión extranjera por país de origen</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA316B')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.6.b	Indicadores del sector externo: Balanza de Pagos</span>
-                                        </li>                                        
-                                    </ul>
-                                </li>
-
-
-                                <li class="tree-item has-children collapsed">
-                                    <div class="tree-node" onclick="toggleNode(this)">
-                                        <span class="toggle-icon">+</span>
-                                        <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">COMERCIO EXTERIOR</span>
-                                    </div>
-                                    <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA321')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.1	Exportaciones por grupos de productos, toneladas</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA322')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.2	Exportaciones por grupos de productos, miles de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA323')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.3	Exportaciones por producto principal, toneladas</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA324')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.4	Exportaciones por producto principal, miles de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA325')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.5	Exportaciones por continente, área económica y país, millones de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA326')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.6	Importaciones por secciones de la nomenclatura arancelaria, toneladas</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA327')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.7	Importaciones por secciones de la nomenclatura arancelaria, miles de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA328')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.8	Importaciones por secciones de la nomenclatura arancelaria, miles de dólares CIF</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA329')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.9	Importaciones por uso o destino económico, toneladas</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA3210')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.10	Importaciones por uso o destino económico, miles de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA3211')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.11	Importaciones por uso o destino económico, miles de dólares CIF</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA3212')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.12	Importaciones por continente, área económica y país de procedencia, millones de dólares FOB</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA3213')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.13	Importaciones por continente, área económica y país de procedencia, millones de dólares CIF</span>
+                                            <span class="node-label">3.1.10 Importaciones FOB según Intensidad Tecnológica Incorporada</span>
                                         </li>
                                     </ul>
                                 </li>
@@ -295,169 +448,195 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">COTIZACIONES DE LAS PRINCIPALES MONEDAS Y TIPOS DE INTERÉS INTERNACIONALES</span>
+                                        <span class="node-label">3.2 Balanza de Pagos, Posición de Inversión Internacional (Metodología Sexto Manual) y Balanza Comercial</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA341')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA32A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.4.1	Cotizaciones del dólar de los Estados Unidos de América en el mercado internacional</span>
+                                            <span class="node-label">3.2 Balanza de Pagos, Posición de Inversión Internacional (Metodología Sexto Manual) y Balanza Comercial</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA342')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA321A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.4.2	Tasas de interés internacionales</span>
+                                            <span class="node-label">3.2.1 Balanza de Pagos Normalizada (Millones de Dólares)</span>
                                         </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA322A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.2 Posición de Inversión Internacional (Millones de Dólares)</span>
+                                        </li>                                      
                                     </ul>
                                 </li>
+
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">ÍNDICE DE TIPO DE CAMBIO EFECTIVO REAL E ÍNDICES DE TIPO DE CAMBIO REAL BILATERAL</span>
+                                        <span class="node-label">3.3 Deuda Externa</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA351')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA331A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.5.1	Índices de tipo de cambio efectivo real e índices de tipo de cambio real bilateral</span>
+                                            <span class="node-label">3.3.1 Movimiento de la Deuda Externa Pública</span>
                                         </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA332A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.3.2 Movimiento de la Deuda Externa Privada</span>
+                                        </li>                                    
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">3.4 Cotizaciones de las Principales Monedas. Tasas de Inflación de los Estados Unidos de América y tipos de Interés en el Mercado Internacional</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA341A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.1 Ecuador: Índices de Tipo de Cambio Real</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA342A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.2 Cotizaciones del Dólar de Estados Unidos de América en el Mercado Internacional</span>
+                                        </li>    
+                                        <li class="tree-item leaf" onclick="loadTable('IEA343A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.4.3 Tasa de Inflación en Estados Unidos de América, Tasas de Interés Internacionales y Riesgo País</span>
+                                        </li>                                   
                                     </ul>
                                 </li>                                
                             </ul>
                         </li>
                         
-                        <!-- Sector Real -->
+                        <!-- 4. ESTADÍSTICAS DEL SECTOR REAL -->
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Real</span>
+                                <span class="node-label">4. ESTADÍSTICAS DEL SECTOR REAL</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">CUENTAS NACIONALES</span>
+                                        <span class="node-label">4.1 Estadísticas Petroleras</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA411')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA411A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.1	PIB: Enfoque del Gasto</span>
+                                            <span class="node-label">4.1.1 Producción Nacional de Petróleo Crudo y sus Derivados</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA412')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA412A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.2	PIB: Enfoque de la Producción</span>
+                                            <span class="node-label">4.1.2 Exportaciones de Petróleo Crudo, por Cuenta</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA412AA')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.2a Exportaciones de Petróleo de EP Petroecuador (Por tipo de Crudo)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA412BA')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.1.2b Precios Promedio del Crudo Ecuatoriano y del Mercado Internacional</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEA413')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.3	Producto Interno Bruto (PIB): Enfoque del Ingreso</span>
+                                            <span class="node-label">4.1.3 Exportaciones de Derivados de Petróleo, por Producto</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEA414')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.4	Principales Agregados Macroeconómicos</span>
+                                            <span class="node-label">4.1.4 Ingresos y Egresos por Comercialización Interna de Derivados Importados</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA415')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.5	Indicadores Per Cápita</span>
-                                        </li>
-
                                     </ul>
                                 </li>
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">SECTOR ENERGÉTICO</span>
+                                        <span class="node-label">4.2 Precios, Salarios y Mercado Laboral</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA421')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA421A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.1	Producción de petróleo crudo</span>
+                                            <span class="node-label">4.2.1 Índice de Precios al Consumidor (Año base : Enero - Diciembre de 2014 = 100)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA422')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA424AA')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.2	Producción de derivados de petróleo</span>
+                                            <span class="node-label">4.2.4a Índice Nacional De Precios Productor con Petróleo y sin Petróleo</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA423')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA424BA')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.3	Indicadores de la industria de hidrocarburos</span>
+                                            <span class="node-label">4.2.4b Índice Nacional de Precios Productor - Sistema De Índices</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA424')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA425A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.4	Exportaciones de petróleo crudo por continente, área económica y país</span>
+                                            <span class="node-label">4.2.5 Indicadores del Mercado Laboral Nacional, Urbano y Rural</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA425')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.5	Exportaciones de derivados de petróleo por continente, área económica y país</span>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">4.3 Producto Interno Bruto (PIB)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM431')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.3.1 Producto Interno Bruto (PIB): Enfoque del Gasto</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM432')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.3.2 Producto Interno Bruto (PIB): Enfoque de la Producción</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM433')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.3.3 Producto Interno Bruto (PIB): Enfoque del Ingreso</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM434')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.3.4 Principales Agregados Macroeconómicos</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM435')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.3.5 Indicadores Per Cápita</span>
+                                        </li>
+                               
+                                    </ul>
+                                </li>
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">4.5 Cifras de Coyuntura</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEA451A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.1 Índice de Confianza del Consumidor Nacional, Urbano y Rural</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA453A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.3 Producción, inventarios y despacho de cemento por segmento de mercado</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEA454A')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">4.5.4 Índice de Expectativas de la Economía</span>
+                                        </li>
+                              
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
-
                         
-                        <!-- Precios al Consumidor y Mercado Laboral -->
-                        <li class="tree-item has-children collapsed">
-                            <div class="tree-node" onclick="toggleNode(this)">
-                                <span class="toggle-icon">+</span>
-                                <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Precios al Consumidor y Mercado Laboral</span>
-                            </div>
-                            <ul class="tree-children">
-                                <li class="tree-item has-children collapsed">
-                                    <div class="tree-node" onclick="toggleNode(this)">
-                                        <span class="toggle-icon">+</span>
-                                        <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">PRECIOS AL CONSUMIDOR</span>
-                                    </div>
-                                    <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA511')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.1.1	Índice de precios al consumidor por divisiones de consumo de bienes y servicios</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA512')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.1.2	Índice de precios al consumidor por regiones geográficas y ciudades principales</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA513')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.1.3	Índice de precios al consumidor por divisiones de consumo de bienes y servicios de las ciudades de Quito, Guayaquil y Cuenca</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA514')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.1.4	Índice de precios al consumidor por grupos y subgrupos (a diciembre, 12 divisiones de consumo de bienes y servicios)</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA515')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.1.5	Índice de precios al consumidor por grupos y subgrupos (a diciembre - tasas de variación anual, 12 divisiones de consumo de bienes y servicios)</span>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li class="tree-item has-children collapsed">
-                                    <div class="tree-node" onclick="toggleNode(this)">
-                                        <span class="toggle-icon">+</span>
-                                        <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">INDICADORES DEL MERCADO LABORAL ECUATORIANO</span>
-                                    </div>
-                                    <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEA531')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.3.1	Indicadores del mercado laboral ecuatoriano. Total nacional urbano</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEA531A')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">5.3.1.a	Indicadores del mercado laboral ecuatoriano. Cinco ciudades nacional urbano. (Cuenca, Guayaquil, Quito, Machala, Ambato)</span>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </li>                        
                     </ul>
                 </li>
                 
+
+
                 <!-- ==================== INFORMACIÓN MENSUAL ==================== -->
                 <li class="tree-item has-children collapsed">
                     <div class="tree-node" onclick="toggleNode(this)">
@@ -466,223 +645,388 @@
                         <span class="node-label">Estadísticas Mensuales</span>
                     </div>
                     <ul class="tree-children">
+                        <!-- capitulo i sector monetario y financiero -->
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Monetario y Financiero</span>
+                                <span class="node-label">1. ESTADÍSTICAS MONETARIAS Y FINANCIERAS</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Principales Indicadores Monetarios y Financieros</span>
+                                        
+                                        <!-- sub capitulo cuentas monetarias -->
+                                        
+                                        <span class="node-label">1.1 Principales Indicadores Monetarios y Financieros</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM111')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.1	Oferta Monetaria (M1) y Liquidez Total (M2)</span>
+                                            <span class="node-label">1.1.1 Oferta Monetaria (M1) y Liquidez Total (M2)</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM112')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.1.2	Captaciones y Crédito del Panorama Financiero por Sectores</span>
+                                            <span class="node-label">1.1.2 Captaciones y Crédito del Panorama Financiero por Sectores</span>
                                         </li>
-                                    </ul>
+                                      </ul>
                                 </li>
+
+                                <!-- sub capitulo principales indicadores monetarios -->
+
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Banco Central del Ecuador</span>
+                                        <span class="node-label">1.2 Banco Central del Ecuador</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM121')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.1	Reservas Internacionales</span>
+                                            <span class="node-label">1.2.1 Reservas Internacionales</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM122')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.2	Panorama: Banco Central del Ecuador</span>
+                                            <span class="node-label">1.2.2 Panorama: Banco Central del Ecuador</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM123')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.3	Balance Sectorial: Banco Central del Ecuador</span>
+                                            <span class="node-label">1.2.3 Balance Sectorial: Banco Central del Ecuador</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM124')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.2.4	Sistema de Balances</span>
+                                            <span class="node-label">1.2.4 Sistema de Balances</span>
                                         </li>
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Otras Sociedades de Depósito (OSD)</span>
+                                        <span class="node-label">1.3 Otras Sociedades de Depósito (OSD)</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM131')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.1	Panorama: Otras Sociedades de Depósito (OSD)</span>
+                                            <span class="node-label">1.3.1 Panorama: Otras Sociedades de Depósito (OSD)</span>
                                         </li>
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM132')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.3.2	Balance Sectorial: Otras Sociedades de Depósito (OSD)</span>
+                                            <span class="node-label">1.3.2 Balance Sectorial: Otras Sociedades de Depósito (OSD)</span>
                                         </li>
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Panoramas</span>
+                                        <span class="node-label">Panoramas y Balance Sectorial</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM14')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.4	Panorama monetario (PM)</span>
-                                        </li>
+                                            <span class="node-label">1.4 Panorama monetario (PM)</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM15')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.5	Panorama: Otros Sociedades Financieras (OSF)</span>
-                                        </li>
+                                            <span class="node-label">1.5 Panorama: Otros Sociedades Financieras (OSF)</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM16')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.6	Panorama Financiero (PF)</span>
-                                        </li>
+                                            <span class="node-label">1.6 Panorama Financiero (PF)</span>
+                                        </li> 
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Bancos Privados</span>
+                                        <span class="node-label">1.7 Bancos Privados</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM171')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.7.1	Panorama: Bancos Privados</span>
-                                        </li>
+                                            <span class="node-label">1.7.1 Panorama: Bancos Privado</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM172')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.7.2	Balance Sectorial: Bancos Privados</span>
-                                        </li>
+                                            <span class="node-label">1.7.2 Balance Sectorial: Bancos Privados</span>
+                                        </li> 
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Captaciones y Colocaciones del Sistema Financiero</span>
+                                        <span class="node-label">1.8 Captaciones del Sistema Financiero</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM18')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.8	Captaciones del Sistema Financiero</span>
-                                        </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEM19')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.9	Crédito al Sector Privado para Particulares</span>
-                                        </li>
+                                            <span class="node-label">1.8 Captaciones del Sistema Financiero</span>
+                                        </li> 
                                     </ul>
                                 </li>
 
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Tasas de Interés</span>
+                                        <span class="node-label">1.9 Crédito al Sector Privado para Particulares</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM19')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.9 Crédito al Sector Privado para Particulares</span>
+                                        </li> 
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">1.10 Tasas de Interés</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM1101')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.10.1	Tasas de Interés Referenciales Vigentes</span>
-                                        </li>
+                                            <span class="node-label">1.10.1 Tasas de Interés Referenciales Vigentes</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM1102')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.10.2	Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Agosto 2015 - Abril 2021)</span>
-                                        </li>
+                                            <span class="node-label">1.10.2 Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Agosto 2015 - Abril 2021)</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM1102A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.10.2a	Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Desde mayo 2021)</span>
-                                        </li>                                        
+                                            <span class="node-label">1.10.2a Tasas de Interés Activas Efectivas y Máximas Referenciales vigentes por Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM1103')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.10.3	Monto de Operaciones Activas por la Segmentación de la Cartera (Septiembre 2015 - Abril 2021)</span>
-                                        </li>  
+                                            <span class="node-label">1.10.3 Monto de Operaciones Activas por la Segmentación de la Cartera (Septiembre 2015 - Abril 2021)</span>
+                                        </li> 
+
                                         <li class="tree-item leaf" onclick="loadTable('IEM1103A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">1.10.3a	Monto de Operaciones Activas por la Segmentación de la Cartera (Desde mayo 2021)</span>
-                                        </li>                                                                                  
+                                            <span class="node-label">1.10.3a Monto de Operaciones Activas por la Segmentación de la Cartera (Desde mayo 2021)</span>
+                                        </li> 
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEMPAS')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">1.10.4 Tasas Pasivas Referenciales Vigentes por Plazo</span>
+                                        </li>
                                     </ul>
                                 </li>
-                                
-                                
                             </ul>
                         </li>
+ 
+                       <!-- capitulo II 2. ESTADÍSTICAS DE FINANZAS PÚBLICAS  -->
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Externo</span>
+                                <span class="node-label">2. ESTADÍSTICAS DE FINANZAS PÚBLICAS </span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Comercio Exterior de Bienes y Balanza de Pagos</span>
+                                        
+                                 <!-- sub capitulo cuentas monetarias -->
+                                        
+                                        <span class="node-label">2.1 Operaciones del Sector Público No Financiero (Base devengado - Porcentajes del PIB)</span>
+                                        </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM21')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.1 Operaciones del Sector Público No Financiero (Base devengado - Porcentajes del PIB)</span>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo principales indicadores monetarios -->
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.2 Operaciones del Sector Público No Financiero (Base devengado - Millones de Dólares)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM22')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2 Operaciones del Sector Público No Financiero (Base devengado - Millones de Dólares)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM221')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.1 Operaciones de Consolidación del Sector Público No Financiero (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM222')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.2 Operaciones del Gobierno Central (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM223')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.3 Operaciones de los Fondos de la Seguridad Social (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM224')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.4 Operaciones de los Gobiernos Autónomos Descentralizados (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM225')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.5 Operaciones de Empresas Públicas No Financieras (Base Devengado)</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo principales indicadores monetarios -->
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.3 Flujos de Financiamiento del Sector Público No Financiero</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM23')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.3 Flujos de Financiamiento del Sector Público No Financiero</span>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.4 Situación Financiera de la Administración del Estado (Base Caja)</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM24')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.4 Situación Financiera de la Administración del Estado (Base Caja)</span>
+                                        </li>
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEM241')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.4.1 Resultado Global, Presupuestario y Primario de la Administración del Estado (Base Caja)</span>
+                                        </li>
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEM242')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.4.2 Ingresos Petroleros y No Petroleros de la Administración del Estado (Base Caja)</span>
+                                        </li>  
+
+                                        <li class="tree-item leaf" onclick="loadTable('IEM243')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.4.3 Erogaciones de la Administración del Estado (Base Caja)</span>
+                                        </li>                                                                               
+                                    </ul>
+                                </li>
+
+                                <!-- sub capitulo 1.3 Otras Sociedades de Depósito (OSD) -->
+                                 
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">2.5 Estado y Movimiento de la Deuda Pública Interna Agregada del Sector Público Total</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM25')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.5 Estado y Movimiento de la Deuda Pública Interna Agregada del Sector Público Total</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- capitulo 3. ESTADÍSTICAS DEL SECTOR EXTERNO  -->
+                        <li class="tree-item has-children collapsed">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="toggle-icon">+</span>
+                                <i class="fas fa-folder folder-icon"></i>
+                                <span class="node-label">3. ESTADÍSTICAS DEL SECTOR EXTERNO</span>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">3.1 Comercio Exterior de Bienes</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM311')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.1	Exportaciones FOB por Producto Principal</span>
+                                            <span class="node-label">3.1.1 Exportaciones FOB por Producto Principal</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM312')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.2	Exportaciones FOB por Grupos de Productos</span>
+                                            <span class="node-label">3.1.2 Exportaciones FOB por Grupos de Productos</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM313')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.3	Exportaciones FOB según Intensidad Tecnológica Incorporada</span>
+                                            <span class="node-label">3.1.3 Exportaciones FOB según Intensidad Tecnológica Incorporada</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM314')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.4	Exportaciones FOB Mensuales por Continente y País Destino</span>
+                                            <span class="node-label">3.1.4 Exportaciones FOB Mensuales por Continente y País Destino</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM315')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.5	Exportaciones e Importaciones por Regímenes Aduaneros</span>
+                                            <span class="node-label">3.1.5 Exportaciones e Importaciones por Regímenes Aduaneros</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM316')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.6	Importaciones FOB por Uso o Destino Económico</span>
+                                            <span class="node-label">3.1.6 Importaciones FOB por Uso o Destino Económico</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM317')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.7	Importaciones CIF por Uso o Destino Económico</span>
-                                        </li>  
+                                            <span class="node-label">3.1.7 Importaciones CIF por Uso o Destino Económico</span>
+                                        </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM318')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.8	Importaciones FOB Mensuales por Continente y País de Origen</span>
-                                        </li> 
+                                            <span class="node-label">3.1.8 Importaciones FOB Mensuales por Continente y País de Origen</span>
+                                        </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM319')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.9	Importaciones CIF Mensuales por Continente y País de Origen</span>
-                                        </li> 
+                                            <span class="node-label">3.1.9 Importaciones CIF Mensuales por Continente y País de Origen</span>
+                                        </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM3110')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.1.10	Importaciones FOB según Intensidad Tecnológica Incorporada</span>
+                                            <span class="node-label">3.1.10 Importaciones FOB según Intensidad Tecnológica Incorporada</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEM323')">
-                                            <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.3	Balanza Comercial - Cifras Mensuales</span>
-                                        </li>                                          
                                     </ul>
                                 </li>
 
@@ -690,92 +1034,107 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Cotizaciones de las Principales Monedas</span>
+                                        <span class="node-label">3.2 Balanza de Pagos, Posición de Inversión Internacional (Metodología Sexto Manual) y Balanza Comercial</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM323')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.3 Balanza Comercial - Cifras Mensuales</span>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">3.4 Cotizaciones de las Principales Monedas. Tasas de Inflación de los Estados Unidos de América y tipos de Interés en el Mercado Internacional</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM341')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.4.1	Ecuador: Índices de Tipo de Cambio Real</span>
+                                            <span class="node-label">3.4.1 Ecuador: Índices de Tipo de Cambio Real</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM342')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.4.2	Cotizaciones del Dólar de Estados Unidos de América en el Mercado Internacional</span>
-                                        </li>
+                                            <span class="node-label">3.4.2 Cotizaciones del Dólar de Estados Unidos de América en el Mercado Internacional</span>
+                                        </li>    
                                         <li class="tree-item leaf" onclick="loadTable('IEM343')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.4.3	Tasa de Inflación en Estados Unidos de América, Tasas de Interés Internacionales y Riesgo País</span>
-                                        </li>                                        
+                                            <span class="node-label">3.4.3 Tasa de Inflación en Estados Unidos de América, Tasas de Interés Internacionales y Riesgo País</span>
+                                        </li>                                   
                                     </ul>
-                                </li>
+                                </li>                                
                             </ul>
                         </li>
-
+                        
+                        <!-- 4. ESTADÍSTICAS DEL SECTOR REAL -->
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Real</span>
+                                <span class="node-label">4. ESTADÍSTICAS DEL SECTOR REAL</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Estadísticas Petroleras</span>
+                                        <span class="node-label">4.1 Estadísticas Petroleras</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM411')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.1	Producción Nacional de Petróleo Crudo y sus Derivados</span>
+                                            <span class="node-label">4.1.1 Producción Nacional de Petróleo Crudo y sus Derivados</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM412')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.2	Exportaciones de Petróleo Crudo, por Cuenta</span>
+                                            <span class="node-label">4.1.2 Exportaciones de Petróleo Crudo, por Cuenta</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM412A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.2a	Exportaciones de Petróleo de EP Petroecuador (Por tipo de Crudo)</span>
+                                            <span class="node-label">4.1.2a Exportaciones de Petróleo de EP Petroecuador (Por tipo de Crudo)</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM412B')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.2b	Precios Promedio del Crudo Ecuatoriano y del Mercado Internacional</span>
+                                            <span class="node-label">4.1.2b Precios Promedio del Crudo Ecuatoriano y del Mercado Internacional</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM413')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.3	Exportaciones de Derivados de Petróleo, por Producto</span>
+                                            <span class="node-label">4.1.3 Exportaciones de Derivados de Petróleo, por Producto</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM414')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.1.4	Ingresos y Egresos por Comercialización Interna de Derivados Importados</span>
+                                            <span class="node-label">4.1.4 Ingresos y Egresos por Comercialización Interna de Derivados Importados</span>
                                         </li>
-                                       
                                     </ul>
                                 </li>
-
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Precios, Salarios y Mercado Laboral</span>
+                                        <span class="node-label">4.2 Precios, Salarios y Mercado Laboral</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM421')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.1	Índice de Precios al Consumidor (Año base : Enero - Diciembre de 2014 = 100)</span>
+                                            <span class="node-label">4.2.1 Índice de Precios al Consumidor (Año base : Enero - Diciembre de 2014 = 100)</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM424A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.4a	Índice Nacional De Precios Productor con Petróleo y sin Petróleo</span>
+                                            <span class="node-label">4.2.4a Índice Nacional De Precios Productor con Petróleo y sin Petróleo</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM424B')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.4b	Índice Nacional de Precios Productor - Sistema De Índices</span>
-                                        </li>  
-                                        <li class="tree-item leaf" onclick="loadTable('IEM425')">
+                                            <span class="node-label">4.2.4b Índice Nacional de Precios Productor - Sistema De Índices</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM425A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.5	Indicadores del Mercado Laboral Nacional, Urbano y Rural.</span>
-                                        </li>   
-
+                                            <span class="node-label">4.2.5 Indicadores del Mercado Laboral Nacional, Urbano y Rural</span>
+                                        </li>
+                                        
                                     </ul>
                                 </li>
 
@@ -783,31 +1142,30 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Cifras de Coyuntura</span>
+                                        <span class="node-label">4.5 Cifras de Coyuntura</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM451')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.5.1	Índice de Confianza del Consumidor Nacional, Urbano y Rural</span>
+                                            <span class="node-label">4.5.1 Índice de Confianza del Consumidor Nacional, Urbano y Rural</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM453')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.5.3	Producción, inventarios y despacho de cemento por segmento de mercado</span>
+                                            <span class="node-label">4.5.3 Producción, inventarios y despacho de cemento por segmento de mercado</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM454')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.5.4	Índice de Expectativas de la Economía</span>
-                                        </li>  
-
-
+                                            <span class="node-label">4.5.4 Índice de Expectativas de la Economía</span>
+                                        </li>
+                              
                                     </ul>
-                                </li>                                
+                                </li>
                             </ul>
                         </li>
-
+                        
                     </ul>
                 </li>
-                
+
                 <!-- ==================== INFORMACIÓN TRIMESTRAL ==================== -->
                 <li class="tree-item has-children collapsed">
                     <div class="tree-node" onclick="toggleNode(this)">
@@ -827,58 +1185,106 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Balanza de Pagos</span>
+                                        <span class="node-label">2. ESTADÍSTICAS DE FINANZAS PÚBLICAS</span>
                                     </div>
                                     <ul class="tree-children">
-                                        <li class="tree-item leaf" onclick="loadTable('IEM321')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM21T')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.1	Balanza de Pagos Normalizada (Millones de Dólares)</span>
+                                            <span class="node-label">2.1 Operaciones del Sector Público No Financiero (Base devengado - Porcentajes del PIB)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEM322')">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM22T')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">3.2.2	Posición de Inversión Internacional (Millones de Dólares)</span>
+                                            <span class="node-label">2.2 Operaciones del Sector Público No Financiero (Base devengado - Millones de Dólares)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM221T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.1 Operaciones de Consolidación del Sector Público No Financiero (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM222T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.2 Operaciones del Gobierno Central (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM223T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.3 Operaciones de los Fondos de la Seguridad Social (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM224T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.4 Operaciones de los Gobiernos Autónomos Descentralizados (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM224T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.2.5 Operaciones de Empresas Públicas No Financieras (Base Devengado)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM23T')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">2.3 Flujos de Financiamiento del Sector Público No Financiero</span>
                                         </li>
                                     </ul>
                                 </li>
+
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Precios, Salarios y Mercado Laboral</span>
+                                        <span class="node-label">3. ESTADÍSTICAS DEL SECTOR EXTERNO</span>
+                                    </div>
+                                    <ul class="tree-children">
+                                        <li class="tree-item leaf" onclick="loadTable('IEM321')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.1 Balanza de Pagos Normalizada (Millones de Dólares)</span>
+                                        </li>
+                                        <li class="tree-item leaf" onclick="loadTable('IEM322')">
+                                            <span class="toggle-icon leaf-icon">📊</span>
+                                            <span class="node-label">3.2.2 Posición de Inversión Internacional (Millones de Dólares)</span>
+                                        </li>
+                                                                              
+                                    </ul>
+                                </li>
+
+
+                                <li class="tree-item has-children collapsed">
+                                    <div class="tree-node" onclick="toggleNode(this)">
+                                        <span class="toggle-icon">+</span>
+                                        <i class="fas fa-folder folder-icon"></i>
+                                        <span class="node-label">4. ESTADÍSTICAS DEL SECTOR REAL</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('IEM425A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.5a	Indicadores del Mercado Laboral Ecuatoriano Nacional, Urbano y Rural (Trimestral)</span>
+                                            <span class="node-label">4.2.5 Indicadores del Mercado Laboral Nacional, Urbano y Rural</span>
                                         </li>
                                         <li class="tree-item leaf" onclick="loadTable('IEM426')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.2.6	Indicadores del Mercado Laboral Ecuatoriano: Cuenca, Guayaquil Quito, Machala y Ambato (Trimestral)</span>
+                                            <span class="node-label">4.2.6 Indicadores del Mercado Laboral Ecuatoriano: Cuenca, Guayaquil Quito, Machala y Ambato (Trimestral)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEM451A')">
+                                         <li class="tree-item leaf" onclick="loadTable('IEM451A')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.5.1a	Índice de Confianza del Consumidor Nacional, Urbano y Rural (Acumulado Trimestral)</span>
+                                            <span class="node-label">4.5.1a Índice de Confianza del Consumidor Nacional, Urbano y Rural (Acumulado Trimestral)</span>
                                         </li>
-                                        <li class="tree-item leaf" onclick="loadTable('IEM452')">
+                                         <li class="tree-item leaf" onclick="loadTable('IEM452')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">4.5.2	Índice de Confianza del Consumidor 5 ciudades (Acumulado Trimestral)</span>
-                                        </li>                                                                                
+                                            <span class="node-label">4.5.2 Índice de Confianza del Consumidor 5 ciudades (Acumulado Trimestral)</span>
+                                        </li>
                                     </ul>
                                 </li>
+
                             </ul>
                         </li>
+
+
                         <li class="tree-item has-children collapsed">
                             <div class="tree-node" onclick="toggleNode(this)">
                                 <span class="toggle-icon">+</span>
                                 <i class="fas fa-folder folder-icon"></i>
-                                <span class="node-label">Sector Real</span>
+                                <span class="node-label">Cuentas Nacionales Trimestrales</span>
                             </div>
                             <ul class="tree-children">
                                 <li class="tree-item has-children collapsed">
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Tabla Oferta y Utilización de Bienes y Servicios</span>
+                                        <span class="node-label">TABLA OFERTA Y UTILIZACION DE BIENES Y SERVICIOS</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('TOU01')">
@@ -903,7 +1309,7 @@
                                         </li>   
                                         <li class="tree-item leaf" onclick="loadTable('TOU06')">
                                             <span class="toggle-icon leaf-icon">📊</span>
-                                            <span class="node-label">Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad</span>
+                                            <span class="node-label">TOU06. Índices de Volumen Encadenados, 2018 = 100 Datos Ajustados de Estacionalidad</span>
                                         </li>   
                                         <li class="tree-item leaf" onclick="loadTable('TOU07')">
                                             <span class="toggle-icon leaf-icon">📊</span>
@@ -937,7 +1343,7 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Valor Agregado Bruto por Industrias</span>
+                                        <span class="node-label">VALOR AGREGADO BRUTO POR INDUSTRIAS</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('VAB01')">
@@ -997,7 +1403,7 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Valor Agregado Bruto Agrupado por sector</span>
+                                        <span class="node-label">VALOR AGREGADO BRUTO AGRUPADO POR SECTOR</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('VAA01')">
@@ -1057,7 +1463,7 @@
                                     <div class="tree-node" onclick="toggleNode(this)">
                                         <span class="toggle-icon">+</span>
                                         <i class="fas fa-folder folder-icon"></i>
-                                        <span class="node-label">Valor Agregado Bruto Petrolero y No Petrolero</span>
+                                        <span class="node-label">VALOR AGREGADO BRUTO PETROLERO Y NO PETROLERO</span>
                                     </div>
                                     <ul class="tree-children">
                                         <li class="tree-item leaf" onclick="loadTable('VAP01')">
