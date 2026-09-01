@@ -1281,7 +1281,7 @@ function openReport(tipo) {
     const entidadFilter = document.getElementById('entidadFilter');
     const entidadSeleccionada = entidadFilter ? $(entidadFilter).val() : null;
 
-    if (tipo === 'balances' || tipo === 'intermediacion' || tipo === 'productivo' || tipo === 'indicadores' || tipo === 'tasas') {
+    if (tipo === 'balances' || tipo === 'intermediacion' || tipo === 'productivo' || tipo === 'indicadores' || tipo === 'tasas' || tipo === 'comparativo') {
         if (!entidadSeleccionada || entidadSeleccionada === 'todas') {
             showMessage('Por favor seleccione una entidad financiera específica.', 'warning');
             return;
