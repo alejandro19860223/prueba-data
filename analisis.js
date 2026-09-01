@@ -7523,26 +7523,17 @@ function cambiarCategoriaIndicador(categoria) {
 }
 
 // Función para renderizar todos los gráficos de una categoría usando TU función genérica
-// Función para renderizar todos los gráficos de una categoría usando TU función genérica
 function renderizarGraficosIndicadores(categoria) {
     const config = CONFIG_INDICADORES[categoria];
     if (!config) return;
     
-    // 1. PRIMERO: Ocultar TODOS los contenedores (1-9)
-    for (let i = 1; i <= 9; i++) {
-        const container = document.getElementById(`container-ind27-${i}`);
-        if (container) {
-            container.style.display = 'none';
-        }
-    }
-    
-    // 2. SEGUNDO: Mostrar y renderizar solo los gráficos que existen en la config
-    config.graficos.forEach((grafico, index) => {
-        const container = document.getElementById(`container-ind27-${index + 1}`);
-        if (container) {
-            container.style.display = 'block';
-        }
+    // Iteramos sobre cada gráfico definido en la configuración
+    config.graficos.forEach((grafico) => {
+        // Opcional: Si tienes elementos HTML para los títulos, puedes actualizarlos así:
+        // const tituloElement = document.getElementById(`titulo-grafico-${grafico.id}`);
+        // if (tituloElement) tituloElement.textContent = grafico.titulo;
         
+        // Aquí es donde usas TU función genérica profesional
         if (grafico.seriesConfig) {
             renderHistoricoEstructuraGenerico(
                 grafico.id,
@@ -8662,26 +8653,24 @@ function cambiarCategoriaIndicador29(categoria) {
 }
 
 // Función para renderizar gráficos en Hoja 29
-// Función para renderizar gráficos en Hoja 29
 function renderizarGraficosIndicadores29(categoria) {
     const config = CONFIG_INDICADORES_29[categoria];
     if (!config) return;
     
-    // 1. Ocultar todos los contenedores primero
+    // 1. Ocultar todos los contenedores de gráficos de la página 29 primero
     for (let i = 1; i <= 9; i++) {
         const container = document.getElementById(`container-ind29-${i}`);
         if (container) {
-            container.style.display = 'none';
+            if (i <= config.graficos.length) {
+                container.style.display = 'block'; // Mostrar si está en la config
+            } else {
+                container.style.display = 'none'; // Ocultar si no hay gráfico para este espacio
+            }
         }
     }
 
-    // 2. Mostrar y renderizar solo los gráficos definidos
-    config.graficos.forEach((grafico, index) => {
-        const container = document.getElementById(`container-ind29-${index + 1}`);
-        if (container) {
-            container.style.display = 'block';
-        }
-        
+    // 2. Renderizar solo los gráficos definidos en la configuración
+    config.graficos.forEach((grafico) => {
         if (grafico.seriesConfig) {
             renderHistoricoEstructuraGenerico(
                 grafico.id,
@@ -9457,8 +9446,10 @@ function cambiarCategoriaIndicador30(categoria) {
 }
 
 // Función para renderizar gráficos en Hoja 30
-// Función para renderizar gráficos en Hoja 30
 function renderizarGraficosIndicadores30(categoria) {
+
+    
+
     const config = CONFIG_INDICADORES_30[categoria];
     if (!config) return;
     
@@ -9471,10 +9462,15 @@ function renderizarGraficosIndicadores30(categoria) {
     }
 
     // 2. Mostrar y renderizar solo los gráficos definidos en la configuración
-    config.graficos.forEach((grafico, index) => {
-        const container = document.getElementById(`container-ind30-${index + 1}`);
-        if (container) {
-            container.style.display = 'block';
+    config.graficos.forEach((grafico) => {
+        // Extraer el número del ID (ej: 'chartInd30_4' extrae '4')
+        const match = grafico.id.match(/chartInd30_(\d+)/);
+        if (match) {
+            const index = match[1];
+            const container = document.getElementById(`container-ind30-${index}`);
+            if (container) {
+                container.style.display = 'block'; // Mostrar el contenedor correspondiente
+            }
         }
 
         // 3. Renderizar el gráfico según su tipo
@@ -9491,6 +9487,7 @@ function renderizarGraficosIndicadores30(categoria) {
                 grafico.seriesConfig,
                 grafico.titulo,
                 grafico.leftAxisName || 'porcentajes (%)'
+                
             );
         }
     });
