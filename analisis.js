@@ -200,17 +200,29 @@ async function loadRankingData(cuentaCodigo = '@1') {
 document.addEventListener('DOMContentLoaded', () => {
     loadSistemaEstructura(); // ✅ Cargar estructura al inicio
     
-    const session = localStorage.getItem('dataFinanciero_session');
+// Verificar sesión con Supabase
+(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
     if (!session) {
         window.location.href = 'index.html';
         return;
     }
     
-    const user = JSON.parse(session);
-    const usernameElement = document.getElementById('username');
-    if (usernameElement) {
-        usernameElement.textContent = user.username || 'Usuario';
+    const user = session.user;
+    const welcomeUser = document.getElementById('welcomeUser');
+    if (welcomeUser) {
+        welcomeUser.textContent = `Bienvenido, ${user.user_metadata.username || user.email}`;
     }
+    
+    const btnLogout = document.getElementById('btnLogout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'index.html';
+        });
+    }
+})();
     
     updateDateTime();
     setInterval(updateDateTime, 60000);

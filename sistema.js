@@ -3160,26 +3160,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     console.log('✅ Módulo Sistema Financiero cargado correctamente');
     
-    // Verificar sesión
-    const session = localStorage.getItem('dataFinanciero_session');
+// Verificar sesión con Supabase
+(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
     if (!session) {
         window.location.href = 'index.html';
         return;
     }
     
-    const user = JSON.parse(session);
+    const user = session.user;
     const welcomeUser = document.getElementById('welcomeUser');
     if (welcomeUser) {
-        welcomeUser.textContent = `Bienvenido, ${user.username}`;
+        welcomeUser.textContent = `Bienvenido, ${user.user_metadata.username || user.email}`;
     }
     
     const btnLogout = document.getElementById('btnLogout');
     if (btnLogout) {
-        btnLogout.addEventListener('click', () => {
-            localStorage.removeItem('dataFinanciero_session');
+        btnLogout.addEventListener('click', async () => {
+            await supabase.auth.signOut();
             window.location.href = 'index.html';
         });
     }
+})();
     
     // Filtro de período
     const periodFrom = document.getElementById('periodFrom');
