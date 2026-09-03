@@ -1,27 +1,16 @@
 // ===================================
-// CONFIGURACIÓN INICIAL
+// 1. CONFIGURACIÓN DE SUPABASE
 // ===================================
-const DEFAULT_PASSWORD = 'N$data2026';
-const STORAGE_KEY = 'dataFinanciero_users';
-const SESSION_KEY = 'dataFinanciero_session';
+// ️ REEMPLAZA ESTOS VALORES CON LOS TUYOS DE SUPABASE
+const SUPABASE_URL = 'https://mxpseuoksbrqsecukqou.supabase.co'; 
+const SUPABASE_ANON_KEY = 'sb_publishable_mGMXUpLvTP0wCbGa7av4jg_Z01-x...'; // Tu publishable key
+
+// Inicializar el cliente de Supabase
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ===================================
-// FUNCIONES DE UTILIDAD
+// 2. FUNCIONES DE UTILIDAD
 // ===================================
-function getUsers() {
-    const users = localStorage.getItem(STORAGE_KEY);
-    return users ? JSON.parse(users) : [];
-}
-
-function saveUsers(users) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
-}
-
-function getCurrentUser() {
-    const session = localStorage.getItem(SESSION_KEY);
-    return session ? JSON.parse(session) : null;
-}
-
 function showModal(title, message, type = 'success', callback = null) {
     const overlay = document.getElementById('modalOverlay');
     const modalIcon = document.getElementById('modalIcon');
@@ -35,7 +24,6 @@ function showModal(title, message, type = 'success', callback = null) {
     modalMessage.textContent = message;
     modalIcon.className = 'modal-icon ' + type;
     
-    // Cambiar ícono según tipo
     const icons = {
         success: 'fa-check-circle',
         error: 'fa-exclamation-circle',
@@ -52,8 +40,14 @@ function showModal(title, message, type = 'success', callback = null) {
     };
 }
 
+// Obtener usuario actual de Supabase
+async function getCurrentUser() {
+    const { data: { session } } = await supabase.auth.getSession();
+    return session ? session.user : null;
+}
+
 // ===================================
-// ANIMACIÓN SLIDER DEL LOGIN
+// 3. ANIMACIÓN SLIDER DEL LOGIN
 // ===================================
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
@@ -70,7 +64,7 @@ if (signUpButton && signInButton && container) {
 }
 
 // ===================================
-// VALIDACIÓN DE PASSWORD
+// 4. VALIDACIÓN DE PASSWORD (Tu código original)
 // ===================================
 const regNewPassword = document.getElementById('regNewPassword');
 const passwordStrength = document.getElementById('passwordStrength');
@@ -93,126 +87,83 @@ if (regNewPassword) {
 }
 
 // ===================================
-// REGISTRO DE USUARIO
+// 5. REGISTRO DE USUARIO
 // ===================================
 const signUpForm = document.getElementById('signUpForm');
 
 if (signUpForm) {
-    signUpForm.addEventListener('submit', (e) => {
+    signUpForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const username = document.getElementById('regUsername').value.trim();
         const email = document.getElementById('regEmail').value.trim();
-        const oldPassword = document.getElementById('regOldPassword').value;
         const newPassword = document.getElementById('regNewPassword').value;
         
-        // Validar password provisional
-        if (oldPassword !== DEFAULT_PASSWORD) {
-            showModal('Error', 'El password provisional no es correcto. Contacte al administrador.', 'error');
-            return;
-        }
-        
-        // Validar que el nuevo password sea alfanumérico
+        // Validaciones
         if (!/[a-zA-Z]/.test(newPassword) || !/[0-9]/.test(newPassword)) {
-            showModal('Error', 'El nuevo password debe ser alfanumérico (contener letras y números).', 'error');
+            showModal('Error', 'El password debe ser alfanumérico (letras y números).', 'error');
             return;
         }
-        
         if (newPassword.length < 6) {
-            showModal('Error', 'El nuevo password debe tener al menos 6 caracteres.', 'error');
+            showModal('Error', 'El password debe tener al menos 6 caracteres.', 'error');
             return;
         }
         
-        // Verificar si el usuario ya existe
-        const users = getUsers();
-        const existingUser = users.find(u => u.username === username || u.email === email);
-        
-        if (existingUser) {
-            showModal('Error', 'El usuario o correo ya está registrado.', 'error');
-            return;
-        }
-        
-        // Crear nuevo usuario
-        const newUser = {
-            username: username,
+        // Registrar en Supabase
+        const { data, error } = await supabase.auth.signUp({
             email: email,
             password: newPassword,
-            mustChangePassword: false,
-            createdAt: new Date().toISOString()
-        };
-        
-        users.push(newUser);
-        saveUsers(users);
-        
-        console.log('✅ Usuario registrado:', newUser);
-        
+            options: {
+                data: {
+                    username: username
+                }
+            }
+        });
+
+        if (error) {
+            showModal('Error', error.message, 'error');
+            return;
+        }
+
         showModal(
-            '¡Cambio de clave con éxito!', 
-            `Su cuenta ha sido registrada. Se ha enviado una confirmación a ${email}. Ahora puede iniciar sesión con su nueva clave.`,
+            '¡Registro Exitoso!', 
+            `La cuenta para ${email} ha sido creada. Ahora puedes iniciar sesión.`,
             'success',
             () => {
-                // Limpiar formulario y volver al panel de login
                 signUpForm.reset();
                 container.classList.remove('right-panel-active');
-                console.log('🔄 Volviendo al formulario de login...');
             }
         );
     });
 }
 
 // ===================================
-// LOGIN DE USUARIO
+// 6. LOGIN DE USUARIO
 // ===================================
 const signInForm = document.getElementById('signInForm');
 
 if (signInForm) {
-    signInForm.addEventListener('submit', (e) => {
+    signInForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const usernameOrEmail = document.getElementById('loginUsername').value.trim();
         const password = document.getElementById('loginPassword').value;
         
-        const users = getUsers();
-        const user = users.find(u => 
-            (u.username === usernameOrEmail || u.email === usernameOrEmail) && 
-            u.password === password
-        );
-        
-        // Verificar si está intentando usar el password provisional
-        const userExists = users.find(u => 
-            u.username === usernameOrEmail || u.email === usernameOrEmail
-        );
-        
-        if (userExists && password === DEFAULT_PASSWORD) {
-            showModal(
-                'Debe realizar el cambio de clave', 
-                'Su cuenta aún tiene el password provisional. Por favor, haga clic en "Registrarse" para cambiar su clave antes de ingresar.',
-                'warning',
-                () => {
-                    container.classList.add('right-panel-active');
-                }
-            );
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: usernameOrEmail,
+            password: password
+        });
+
+        if (error) {
+            showModal('Error', 'Credenciales incorrectas. Verifica tu correo y password.', 'error');
             return;
         }
-        
-        // Verificar credenciales correctas
-        if (!user) {
-            showModal('Error', 'Usuario o password incorrectos.', 'error');
-            return;
-        }
-        
-        // Login exitoso - Guardar sesión
-        localStorage.setItem(SESSION_KEY, JSON.stringify(user));
-        console.log('✅ Sesión guardada:', user);
-        
-        // Mostrar modal de bienvenida y redirigir
+
         showModal(
             '¡Bienvenido!', 
-            `Hola ${user.username}, ha iniciado sesión correctamente.`,
+            `Hola ${data.user.user_metadata.username || data.user.email}, has iniciado sesión correctamente.`,
             'success',
             () => {
-                console.log('🔄 Redirigiendo al dashboard...');
-                // Usar setTimeout para asegurar que el modal se cierre primero
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 300);
@@ -222,74 +173,7 @@ if (signInForm) {
 }
 
 // ===================================
-// DASHBOARD
-// ===================================
-const welcomeModal = document.getElementById('welcomeModal');
-const closeWelcomeModal = document.getElementById('closeWelcomeModal');
-const welcomeUser = document.getElementById('welcomeUser');
-const btnLogout = document.getElementById('btnLogout');
-
-// Mostrar modal de bienvenida al cargar dashboard
-if (welcomeModal) {
-    const user = getCurrentUser();
-    
-    if (!user) {
-        window.location.href = 'index.html';
-    } else {
-        welcomeUser.textContent = `Bienvenido, ${user.username}`;
-        
-        setTimeout(() => {
-            welcomeModal.classList.add('active');
-        }, 500);
-    }
-    
-    if (closeWelcomeModal) {
-        closeWelcomeModal.addEventListener('click', () => {
-            welcomeModal.classList.remove('active');
-        });
-    }
-}
-
-// Logout
-if (btnLogout) {
-    btnLogout.addEventListener('click', () => {
-        localStorage.removeItem(SESSION_KEY);
-        window.location.href = 'index.html';
-    });
-}
-
-// Abrir sector
-function openSector(sector) {
-    const sectorNames = {
-        'macroeconomico': 'Entorno Macroeconómico',
-        'financiero': 'Sistema Financiero Nacional',
-        'tasas': 'Sistema de Tasas de Interés',
-        'analisis': 'Análisis Financiero'
-    };
-    
-    alert(`Abriendo sector: ${sectorNames[sector]}\n\n(Próximamente disponible)`);
-}
-
-// ===================================
-// CREAR USUARIO ADMIN POR DEFECTO (solo primera vez)
-// ===================================
-(function initDefaultUser() {
-    const users = getUsers();
-    if (users.length === 0) {
-        const adminUser = {
-            username: 'admin',
-            email: 'admin@datafinanciero.com',
-            password: DEFAULT_PASSWORD,
-            mustChangePassword: true,
-            createdAt: new Date().toISOString()
-        };
-        users.push(adminUser);
-        saveUsers(users);
-        console.log('✅ Usuario admin creado con password provisional: N$data2026');
-    }
-
-    // ===================================
-// RECUPERAR PASSWORD - MOSTRAR CREDENCIALES
+// 7. RECUPERAR PASSWORD
 // ===================================
 const forgotLink = document.querySelector('.forgot-link');
 const forgotModal = document.getElementById('forgotModal');
@@ -299,7 +183,6 @@ const closeCredentialsModal = document.getElementById('closeCredentialsModal');
 const forgotForm = document.getElementById('forgotForm');
 const forgotEmail = document.getElementById('forgotEmail');
 
-// Abrir modal de recuperar password
 if (forgotLink) {
     forgotLink.addEventListener('click', (e) => {
         e.preventDefault();
@@ -310,7 +193,6 @@ if (forgotLink) {
     });
 }
 
-// Cerrar modal de recuperar password
 if (closeForgotModal) {
     closeForgotModal.addEventListener('click', () => {
         if (forgotModal) {
@@ -320,7 +202,6 @@ if (closeForgotModal) {
     });
 }
 
-// Cerrar modal de credenciales
 if (closeCredentialsModal) {
     closeCredentialsModal.addEventListener('click', () => {
         if (credentialsModal) {
@@ -329,7 +210,6 @@ if (closeCredentialsModal) {
     });
 }
 
-// Cerrar modales al hacer clic fuera
 if (forgotModal) {
     forgotModal.addEventListener('click', (e) => {
         if (e.target === forgotModal) {
@@ -347,9 +227,8 @@ if (credentialsModal) {
     });
 }
 
-// Procesar formulario de recuperación
 if (forgotForm) {
-    forgotForm.addEventListener('submit', (e) => {
+    forgotForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const email = forgotEmail.value.trim().toLowerCase();
@@ -359,31 +238,71 @@ if (forgotForm) {
             return;
         }
         
-        const users = getUsers();
-        const user = users.find(u => u.email.toLowerCase() === email);
-        
-        if (!user) {
-            showModal(
-                'Usuario no encontrado', 
-                'No se encontró una cuenta asociada a este correo electrónico. Verifica el correo o contacta al administrador.',
-                'error'
-            );
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/index.html'
+        });
+
+        if (error) {
+            showModal('Error', 'No se pudo procesar la solicitud. Verifica el correo.', 'error');
             return;
         }
-        
-        // Mostrar credenciales en el modal
-        document.getElementById('credUsername').textContent = user.username;
-        document.getElementById('credPassword').textContent = user.password;
-        document.getElementById('credEmail').textContent = user.email;
-        
-        // Cerrar modal de búsqueda y abrir modal de credenciales
-        forgotModal.classList.remove('active');
-        credentialsModal.classList.add('active');
-        
-        // Limpiar formulario
-        forgotForm.reset();
-        
-        console.log('✅ Credenciales mostradas para:', user.email);
+
+        showModal(
+            'Correo Enviado', 
+            `Se ha enviado un enlace seguro a ${email} para restablecer tu contraseña.`,
+            'success',
+            () => {
+                forgotModal.classList.remove('active');
+                forgotForm.reset();
+            }
+        );
     });
 }
-})();
+
+// ===================================
+// 8. FUNCIONES DEL DASHBOARD
+// ===================================
+const welcomeModal = document.getElementById('welcomeModal');
+const closeWelcomeModal = document.getElementById('closeWelcomeModal');
+const welcomeUser = document.getElementById('welcomeUser');
+const btnLogout = document.getElementById('btnLogout');
+
+if (welcomeModal) {
+    (async () => {
+        const user = await getCurrentUser();
+        
+        if (!user) {
+            window.location.href = 'index.html';
+        } else {
+            welcomeUser.textContent = `Bienvenido, ${user.user_metadata.username || user.email}`;
+            
+            setTimeout(() => {
+                welcomeModal.classList.add('active');
+            }, 500);
+        }
+    })();
+    
+    if (closeWelcomeModal) {
+        closeWelcomeModal.addEventListener('click', () => {
+            welcomeModal.classList.remove('active');
+        });
+    }
+}
+
+if (btnLogout) {
+    btnLogout.addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        window.location.href = 'index.html';
+    });
+}
+
+function openSector(sector) {
+    const sectorNames = {
+        'macroeconomico': 'Entorno Macroeconómico',
+        'financiero': 'Sistema Financiero Nacional',
+        'tasas': 'Sistema de Tasas de Interés',
+        'analisis': 'Análisis Financiero'
+    };
+    
+    alert(`Abriendo sector: ${sectorNames[sector]}\n\n(Próximamente disponible)`);
+}
