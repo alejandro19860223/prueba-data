@@ -2054,7 +2054,7 @@ if (btnDownloadTable) {
     // Verificar sesión
     const session = localStorage.getItem('dataFinanciero_session');
     if (!session) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
     
@@ -2068,7 +2068,7 @@ if (btnDownloadTable) {
     if (btnLogout) {
         btnLogout.addEventListener('click', () => {
             localStorage.removeItem('dataFinanciero_session');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
     

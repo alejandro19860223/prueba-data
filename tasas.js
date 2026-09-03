@@ -3043,7 +3043,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Verificar sesión
     const session = localStorage.getItem('dataFinanciero_session');
     if (!session) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
     
@@ -3057,7 +3057,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (btnLogout) {
         btnLogout.addEventListener('click', () => {
             localStorage.removeItem('dataFinanciero_session');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
     

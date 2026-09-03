@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const session = localStorage.getItem('dataFinanciero_session');
     if (!session) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
     
